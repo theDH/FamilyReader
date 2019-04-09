@@ -25,6 +25,11 @@ CREATE TABLE people (
 	constraint fk_people_account_account_id foreign key (account_id) references account (account_id)
 );
 
+CREATE TABLE book_type (
+	book_type_id SERIAL PRIMARY KEY,
+	book_type varchar(50) NOT NULL
+);
+
 CREATE TABLE book (
 	book_id SERIAL PRIMARY KEY,
 	title varchar(255) NOT NULL,
@@ -33,23 +38,25 @@ CREATE TABLE book (
 	illustrator_first varchar(100),
 	illustrator_last varchar(100),
 	book_type int,
-	isbn int(13),
+	isbn int,
 	
 	constraint fk_book_book_type_book_type foreign key (book_type) references book_type (book_type_id)
 );
 
-CREATE TABLE book_type (
-	book_type_id SERIAL PRIMARY KEY,
-	book_type varchar(50) NOT NULL,
-);
+
 
 CREATE TABLE people_book (
 	id SERIAL PRIMARY KEY,
 	book_id int NOT NULL,
-	people_id NOT NULL,
+	people_id int NOT NULL,
 	
 	constraint fk_people_book_book_id foreign key (book_id) references book (book_id),
-	constraint fk_people_book_people_id foreign key (people_id) references people (people_id),
+	constraint fk_people_book_people_id foreign key (people_id) references people (people_id)
+);
+
+CREATE TABLE reading_type (
+	reading_type_id SERIAL PRIMARY KEY,
+	reading_type varchar(100) NOT NULL
 );
 
 CREATE TABLE session (
@@ -62,31 +69,28 @@ CREATE TABLE session (
 	constraint fk_session_reading_type_type_of_reading foreign key (type_of_reading) references reading_type (reading_type_id)
 );
 
-CREATE TABLE reading_type (
-	reading_type_id SERIAL PRIMARY KEY,
-	reading_type varchar(100) NOT NULL
-);
+
 
 CREATE TABLE goal (
 	goal_id SERIAL PRIMARY KEY,
 	name_of_goal varchar(150),
-	start_date date NOT NULL;
+	start_date date NOT NULL,
 	number_of_days int NOT NULL,
 	description varchar(500),
-	minutes_to_reach_goal int NOT NULL
-	is_complete boolean,
+	minutes_to_reach_goal int NOT NULL,
+	is_complete boolean
 );
 
 CREATE TABLE goal_people (
 	goal_id int NOT NULL,
-	people_id int NOT NULL;
+	people_id int NOT NULL,
 	
 	constraint fk_goal_people_goal_id foreign key (goal_id) references goal (goal_id),
-	constraint fk_goal_people_people_id foreign key (people_id) references people_book (people_id)
+	constraint fk_goal_people_people_id foreign key (people_id) references people (people_id)
 );
 
 CREATE TABLE competition (
-	competition_id PRIMARY KEY,
+	competition_id SERIAL PRIMARY KEY,
 	name_of_competition varchar(150),
 	start_date date NOT NULL,
 	end_date date NOT NULL,
@@ -96,10 +100,10 @@ CREATE TABLE competition (
 
 CREATE TABLE competition_people (
 	competition_id int NOT NULL,
-	people_id int NOT NULL;
+	people_id int NOT NULL,
 	
 	constraint fk_competition_people_competition_id foreign key (competition_id) references competition (competition_id),
-	constraint fk_competition_people_people_id foreign key (people_id) references people_book (people_id)
+	constraint fk_competition_people_people_id foreign key (people_id) references people (people_id)
 );
 
-ROLLBACK;
+COMMIT;
