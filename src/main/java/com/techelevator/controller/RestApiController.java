@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.techelevator.model.UserDAO;
+import com.techelevator.model.DAO.UserDAO;
 
 @RestController
 public class RestApiController {
@@ -22,28 +22,12 @@ public class RestApiController {
 		this.userDAO = userDAO;
 	}
 
-	@RequestMapping(path="/login", method=RequestMethod.GET)
-	public String displayLoginForm() {
-		return "login";
+	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
+	public void displayLoginForm(@RequestParam String userName, @RequestParam String password) {
+		System.out.println(userName);
+		System.out.println(password);
 	}
 	
-	@RequestMapping(path="/login", method=RequestMethod.POST)
-	public String login(@RequestParam String userName, 
-						@RequestParam String password, 
-						@RequestParam(required=false) String destination,
-						HttpSession session) {
-		if(userDAO.searchForUsernameAndPassword(userName, password)) {
-			session.setAttribute("currentUser", userDAO.getUserByUserName(userName));
-			
-			if(destination != null && ! destination.isEmpty()) {
-				return "redirect:" + destination;
-			} else {
-				return "redirect:/users/"+userName;
-			}
-		} else {
-			return "redirect:/login";
-		}
-	}
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
