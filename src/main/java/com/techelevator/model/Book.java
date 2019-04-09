@@ -8,7 +8,7 @@ public class Book {
 	private String authorLastName;
 	private String illustratorFirstName;
 	private String illustratorLastName;
-	private String bookType;
+	private int bookType;
 	private long isbn;
 	
 	
@@ -48,10 +48,10 @@ public class Book {
 	public void setIllustratorLastName(String illustratorLastName) {
 		this.illustratorLastName = illustratorLastName;
 	}
-	public String getBookType() {
+	public int getBookType() {
 		return bookType;
 	}
-	public void setBookType(String bookType) {
+	public void setBookType(int bookType) {
 		this.bookType = bookType;
 	}
 	public long getIsbn() {

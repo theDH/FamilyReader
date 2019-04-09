@@ -19,9 +19,15 @@ CREATE TABLE people (
 	people_id SERIAL PRIMARY KEY,
 	account_id int,
 	name varchar(100),
-	is_parent boolean NOT NULL,
+	is_parent boolean,
+	inactive boolean DEFAULT false,
 	
 	constraint fk_people_account_account_id foreign key (account_id) references account (account_id)
+);
+
+CREATE TABLE book_type (
+	book_type_id SERIAL PRIMARY KEY,
+	book_type varchar(50) NOT NULL
 );
 
 CREATE TABLE book (
@@ -31,54 +37,61 @@ CREATE TABLE book (
 	author_last varchar(100) NOT NULL,
 	illustrator_first varchar(100),
 	illustrator_last varchar(100),
-	book_type varchar(50),
-	book_type_other varchar(50),
-	isbn int(13),
+	book_type int,
+	isbn int,
 	
-	constraint chk_book_type check (book_type IN ('Paper', 'AudioBook', 'Digital', 'Other')),
-	constraint chk_book_type_other check ((book_type = 'Other' AND book_type_other is not null) OR (book_type <> 'Other' AND book_type_other is null))
+	constraint fk_book_book_type_book_type foreign key (book_type) references book_type (book_type_id)
 );
 
+
+
 CREATE TABLE people_book (
-	id SERIAL PRIMARY KEY,
+	people_book_id SERIAL PRIMARY KEY,
 	book_id int NOT NULL,
-	people_id NOT NULL,
+	people_id int NOT NULL,
 	
 	constraint fk_people_book_book_id foreign key (book_id) references book (book_id),
-	constraint fk_people_book_people_id foreign key (people_id) references people (people_id),
+	constraint fk_people_book_people_id foreign key (people_id) references people (people_id)
+);
+
+CREATE TABLE reading_type (
+	reading_type_id SERIAL PRIMARY KEY,
+	reading_type varchar(100) NOT NULL
 );
 
 CREATE TABLE session (
-	id int NOT NULL,
+	session_id SERIAL PRIMARY,
+	people_book_id int NOT NULL,
 	date_of_reading date NOT NULL,
 	minutes_read int NOT NULL,
-	type_of_reading varchar(50),
-	type_of_reading_other varchar(50),
+	type_of_reading int,
 	
 	constraint fk_session_people_book_id foreign key (id) references people_book (id),
-	constraint chk_type_of_reading check (type_of_reading IN ('Read-Aloud (reader)', 'Read-Aloud (listener)', 'Read To Self', 'Listened To', 'Other')),
-	constraint chk_type_of_reading_other check ((type_of_reading = 'Other' AND type_of_reading_other is not null) OR (type_of_reading <> 'Other' AND type_of_reading_other is null))
+	constraint fk_session_reading_type_type_of_reading foreign key (type_of_reading) references reading_type (reading_type_id)
 );
+
+
 
 CREATE TABLE goal (
 	goal_id SERIAL PRIMARY KEY,
 	name_of_goal varchar(150),
-	start_date date NOT NULL;
+	start_date date NOT NULL,
 	number_of_days int NOT NULL,
 	description varchar(500),
-	minutes_to_reach_goal int NOT NULL
+	minutes_to_reach_goal int NOT NULL,
+	is_complete boolean
 );
 
 CREATE TABLE goal_people (
 	goal_id int NOT NULL,
-	people_id int NOT NULL;
+	people_id int NOT NULL,
 	
 	constraint fk_goal_people_goal_id foreign key (goal_id) references goal (goal_id),
-	constraint fk_goal_people_people_id foreign key (people_id) references people_book (people_id)
+	constraint fk_goal_people_people_id foreign key (people_id) references people (people_id)
 );
 
 CREATE TABLE competition (
-	competition_id PRIMARY KEY,
+	competition_id SERIAL PRIMARY KEY,
 	name_of_competition varchar(150),
 	start_date date NOT NULL,
 	end_date date NOT NULL,
@@ -88,10 +101,10 @@ CREATE TABLE competition (
 
 CREATE TABLE competition_people (
 	competition_id int NOT NULL,
-	people_id int NOT NULL;
+	people_id int NOT NULL,
 	
 	constraint fk_competition_people_competition_id foreign key (competition_id) references competition (competition_id),
-	constraint fk_competition_people_people_id foreign key (people_id) references people_book (people_id)
+	constraint fk_competition_people_people_id foreign key (people_id) references people (people_id)
 );
 
-ROLLBACK;
+COMMIT;
