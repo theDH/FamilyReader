@@ -46,7 +46,7 @@ CREATE TABLE book (
 
 
 CREATE TABLE people_book (
-	id SERIAL PRIMARY KEY,
+	people_book_id SERIAL PRIMARY KEY,
 	book_id int NOT NULL,
 	people_id int NOT NULL,
 	
@@ -60,7 +60,8 @@ CREATE TABLE reading_type (
 );
 
 CREATE TABLE session (
-	id int NOT NULL,
+	session_id SERIAL PRIMARY,
+	people_book_id int NOT NULL,
 	date_of_reading date NOT NULL,
 	minutes_read int NOT NULL,
 	type_of_reading int,
