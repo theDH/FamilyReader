@@ -32,7 +32,8 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	@Override
 	public void createNewCompetition(Competition newCompetition) {
 		// TODO Auto-generated method stub
-		Competition 
+		String query="INSERT INTO competition (competition_id, name_of_competition, start_date, end_date, description, minutes_to_finish) VALUES (?,?,?,?,?,?)";
+		jdbcTemplate.update(query,newCompetition.getCompetitionId(),newCompetition.getNameOfCompetition(),newCompetition.getStartDate(),newCompetition.getEndDate(),newCompetition.getDescription(),newCompetition.getMinutesToFinish());
 		
 	}
 
