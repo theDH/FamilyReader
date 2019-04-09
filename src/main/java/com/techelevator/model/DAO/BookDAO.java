@@ -6,7 +6,9 @@ import com.techelevator.model.Book;
 
 public interface BookDAO {
 	
-	public void addBookToPerson(Book newBook, long personId);
+	public void addNewBook(Book newBook);
+	
+	public void addBookToPerson(long personId);
 	
 	public List<Book> getListOfBooksByPerson(long personId);
 	

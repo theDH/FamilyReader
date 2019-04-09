@@ -19,7 +19,8 @@ CREATE TABLE people (
 	people_id SERIAL PRIMARY KEY,
 	account_id int,
 	name varchar(100),
-	is_parent boolean NOT NULL,
+	is_parent boolean,
+	inactive boolean DEFAULT false,
 	
 	constraint fk_people_account_account_id foreign key (account_id) references account (account_id)
 );
@@ -31,12 +32,15 @@ CREATE TABLE book (
 	author_last varchar(100) NOT NULL,
 	illustrator_first varchar(100),
 	illustrator_last varchar(100),
-	book_type varchar(50),
-	book_type_other varchar(50),
+	book_type int,
 	isbn int(13),
 	
-	constraint chk_book_type check (book_type IN ('Paper', 'AudioBook', 'Digital', 'Other')),
-	constraint chk_book_type_other check ((book_type = 'Other' AND book_type_other is not null) OR (book_type <> 'Other' AND book_type_other is null))
+	constraint fk_book_book_type_book_type foreign key (book_type) references book_type (book_type_id)
+);
+
+CREATE TABLE book_type (
+	book_type_id SERIAL PRIMARY KEY,
+	book_type varchar(50) NOT NULL,
 );
 
 CREATE TABLE people_book (
@@ -52,12 +56,15 @@ CREATE TABLE session (
 	id int NOT NULL,
 	date_of_reading date NOT NULL,
 	minutes_read int NOT NULL,
-	type_of_reading varchar(50),
-	type_of_reading_other varchar(50),
+	type_of_reading int,
 	
 	constraint fk_session_people_book_id foreign key (id) references people_book (id),
-	constraint chk_type_of_reading check (type_of_reading IN ('Read-Aloud (reader)', 'Read-Aloud (listener)', 'Read To Self', 'Listened To', 'Other')),
-	constraint chk_type_of_reading_other check ((type_of_reading = 'Other' AND type_of_reading_other is not null) OR (type_of_reading <> 'Other' AND type_of_reading_other is null))
+	constraint fk_session_reading_type_type_of_reading foreign key (type_of_reading) references reading_type (reading_type_id)
+);
+
+CREATE TABLE reading_type (
+	reading_type_id SERIAL PRIMARY KEY,
+	reading_type varchar(100) NOT NULL
 );
 
 CREATE TABLE goal (
