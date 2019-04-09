@@ -7,17 +7,32 @@ import com.techelevator.model.Competition;
 import com.techelevator.model.Person;
 import com.techelevator.model.DAO.CompetitionDAO;
 
+import javax.sql.DataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
+
+@Component
 public class JDBCCompetitionDAO implements CompetitionDAO{
+
+	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	public JDBCCompetitionDAO(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
+	}
 
 	@Override
 	public void addPersonToCompetition(Competition newCompetition, long personId) {
 		// TODO Auto-generated method stub
-		
+		String query="INSERT INTO competition_people (people_id, competition_id) VALUES (?,?)";
+		jdbcTemplate.update(query, personId, newCompetition.getCompetitionId());
 	}
 
 	@Override
 	public void createNewCompetition(Competition newCompetition) {
 		// TODO Auto-generated method stub
+		Competition 
 		
 	}
 
