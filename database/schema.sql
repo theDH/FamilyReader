@@ -56,24 +56,41 @@ CREATE TABLE session (
 	type_of_reading_other varchar(50),
 	
 	constraint fk_session_people_book_id foreign key (id) references people_book (id),
-	constraint chk_type_of_reading check (type_of_reading IN ('Read-Aloud (reader)', 'Read-Aloud (listener)', 'Read To Self', 'Other')),
+	constraint chk_type_of_reading check (type_of_reading IN ('Read-Aloud (reader)', 'Read-Aloud (listener)', 'Read To Self', 'Listened To', 'Other')),
 	constraint chk_type_of_reading_other check ((type_of_reading = 'Other' AND type_of_reading_other is not null) OR (type_of_reading <> 'Other' AND type_of_reading_other is null))
 );
 
 CREATE TABLE goal (
 	goal_id SERIAL PRIMARY KEY,
-	name varchar(150),
-	start_date date NOT NULL,
-	end_date date NOT NULL,
+	name_of_goal varchar(150),
+	number_of_days int NOT NULL,
 	description varchar(500),
+	minutes_to_reach_goal int NOT NULL
 );
 
-CREATE TABLE goal_person (
+CREATE TABLE goal_people (
 	goal_id int NOT NULL,
 	people_id int NOT NULL;
 	
 	constraint fk_goal_people_goal_id foreign key (goal_id) references goal (goal_id),
-	constraint fk_goal_people_person_id foreign key (people_id) references people_book (people_id)
+	constraint fk_goal_people_people_id foreign key (people_id) references people_book (people_id)
+);
+
+CREATE TABLE competition (
+	competition_id PRIMARY KEY,
+	name_of_competition varchar(150),
+	start_date date NOT NULL,
+	end_date date NOT NULL,
+	description varchar,
+	minutes_to_finish int NOT NULL
+);
+
+CREATE TABLE competition_people (
+	competition_id int NOT NULL,
+	people_id int NOT NULL;
+	
+	constraint fk_competition_people_competition_id foreign key (competition_id) references competition (competition_id),
+	constraint fk_competition_people_people_id foreign key (people_id) references people_book (people_id)
 );
 
 ROLLBACK;
