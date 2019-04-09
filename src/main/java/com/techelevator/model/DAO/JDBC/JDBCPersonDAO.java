@@ -1,5 +1,6 @@
 package com.techelevator.model.DAO.JDBC;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -19,7 +20,6 @@ public class JDBCPersonDAO implements PersonDAO{
 	}
 
 	@Override
-	//add person - primary keys?
 	public void addPerson(Person newPerson) {
 		String sqlInsertPerson = "INSERT INTO people(people_id, account_id, name, is_parent, inactive) " +
 				   "VALUES(?, ?, ?, ?, ?)";
@@ -30,14 +30,22 @@ public class JDBCPersonDAO implements PersonDAO{
 
 	@Override
 	public void deletePerson(long personId) {
-		// TODO Auto-generated method stub
+		String sqlDelete = "DELETE FROM people WHERE id = ?;";
+		jdbcTemplate.update(sqlDelete, personId);
 		
 	}
 
 	@Override
 	public List<Person> getListOfPeopleInAccount(long accountId) {
-		// TODO Auto-generated method stub
-		return null;
+	ArrayList<Person> persons = new ArrayList<Person>();
+	String sql = "SELECT * FROM people JOIN account ON people.account_id = account.account_id" +
+	"WHERE people.account_id =?; ";
+	SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
+	while (results.next()) {
+		Person person = mapRowToPerson(results);
+		persons.add(person);
+	}
+		return persons;
 	}
 	
 	private long getNextPersonId() {
@@ -52,9 +60,13 @@ public class JDBCPersonDAO implements PersonDAO{
 	
 	private Person mapRowToPerson(SqlRowSet results) {
 		Person thePerson;
-		thePerson =new Person();
-		thePerson.setAccountId();
-		
+		thePerson = new Person();
+		thePerson.setPeopleId(results.getLong("people_id"));
+		thePerson.setAccountId(results.getLong("account_id"));
+		thePerson.setName(results.getString("name"));
+		thePerson.setInactive(results.getBoolean("inactive"));
+		thePerson.setParent(results.getBoolean("is_parent"));
+		return thePerson;
 	}
 
 }
