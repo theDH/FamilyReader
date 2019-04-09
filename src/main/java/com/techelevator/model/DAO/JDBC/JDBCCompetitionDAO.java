@@ -25,10 +25,8 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	@Override
 	public void addPersonToCompetition(Competition newCompetition, long personId) {
 		// TODO Auto-generated method stub
-		long people_id = personId;
-		Compeition competition_id= newCompeition.getCompetitionId();
-		String query="INSERT INTO competition_people (peopleId, compeition_id) VALUES (?,?)";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(query);
+		String query="INSERT INTO competition_people (people_id, competition_id) VALUES (?,?)";
+		jdbcTemplate.update(query, personId, newCompetition.getCompetitionId());
 	}
 
 	@Override
