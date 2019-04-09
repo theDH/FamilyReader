@@ -1,4 +1,4 @@
-package com.techelevator.model;
+package com.techelevator.model.DAO.JDBC;
 
 import javax.sql.DataSource;
 
@@ -9,6 +9,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
 import com.techelevator.model.User;
+import com.techelevator.model.DAO.UserDAO;
 import com.techelevator.security.PasswordHasher;
 
 @Component
@@ -29,14 +30,14 @@ public class JDBCUserDAO implements UserDAO {
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 		
-		jdbcTemplate.update("INSERT INTO app_user(user_name, password, salt) VALUES (?, ?, ?)",
+		jdbcTemplate.update("INSERT INTO account(user_name, password, salt) VALUES (?, ?, ?)",
 				userName, hashedPassword, saltString);
 	}
 
 	@Override
 	public boolean searchForUsernameAndPassword(String userName, String password) {
 		String sqlSearchForUser = "SELECT * "+
-							      "FROM app_user "+
+							      "FROM account "+
 							      "WHERE UPPER(user_name) = ? ";
 		
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUser, userName.toUpperCase());
@@ -52,13 +53,13 @@ public class JDBCUserDAO implements UserDAO {
 
 	@Override
 	public void updatePassword(String userName, String password) {
-		jdbcTemplate.update("UPDATE app_user SET password = ? WHERE user_name = ?", password, userName);
+		jdbcTemplate.update("UPDATE account SET password = ? WHERE user_name = ?", password, userName);
 	}
 
 	@Override
 	public Object getUserByUserName(String userName) {
 		String sqlSearchForUsername ="SELECT * "+
-		"FROM app_user "+
+		"FROM account "+
 		"WHERE UPPER(user_name) = ? ";
 
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase()); 

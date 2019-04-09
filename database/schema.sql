@@ -67,6 +67,7 @@ CREATE TABLE goal (
 	number_of_days int NOT NULL,
 	description varchar(500),
 	minutes_to_reach_goal int NOT NULL
+	is_complete boolean,
 );
 
 CREATE TABLE goal_people (
