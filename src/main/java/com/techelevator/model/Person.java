@@ -6,11 +6,18 @@ public class Person {
 	private boolean parent;
 	private long peopleId;
 	private long accountId;
+	private boolean inactive;
 	
 	
 	
 	
 	
+	public boolean isInactive() {
+		return inactive;
+	}
+	public void setInactive(boolean inactive) {
+		this.inactive = inactive;
+	}
 	public String getName() {
 		return name;
 	}
