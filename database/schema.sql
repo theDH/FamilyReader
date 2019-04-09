@@ -33,7 +33,7 @@ CREATE TABLE book (
 	illustrator_last varchar(100),
 	book_type varchar(50),
 	book_type_other varchar(50),
-	isbn integer(13),
+	isbn int(13),
 	
 	constraint chk_book_type check (book_type IN ('Paper', 'AudioBook', 'Digital', 'Other')),
 	constraint chk_book_type_other check ((book_type = 'Other' AND book_type_other is not null) OR (book_type <> 'Other' AND book_type_other is null))
@@ -63,6 +63,7 @@ CREATE TABLE session (
 CREATE TABLE goal (
 	goal_id SERIAL PRIMARY KEY,
 	name_of_goal varchar(150),
+	start_date date NOT NULL;
 	number_of_days int NOT NULL,
 	description varchar(500),
 	minutes_to_reach_goal int NOT NULL
