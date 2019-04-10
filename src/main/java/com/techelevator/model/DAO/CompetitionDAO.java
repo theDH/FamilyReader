@@ -20,7 +20,7 @@ public interface CompetitionDAO {
 	
 	public List<Competition> getListOfCompetitionsByPerson(long personId);
 	
-	public Competition updateCompetition(Competition competition);
+	public void updateCompetition(Competition competition);
 	
 	
 }

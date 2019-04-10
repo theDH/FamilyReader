@@ -85,11 +85,13 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	}
 
 	@Override
-	public Competition updateCompetition(Competition competition) {
-		
-
+	public void updateCompetition(Competition competition) {
+		String updateCompetition ="UPDATE competition SET competition_id= ?, name_of_competition= ?, start_date= ?," + 
+		" end_date= ?, description= ?, minutes_to_finish= ?";
+		jdbcTemplate.update(updateCompetition, competition.getCompetitionId(), competition.getNameOfCompetition(),
+		competition.getStartDate(), competition.getEndDate(), competition.getDescription(), competition.getMinutesToFinish());	
 	}
-
+	
 	private Competition mapRowToCompetition(SqlRowSet results) {
 		Competition competition = new Competition();
 		competition.setCompetitionId(results.getlong("competition_id"))
