@@ -21,10 +21,10 @@ public class JDBCPersonDAO implements PersonDAO{
 
 	@Override
 	public void addPerson(Person newPerson) {
-		String sqlInsertPerson = "INSERT INTO people(account_id, name, is_parent, inactive) " +
+		String sqlInsertPerson = "INSERT INTO people(people_id, account_id, name, is_parent, inactive) " +
 				   "VALUES(?, ?, ?, ?)";
-		//newPerson.setPeopleId(getNextPersonId());
-		jdbcTemplate.update(sqlInsertPerson, newPerson.getAccountId(), newPerson.getName(), newPerson.isParent(), newPerson.isInactive());
+		newPerson.setPeopleId(getNextPersonId());
+		jdbcTemplate.update(sqlInsertPerson, newPerson.getPeopleId(), newPerson.getAccountId(), newPerson.getName(), newPerson.isParent(), newPerson.isInactive());
 	}
 
 	@Override

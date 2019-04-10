@@ -10,8 +10,15 @@ public class Goal {
 	private int numberOfDays;
 	private String description;
 	private int minutesToReachGoal;
+	private boolean isComplete;
 	
 	
+	public boolean isComplete() {
+		return isComplete;
+	}
+	public void setComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
 	public long getGoalId() {
 		return goalId;
 	}
