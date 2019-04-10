@@ -18,9 +18,7 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/signup", method=RequestMethod.POST)
-	public void addNewUser(@RequestParam String familyName, @RequestParam String userName, @RequestParam String password) {
-		System.out.println(familyName);
-		System.out.println(userName);
-		System.out.println(password);
+	public void addNewUser(@RequestBody String signupRequest) {
+		System.out.println(signupRequest);
 	}
 }
