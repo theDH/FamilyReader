@@ -8,7 +8,7 @@ public interface BookDAO {
 	
 	public void addNewBook(Book newBook);
 	
-	public void addBookToPerson(long personId);
+	public void addBookToPerson(Book book, long personId);
 	
 	public List<Book> getListOfBooksByPerson(long personId);
 	
