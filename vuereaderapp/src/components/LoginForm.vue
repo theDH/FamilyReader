@@ -21,12 +21,13 @@ export default {
   methods: {
     authorizeLogin () {
       console.log('login')
-      axios.post('http://localhost:8080/capstone/authenticate', {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        },
-        userName: 'test1',
-        password: 'test1'
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/capstone/authenticate',
+        data: {
+          userName: 'testusername',
+          password: 'testpassword'
+        }
       }).then(response => { console.log(response) }).catch(e => console.log(e))
     },
     launchSignup () {

@@ -24,14 +24,15 @@ export default {
   methods: {
     addNewUser () {
       console.log('add new user')
-      axios.post('http://localhost:8080/capstone/signup', {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        },
-        userName: 'testUsername',
-        password: 'testPassword',
-        confirmPassword: 'testPassword',
-        familyName: 'The Test Family'
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/capstone/signup',
+        data: {
+          userName: 'testUsername',
+          password: 'testPassword',
+          confirmPassword: 'testPassword',
+          familyName: 'The Test Family'
+        }
       }).then(response => { console.log(response) }).catch(e => this.errors.push(e))
     },
     launchLogin () {

@@ -60,13 +60,13 @@ CREATE TABLE reading_type (
 );
 
 CREATE TABLE session (
-	session_id SERIAL PRIMARY,
+	session_id SERIAL PRIMARY KEY,
 	people_book_id int NOT NULL,
 	date_of_reading date NOT NULL,
 	minutes_read int NOT NULL,
 	type_of_reading int,
 	
-	constraint fk_session_people_book_id foreign key (id) references people_book (id),
+	constraint fk_session_people_book_id foreign key (people_book_id) references people_book (people_book_id),
 	constraint fk_session_reading_type_type_of_reading foreign key (type_of_reading) references reading_type (reading_type_id)
 );
 

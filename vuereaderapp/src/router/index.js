@@ -6,6 +6,8 @@ import FamilyList from '@/components/FamilyList'
 import BookList from '@/components/BookList'
 import Button from '@/components/Button'
 import PrimaryButton from '@/components/PrimaryButton'
+import CompetitionList from '@/components/CompetitionList'
+import GoalList from '@/components/GoalList'
 
 Vue.use(Router)
 
@@ -41,8 +43,18 @@ export default new Router({
     },
     {
       path: '/primarybutton',
-      name: 'button',
+      name: 'primarybutton',
       component: PrimaryButton
+    },
+    {
+      path: '/competitionlist',
+      name: 'competitionlist',
+      component: CompetitionList
+    },
+    {
+      path: '/goallist',
+      name: 'goallist',
+      component: GoalList
     }
   ]
 })

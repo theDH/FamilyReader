@@ -32,11 +32,11 @@ public class JDBCSessionDAO implements SessionDAO {
 
 	@Override
 	public List<Session> getListOfSessionsByPerson(long personId) {
-		// TODO Auto-generated method stub
+		
 		List<Session> listOfSession = new ArrayList<>();
 
 		String sqlSearchGetListOfSessionByPerson = "Select * FROM session JOIN session ON session.people_book_id = people_book.people_book_id "
-				+ "JOIN people_book ON people_book.people_id = people.people_id WHERE people.people_id = ?";
+				+ "JOIN people_book ON people_book.people_id = people.people_id WHERE people.people_id = ? LIMIT 10";
 
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchGetListOfSessionByPerson, personId);
 		while (results.next()) {
@@ -54,7 +54,7 @@ public class JDBCSessionDAO implements SessionDAO {
 
 		String sqlSearchGetListByAccount = "Select * FROM session JOIN people_book ON people_book.people_book_id = session.people_book_id "
 				+ "JOIN people ON people.people_id = people_book.people_id JOIN account ON account.account_id = people.account_id "
-				+ "WHERE account_id = ?";
+				+ "WHERE account_id = ? LIMIT 10";
 
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchGetListByAccount, accountId);
 		while (results.next()) {
