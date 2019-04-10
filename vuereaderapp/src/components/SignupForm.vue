@@ -38,7 +38,7 @@ export default {
           password: this.password,
           familyName: this.familyName
         }
-      }).then(response => { console.log(response) }).catch(e => this.errors.push(e))
+      }).then(response => { console.log(response) }).catch(e => console.log(e))
     },
     launchLogin () {
       this.$router.push('/login')
