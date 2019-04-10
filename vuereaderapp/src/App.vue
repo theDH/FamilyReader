@@ -6,10 +6,12 @@
 
 <script>
 import LoginForm from './components/LoginForm'
+import FamilyList from './components/FamilyList'
 export default {
   name: 'App',
   components: {
-    LoginForm
+    LoginForm,
+    FamilyList
   }
 }
 </script>
