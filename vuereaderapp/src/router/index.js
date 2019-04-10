@@ -1,15 +1,24 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from '@/components/HelloWorld'
+import LoginForm from '@/components/LoginForm'
+import SignupForm from '@/components/SignupForm'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
+      path: '/', redirect: '/login'
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: LoginForm
+    },
+    {
+      path: '/signup',
+      name: 'Signup',
+      component: SignupForm
     }
   ]
 })

@@ -30,8 +30,8 @@ public class JDBCUserDAO implements UserDAO {
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 		
-		jdbcTemplate.update("INSERT INTO account(user_name, password, salt) VALUES (?, ?, ?)",
-				userName, hashedPassword, saltString);
+		jdbcTemplate.update("INSERT INTO account(account_id, user_name, password, salt) VALUES (?, ?, ?)",
+				getNextAccountId(), userName, hashedPassword, saltString);
 	}
 
 	@Override
@@ -71,6 +71,16 @@ public class JDBCUserDAO implements UserDAO {
 		}
 
 		return thisUser;
+	}
+	
+	private long getNextAccountId() {
+		SqlRowSet nextPersonResult = jdbcTemplate.queryForRowSet("SELECT nextval('account_account_id_seq')");
+		if(nextPersonResult.next()) {
+			return nextPersonResult.getLong(1);
+		}else {
+			throw new RuntimeException("Something went wrong while getting new account id.");
+		}
+		
 	}
 
 }

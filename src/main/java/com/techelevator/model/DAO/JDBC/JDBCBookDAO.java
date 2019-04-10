@@ -20,8 +20,10 @@ public class JDBCBookDAO implements BookDAO {
 	}
 	
 	@Override
-	public void addBookToPerson(long personId) {
-		// TODO Auto-generated method stub
+	public void addBookToPerson(Book book, long personId) {
+		String sql = "INSERT INTO people_book (id, book_id, people_id) " +
+					"VALUES (?, ?, ?)";
+		jdbcTemplate.update(sql, getNextPeopleBookId(), book.getBookId(), personId);
 	}
 
 	@Override
@@ -43,7 +45,7 @@ public class JDBCBookDAO implements BookDAO {
 		String sql = "SELECT * FROM book JOIN people_book ON people_book.book_id = book.book_id " + 
 				"JOIN people ON people.people_id = people_book.people_id " + 
 				"JOIN account ON people.account_id = account.account_id " + 
-				"WHERE people_book.people_id = ?;";
+				"WHERE people_book.people_id = ?; LIMIT 10";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
 		while(results.next()) {
 			Book book = mapRowToBook(results);
@@ -72,6 +74,17 @@ public class JDBCBookDAO implements BookDAO {
 			throw new RuntimeException("Something went wrong while getting an id for the new book");
 		}
 	}
+	
+	private long getNextPeopleBookId() {
+		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('people_book_id_seq')");
+		if(nextIdResult.next()) {
+			return nextIdResult.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting an id for the new book");
+		}
+	}
+	
+
 	
 	private Book mapRowToBook(SqlRowSet results) {
 		Book book = new Book();
