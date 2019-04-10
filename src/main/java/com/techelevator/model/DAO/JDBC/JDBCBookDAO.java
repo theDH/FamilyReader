@@ -45,7 +45,7 @@ public class JDBCBookDAO implements BookDAO {
 		String sql = "SELECT * FROM book JOIN people_book ON people_book.book_id = book.book_id " + 
 				"JOIN people ON people.people_id = people_book.people_id " + 
 				"JOIN account ON people.account_id = account.account_id " + 
-				"WHERE people_book.people_id = ?;";
+				"WHERE people_book.people_id = ?; LIMIT 10";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
 		while(results.next()) {
 			Book book = mapRowToBook(results);
@@ -80,9 +80,11 @@ public class JDBCBookDAO implements BookDAO {
 		if(nextIdResult.next()) {
 			return nextIdResult.getLong(1);
 		} else {
-			throw new RuntimeException("Something went wrong while getting an id for the new people_book");
+			throw new RuntimeException("Something went wrong while getting an id for the new book");
 		}
 	}
+	
+
 	
 	private Book mapRowToBook(SqlRowSet results) {
 		Book book = new Book();
