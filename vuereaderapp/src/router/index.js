@@ -4,6 +4,7 @@ import LoginForm from '@/components/LoginForm'
 import SignupForm from '@/components/SignupForm'
 import FamilyList from '@/components/FamilyList'
 import BookList from '@/components/BookList'
+import CompetitionList from '@/components/CompetitionList'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
       path: '/booklist',
       name: 'booklist',
       component: BookList
+    },
+    {
+      path: '/competitionlist',
+      name: 'competitionlist',
+      component: CompetitionList
     }
   ]
 })
