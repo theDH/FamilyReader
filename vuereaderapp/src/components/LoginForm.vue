@@ -27,7 +27,7 @@ export default {
         },
         userName: 'test1',
         password: 'test1'
-      }).then(response => { console.log(response) }).catch(e => this.errors.push(e))
+      }).then(response => { console.log(response) }).catch(e => console.log(e))
     },
     launchSignup () {
       this.$router.push('/signup')

@@ -1,22 +1,22 @@
  <template>
-	<div class = "family-list">
-		<h1>Family Members</h1>
-		<ul>
-			<li v-for="member in members" v-bind:key ="member">{{member}}</li>
-		</ul>
-	</div>
+  <div class = "family-list">
+    <h1>Family Members</h1>
+    <ul>
+      <li v-for="member in members" v-bind:key ="member">{{member}}</li>
+    </ul>
+  </div>
 </template>
 
 <script>
 export default {
-	data(){
-		return {
-			members: [
-				{name: "Tom"},
-				{name: "Pig"}
-			]
-		}
-	}
+  data(){
+    return {
+      members: [
+        {name: "Tom"},
+        {name: "Pig"}
+      ]
+    }
+  }
 }
 </script>
 
