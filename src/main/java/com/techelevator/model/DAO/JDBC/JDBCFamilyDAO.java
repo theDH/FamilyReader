@@ -5,7 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
-import com.techelevator.model.Family;
+import com.techelevator.model.Signup;
 import com.techelevator.model.DAO.FamilyDAO;
 
 public class JDBCFamilyDAO implements FamilyDAO{
@@ -17,9 +17,9 @@ public class JDBCFamilyDAO implements FamilyDAO{
 	}
 
 	@Override
-	public long addFamily(Family newFamily) {
+	public long addFamily(Signup signup) {
 		String sql = "INSERT INTO family (family_name) VALUES (?) RETURNING family_id";
-		SqlRowSet id = jdbcTemplate.queryForRowSet(sql);
+		SqlRowSet id = jdbcTemplate.queryForRowSet(sql, signup.getFamilyName());
 		id.next();
 		long familyId = id.getLong(0);
 		return familyId;	

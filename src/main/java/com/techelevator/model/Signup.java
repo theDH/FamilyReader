@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-public class Family {
+public class Signup {
 	
 	private String userName;
 	private String password;
