@@ -25,12 +25,12 @@ public class JDBCUserDAO implements UserDAO {
 	}
 	
 	@Override
-	public void saveUser(String userName, String password) {
+	public void saveUser(String userName, String password, long familyId) {
 		byte[] salt = hashMaster.generateRandomSalt();
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 		
-		jdbcTemplate.update("INSERT INTO account(account_id, user_name, password, salt) VALUES (?, ?, ?)",
+		jdbcTemplate.update("INSERT INTO family(family_id, user_name, password, salt) VALUES (?, ?, ?)",
 				getNextAccountId(), userName, hashedPassword, saltString);
 	}
 
@@ -85,7 +85,7 @@ public class JDBCUserDAO implements UserDAO {
 
 	@Override
 	public long getFamilyByUser(User user) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 

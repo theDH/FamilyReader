@@ -4,6 +4,6 @@ import com.techelevator.model.Family;
 
 public interface FamilyDAO {
 	
-	public void addFamily(Family newFamily);
+	public long addFamily(Family newFamily);
 	
 }
