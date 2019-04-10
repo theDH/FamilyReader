@@ -27,13 +27,13 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	@Override
 	public void addPersonToCompetition(Competition newCompetition, long personId) {
 		String query="INSERT INTO competition_people (people_id, competition_id) VALUES (?,?)";
-		jdbcTemplate.update(query, personId, extracted(newCompetition).getCompetitionId());
+		jdbcTemplate.update(query, personId, newCompetition.getCompetitionId());
 	}
 
 	@Override
 	public void createNewCompetition(Competition newCompetition) {
 		String insertNewCompetition="INSERT INTO competition (competition_id, name_of_competition, start_date, end_date, description, minutes_to_finish) VALUES (?,?,?,?,?,?)";
-		jdbcTemplate.update(insertNewCompetition,extracted(newCompetition).getCompetitionId(),extracted(newCompetition).getNameOfCompetition(),extracted(newCompetition).getStartDate(),extracted(newCompetition).getEndDate(),extracted(newCompetition).getDescription(),extracted(newCompetition).getMinutesToFinish());
+		jdbcTemplate.update(insertNewCompetition,newCompetition.getCompetitionId(),newCompetition.getNameOfCompetition(),newCompetition.getStartDate(),newCompetition.getEndDate(),newCompetition.getDescription(),newCompetition.getMinutesToFinish());
 	}
 
 	@Override
@@ -62,20 +62,32 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 
 	@Override
 	public List<Person> getListOfPeopleInCompetition(long competitionId) {
-	
-		return null;
+		List<Person> peopleInCompetitions = new ArrayList<Person>();
+		String getSqlOfPeopleInCompetitions = "SELECT * FROM people JOIN people_id FROM competition_people ON people.people_id=competition.people_id WHERE competition_id = ?";
+		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfPeopleInCompetitions, competitionId);
+		while (results.next()) {
+			Site people = mapRowToPerson(results);
+			peopleInCompetitions.add(people);
+		}
+		return peopleInCompetition;
 	}
 
 	@Override
 	public List<Competition> getListOfCompetitionsByPerson(long personId) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Person> competitionsByPerson = new ArrayList<Person>();
+		String getSqlOfCompetitionsByPeople = "SELECT * FROM competition JOIN competition_people ON competition.competition_id=competition_people.competition_id WHERE people_id = ?";
+		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfCompetitionsByPeople, personId);
+		while (results.next()) {
+			Site competition = mapRowToCompetition(results);
+			competitionsByPerson.add(competition);
+		}
+		return competitionsByPerson;
 	}
 
 	@Override
 	public Competition updateCompetition(Competition competition) {
 		
-		return null;
+
 	}
 
 	private Competition mapRowToCompetition(SqlRowSet results) {
@@ -87,5 +99,14 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 		competition.setDescription(results.getString("description"));
 		competition.setMinutesToFinish(results.getInt("minutes_to_finish"));
 		return competition;
+	}
+	private Person mapRowToPerson(SqlRowSet results) {
+		Person person = new Person();
+		person.setPeopleId(results.getString("people_id"));
+		person.setAccountId(results.getInt("account_id"));
+		person.setName(results.getString("name"));
+		person.setParent(results.getBoolean("is_parent"));
+		person.setInactive(results.getBoolean("inactive"));
+		return Person;
 	}
 }
