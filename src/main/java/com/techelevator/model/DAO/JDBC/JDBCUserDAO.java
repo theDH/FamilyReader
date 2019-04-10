@@ -83,4 +83,10 @@ public class JDBCUserDAO implements UserDAO {
 		
 	}
 
+	@Override
+	public long getFamilyByUser(User user) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

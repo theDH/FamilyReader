@@ -1,6 +1,7 @@
 package com.techelevator.model.DAO.JDBC;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.techelevator.model.Competition;
@@ -40,9 +41,9 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	public List<Competition> getListOfFinishedCompetitions(LocalDate todayDate) {
 		List<Competition> finishedCompetitions = new ArrayList<Competition>();
 		String searchForFinishedCompetitions= "SELECT * FROM competition WHERE end_date < ?";
-		SqlRowSet resutls=jdbcTemplate.queryForRowSet(searchForFinishedCompetitions, todayDate);
+		SqlRowSet results=jdbcTemplate.queryForRowSet(searchForFinishedCompetitions, todayDate);
 		while (results.next()) {
-			Site competition = mapRowToCompetition(results);
+			Competition competition = mapRowToCompetition(results);
 			finishedCompetitions.add(competition);
 		}
 		return finishedCompetitions;
@@ -54,7 +55,7 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 		String getSqlOfActiveCompetitions = "SELECT * FROM competition WHERE ? BETWEEN start_date AND end_date";
 		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfActiveCompetitions, todayDate);
 		while (results.next()) {
-			Site competition = mapRowToCompetition(results);
+			Competition competition = mapRowToCompetition(results);
 			activeCompetitions.add(competition);
 		}
 		return activeCompetitions;
@@ -66,47 +67,49 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 		String getSqlOfPeopleInCompetitions = "SELECT * FROM people JOIN people_id FROM competition_people ON people.people_id=competition.people_id WHERE competition_id = ?";
 		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfPeopleInCompetitions, competitionId);
 		while (results.next()) {
-			Site people = mapRowToPerson(results);
+			Person people = mapRowToPerson(results);
 			peopleInCompetitions.add(people);
 		}
-		return peopleInCompetition;
+		return peopleInCompetitions;
 	}
 
 	@Override
 	public List<Competition> getListOfCompetitionsByPerson(long personId) {
-		List<Person> competitionsByPerson = new ArrayList<Person>();
+		List<Competition> competitionsByPerson = new ArrayList<Competition>();
 		String getSqlOfCompetitionsByPeople = "SELECT * FROM competition JOIN competition_people ON competition.competition_id=competition_people.competition_id WHERE people_id = ?";
 		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfCompetitionsByPeople, personId);
 		while (results.next()) {
-			Site competition = mapRowToCompetition(results);
+			Competition competition = mapRowToCompetition(results);
 			competitionsByPerson.add(competition);
 		}
 		return competitionsByPerson;
 	}
 
 	@Override
-	public Competition updateCompetition(Competition competition) {
-		
-
+	public void updateCompetition(Competition competition) {
+		String updateCompetition ="UPDATE competition SET competition_id= ?, name_of_competition= ?, start_date= ?," + 
+		" end_date= ?, description= ?, minutes_to_finish= ?";
+		jdbcTemplate.update(updateCompetition, competition.getCompetitionId(), competition.getNameOfCompetition(),
+		competition.getStartDate(), competition.getEndDate(), competition.getDescription(), competition.getMinutesToFinish());	
 	}
-
+	
 	private Competition mapRowToCompetition(SqlRowSet results) {
 		Competition competition = new Competition();
-		competition.setCompetitionId(results.getlong("competition_id"))
+		competition.setCompetitionId(results.getLong("competition_id"));
 		competition.setNameOfCompetition(results.getString("name_of_competition"));
-		competition.setStartDate(results.getLocalDate("start_date"));
-		competition.setEndDate(results.getLocalDate("end_date"));
+		competition.setStartDate(results.getDate("start_date").toLocalDate());
+		competition.setEndDate(results.getDate("end_date").toLocalDate());
 		competition.setDescription(results.getString("description"));
 		competition.setMinutesToFinish(results.getInt("minutes_to_finish"));
 		return competition;
 	}
 	private Person mapRowToPerson(SqlRowSet results) {
 		Person person = new Person();
-		person.setPeopleId(results.getString("people_id"));
-		person.setAccountId(results.getInt("account_id"));
+		person.setPeopleId(results.getLong("people_id"));
+		person.setFamilyId(results.getInt("family_id"));
 		person.setName(results.getString("name"));
 		person.setParent(results.getBoolean("is_parent"));
 		person.setInactive(results.getBoolean("inactive"));
-		return Person;
+		return person;
 	}
 }

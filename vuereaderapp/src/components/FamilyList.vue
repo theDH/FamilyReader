@@ -2,12 +2,14 @@
   <div class = "family-list">
     <h1>Family Members</h1>
     <ul>
-      <li v-for="member in members" v-bind:key ="member">{{member}}</li>
+      <li v-for="member in members" v-bind:key ="member">{{member.name}}</li>
     </ul>
+    <primary-button/>
   </div>
 </template>
 
 <script>
+import PrimaryButton from './PrimaryButton'
 export default {
   data () {
     return {
@@ -16,6 +18,9 @@ export default {
         {name: 'Pig'}
       ]
     }
+  },
+  components: {
+    PrimaryButton
   }
 }
 </script>

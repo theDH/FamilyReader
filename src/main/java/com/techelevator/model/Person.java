@@ -5,7 +5,7 @@ public class Person {
 	private String name;
 	private boolean parent;
 	private long peopleId;
-	private long accountId;
+	private long familyId;
 	private boolean inactive;
 	
 	
@@ -36,11 +36,11 @@ public class Person {
 	public void setPeopleId(long peopleId) {
 		this.peopleId = peopleId;
 	}
-	public long getAccountId() {
-		return accountId;
+	public long getFamilyId() {
+		return familyId;
 	}
-	public void setAccountId(long accountId) {
-		this.accountId = accountId;
+	public void setFamilyId(long familyId) {
+		this.familyId = familyId;
 	}
 	
 	

@@ -106,7 +106,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	}
 
 	@Override
-	public List<Goal> getListOfGoalsByAccount(long accountId) {
+	public List<Goal> getListOfGoalsByFamily(long familyId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

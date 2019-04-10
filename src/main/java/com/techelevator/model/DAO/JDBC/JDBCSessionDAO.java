@@ -48,21 +48,21 @@ public class JDBCSessionDAO implements SessionDAO {
 	}
 
 	@Override
-	public List<Session> getListOfSessionsByAccount(long accountId) {
+	public List<Session> getListOfSessionsByFamily(long familyId) {
 
-		List<Session> sessionListByAccount = new ArrayList<>();
+		List<Session> sessionListByFamily = new ArrayList<>();
 
-		String sqlSearchGetListByAccount = "Select * FROM session JOIN people_book ON people_book.people_book_id = session.people_book_id "
-				+ "JOIN people ON people.people_id = people_book.people_id JOIN account ON account.account_id = people.account_id "
-				+ "WHERE account_id = ? LIMIT 10";
+		String sqlSearchGetListByFamily = "Select * FROM session JOIN people_book ON people_book.people_book_id = session.people_book_id "
+				+ "JOIN people ON people.people_id = people_book.people_id JOIN family ON family.family_id = people.family_id "
+				+ "WHERE family_id = ? LIMIT 10";
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchGetListByAccount, accountId);
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchGetListByFamily, familyId);
 		while (results.next()) {
 			Session theSession = mapRowToThatSession(results);
-			sessionListByAccount.add(theSession);
+			sessionListByFamily.add(theSession);
 		}
 
-		return sessionListByAccount;
+		return sessionListByFamily;
 	}
 
 	private Session mapRowToThatSession(SqlRowSet results) {
@@ -79,7 +79,6 @@ public class JDBCSessionDAO implements SessionDAO {
 	}
 
 	private Session mapRowToSession(SqlRowSet results) {
-		// TODO Auto-generated method stub
 		Session theSession = new Session();
 
 		theSession.setId(results.getLong("id"));

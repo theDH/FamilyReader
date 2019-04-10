@@ -10,6 +10,6 @@ public interface SessionDAO {
 	
 	public List<Session> getListOfSessionsByPerson(long personId);
 	
-	public List<Session> getListOfSessionsByAccount(long accountId);
+	public List<Session> getListOfSessionsByFamily(long familyId);
 
 }
