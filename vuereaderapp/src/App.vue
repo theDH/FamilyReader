@@ -9,6 +9,8 @@ import LoginForm from './components/LoginForm'
 import FamilyList from './components/FamilyList'
 import SignupForm from './components/SignupForm'
 import BookList from './components/BookList'
+import Button from './components/Button'
+import PrimaryButton from './components/PrimaryButton'
 export default {
   data () {
     return {
@@ -20,7 +22,9 @@ export default {
     LoginForm,
     SignupForm,
     BookList,
-    FamilyList
+    FamilyList,
+    Button,
+    PrimaryButton
   }
 }
 </script>

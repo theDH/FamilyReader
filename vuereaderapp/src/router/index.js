@@ -4,6 +4,8 @@ import LoginForm from '@/components/LoginForm'
 import SignupForm from '@/components/SignupForm'
 import FamilyList from '@/components/FamilyList'
 import BookList from '@/components/BookList'
+import Button from '@/components/Button'
+import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
 import GoalList from '@/components/GoalList'
 
@@ -33,6 +35,16 @@ export default new Router({
       path: '/booklist',
       name: 'booklist',
       component: BookList
+    },
+    {
+      path: '/button',
+      name: 'button',
+      component: Button
+    },
+    {
+      path: '/primarybutton',
+      name: 'primarybutton',
+      component: PrimaryButton
     },
     {
       path: '/competitionlist',
