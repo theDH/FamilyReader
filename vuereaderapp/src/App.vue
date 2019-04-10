@@ -1,15 +1,26 @@
 <template>
   <div id="app">
-    <login-form></login-form>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import LoginForm from './components/LoginForm'
+import FamilyList from './components/FamilyList'
+import SignupForm from './components/SignupForm'
+import BookList from './components/BookList'
 export default {
+  data () {
+    return {
+      appState: 'signup'
+    }
+  },
   name: 'App',
   components: {
-    LoginForm
+    LoginForm,
+    SignupForm,
+    BookList,
+    FamilyList
   }
 }
 </script>
