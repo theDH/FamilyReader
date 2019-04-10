@@ -18,8 +18,7 @@ export default {
       userName: '',
       password: '',
       confirmPassword: '',
-      familyName: '',
-      posts: axios.get('https://jsonplaceholder.typicode.com/posts').then(response => { console.log(response) }).catch(e => this.errors.push(e))
+      familyName: ''
     }
   },
   methods: {
