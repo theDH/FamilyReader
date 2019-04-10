@@ -1,15 +1,22 @@
 <template>
   <div id="app">
-    <login-form></login-form>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import LoginForm from './components/LoginForm'
+import SignupForm from './components/SignupForm'
 export default {
+  data () {
+    return {
+      appState: 'signup'
+    }
+  },
   name: 'App',
   components: {
-    LoginForm
+    LoginForm,
+    SignupForm
   }
 }
 </script>
