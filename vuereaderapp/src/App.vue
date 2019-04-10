@@ -6,6 +6,7 @@
 
 <script>
 import LoginForm from './components/LoginForm'
+import FamilyList from './components/FamilyList'
 import SignupForm from './components/SignupForm'
 import BookList from './components/BookList'
 export default {
@@ -18,7 +19,9 @@ export default {
   components: {
     LoginForm,
     SignupForm,
-    BookList
+    BookList,
+    FamilyList,
+    SignupForm
   }
 }
 </script>
