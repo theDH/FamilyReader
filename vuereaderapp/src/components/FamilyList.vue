@@ -9,11 +9,11 @@
 
 <script>
 export default {
-  data(){
+  data () {
     return {
       members: [
-        {name: "Tom"},
-        {name: "Pig"}
+        {name: 'Tom'},
+        {name: 'Pig'}
       ]
     }
   }
@@ -23,4 +23,4 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-</style>git 
+</style>

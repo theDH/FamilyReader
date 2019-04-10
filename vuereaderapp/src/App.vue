@@ -20,8 +20,7 @@ export default {
     LoginForm,
     SignupForm,
     BookList,
-    FamilyList,
-    SignupForm
+    FamilyList
   }
 }
 </script>
