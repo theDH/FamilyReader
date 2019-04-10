@@ -3,6 +3,7 @@
     <h1>Family Members</h1>
     <ul>
         <li v-for="member in members" v-bind:key ="member">{{member}}</li>
+    </ul>
   </div>
 </template>
 
