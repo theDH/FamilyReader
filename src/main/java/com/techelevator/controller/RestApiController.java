@@ -9,18 +9,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Signup;
 import com.techelevator.model.User;
+import com.techelevator.model.DAO.FamilyDAO;
+import com.techelevator.model.DAO.UserDAO;
 import com.techelevator.model.DAO.JDBC.JDBCFamilyDAO;
 import com.techelevator.model.DAO.JDBC.JDBCUserDAO;
 
 @RestController
 public class RestApiController {
 	
-	@Autowired
-	JDBCUserDAO userDAO;
+	private UserDAO userDAO;
+	private FamilyDAO familyDAO;
 	
 	@Autowired
-	JDBCFamilyDAO familyDAO;
-
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO) {
+		this.userDAO = userDAO;
+		this.familyDAO = familyDAO;
+	}
+	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
 	public void authenticateLogin(@RequestBody User user) {
