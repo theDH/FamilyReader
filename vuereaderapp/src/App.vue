@@ -7,6 +7,7 @@
 <script>
 import LoginForm from './components/LoginForm'
 import SignupForm from './components/SignupForm'
+import BookList from './components/BookList'
 export default {
   data () {
     return {
@@ -16,7 +17,8 @@ export default {
   name: 'App',
   components: {
     LoginForm,
-    SignupForm
+    SignupForm,
+    BookList
   }
 }
 </script>
