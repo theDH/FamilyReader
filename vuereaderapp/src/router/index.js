@@ -5,6 +5,7 @@ import SignupForm from '@/components/SignupForm'
 import FamilyList from '@/components/FamilyList'
 import BookList from '@/components/BookList'
 import CompetitionList from '@/components/CompetitionList'
+import GoalList from '@/components/GoalList'
 
 Vue.use(Router)
 
@@ -37,6 +38,11 @@ export default new Router({
       path: '/competitionlist',
       name: 'competitionlist',
       component: CompetitionList
+    },
+    {
+      path: '/goallist',
+      name: 'goallist',
+      component: GoalList
     }
   ]
 })
