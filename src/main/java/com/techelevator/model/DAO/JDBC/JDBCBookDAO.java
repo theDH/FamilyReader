@@ -20,8 +20,10 @@ public class JDBCBookDAO implements BookDAO {
 	}
 	
 	@Override
-	public void addBookToPerson(long personId) {
-		// TODO Auto-generated method stub
+	public void addBookToPerson(Book book, long personId) {
+		String sql = "INSERT INTO people_book (id, book_id, people_id) " +
+					"VALUES (?, ?, ?)";
+		jdbcTemplate.update(sql, getNextPeopleBookId(), book.getBookId(), personId);
 	}
 
 	@Override
@@ -70,6 +72,15 @@ public class JDBCBookDAO implements BookDAO {
 			return nextIdResult.getLong(1);
 		} else {
 			throw new RuntimeException("Something went wrong while getting an id for the new book");
+		}
+	}
+	
+	private long getNextPeopleBookId() {
+		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('people_book_id_seq')");
+		if(nextIdResult.next()) {
+			return nextIdResult.getLong(1);
+		} else {
+			throw new RuntimeException("Something went wrong while getting an id for the new people_book");
 		}
 	}
 	
