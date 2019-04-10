@@ -7,22 +7,29 @@ BEGIN;
 -- CREATE statements go here
 -- DROP TABLE IF EXISTS app_user;
 
-CREATE TABLE account (
-  account_id SERIAL PRIMARY KEY,
-  user_name varchar(32) NOT NULL UNIQUE,
-  password varchar(32) NOT NULL,
-  role varchar(32),
-  salt varchar(255) NOT NULL
+CREATE TABLE user (
+	user_name varchar(100) UNIQUE NOT NOT PRIMARY KEY,
+	password varchar(25),
+	family_id int NOT NULL, 
+	is_owner boolean,
+	salt varchar(255) NOT NULL
+		
+); 
+
+CREATE TABLE family (
+  	family_id SERIAL PRIMARY KEY,
+ 	 family_name varchar(32) NOT NULL UNIQUE,
+  
 );
 
 CREATE TABLE people (
 	people_id SERIAL PRIMARY KEY,
-	account_id int,
+	family_id int,
 	name varchar(100),
 	is_parent boolean,
 	inactive boolean DEFAULT false,
 	
-	constraint fk_people_account_account_id foreign key (account_id) references account (account_id)
+	constraint fk_people_family_family_id foreign key (family_id) references family (family_id)
 );
 
 CREATE TABLE book_type (
@@ -39,6 +46,7 @@ CREATE TABLE book (
 	illustrator_last varchar(100),
 	book_type int,
 	isbn int,
+	image varchar(600),
 	
 	constraint fk_book_book_type_book_type foreign key (book_type) references book_type (book_type_id)
 );

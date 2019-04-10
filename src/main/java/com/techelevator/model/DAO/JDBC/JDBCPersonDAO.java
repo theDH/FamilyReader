@@ -21,10 +21,10 @@ public class JDBCPersonDAO implements PersonDAO{
 
 	@Override
 	public void addPerson(Person newPerson) {
-		String sqlInsertPerson = "INSERT INTO people(people_id, account_id, name, is_parent, inactive) " +
+		String sqlInsertPerson = "INSERT INTO people(people_id, family_id, name, is_parent, inactive) " +
 				   "VALUES(?, ?, ?, ?)";
 		newPerson.setPeopleId(getNextPersonId());
-		jdbcTemplate.update(sqlInsertPerson, newPerson.getPeopleId(), newPerson.getAccountId(), newPerson.getName(), newPerson.isParent(), newPerson.isInactive());
+		jdbcTemplate.update(sqlInsertPerson, newPerson.getPeopleId(), newPerson.getFamilyId(), newPerson.getName(), newPerson.isParent(), newPerson.isInactive());
 	}
 
 	@Override
@@ -35,11 +35,11 @@ public class JDBCPersonDAO implements PersonDAO{
 	}
 
 	@Override
-	public List<Person> getListOfPeopleInAccount(long accountId) {
+	public List<Person> getListOfPeopleInFamily(long familyId) {
 	ArrayList<Person> persons = new ArrayList<Person>();
-	String sql = " SELECT * FROM people JOIN account ON people.account_id = account.account_id " +
-	" WHERE people.account_id =?; ";
-	SqlRowSet results = jdbcTemplate.queryForRowSet(sql, accountId);
+	String sql = " SELECT * FROM people JOIN family ON people.family_id = family.family_id " +
+	" WHERE people.family_id =?; ";
+	SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
 	while (results.next()) {
 		Person person = mapRowToPerson(results);
 		persons.add(person);
@@ -61,7 +61,7 @@ public class JDBCPersonDAO implements PersonDAO{
 		Person thePerson;
 		thePerson = new Person();
 		thePerson.setPeopleId(results.getLong("people_id"));
-		thePerson.setAccountId(results.getLong("account_id"));
+		thePerson.setFamilyId(results.getLong("family_id"));
 		thePerson.setName(results.getString("name"));
 		thePerson.setInactive(results.getBoolean("inactive"));
 		thePerson.setParent(results.getBoolean("is_parent"));

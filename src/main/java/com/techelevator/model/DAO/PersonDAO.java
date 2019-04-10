@@ -10,6 +10,6 @@ public interface PersonDAO {
 	
 	public void deletePerson(long personId);
 	
-	public List<Person> getListOfPeopleInAccount(long accountId);
+	public List<Person> getListOfPeopleInFamily(long familyId);
 	
 }

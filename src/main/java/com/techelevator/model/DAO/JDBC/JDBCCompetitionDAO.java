@@ -106,7 +106,7 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	private Person mapRowToPerson(SqlRowSet results) {
 		Person person = new Person();
 		person.setPeopleId(results.getLong("people_id"));
-		person.setAccountId(results.getInt("account_id"));
+		person.setFamilyId(results.getInt("family_id"));
 		person.setName(results.getString("name"));
 		person.setParent(results.getBoolean("is_parent"));
 		person.setInactive(results.getBoolean("inactive"));

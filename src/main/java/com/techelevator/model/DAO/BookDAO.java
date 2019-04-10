@@ -12,6 +12,6 @@ public interface BookDAO {
 	
 	public List<Book> getListOfBooksByPerson(long personId);
 	
-	public List<Book> getListOfBooksByAccount(long accountId);
+	public List<Book> getListOfBooksByFamily(long familyId);
 
 }
