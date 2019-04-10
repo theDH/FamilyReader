@@ -2,6 +2,7 @@ package com.techelevator.model.DAO.JDBC;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -12,9 +13,13 @@ public class JDBCFamilyDAO implements FamilyDAO{
 	
 	private JdbcTemplate jdbcTemplate;
 
+	@Autowired
 	public JDBCFamilyDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
+		
+		
+
 
 	@Override
 	public long addFamily(Signup signup) {
