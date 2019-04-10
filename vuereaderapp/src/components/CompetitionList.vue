@@ -15,23 +15,23 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       competitions: [
         {
-        name: "Comp1",
-        startDate: "09/29/2019",
-        endDate: "10/10/2019",
-        description: "First to 100",
-        minutesToFinish: 100
+          name: 'Comp1',
+          startDate: '09/29/2019',
+          endDate: '10/10/2019',
+          description: 'First to 100',
+          minutesToFinish: 100
         },
         {
-        name: "Comp2",
-        startDate: "03/20/2019",
-        endDate: "03/30/2019",
-        description: "First to 10",
-        minutesToFinish: 10
-        },
+          name: 'Comp2',
+          startDate: '03/20/2019',
+          endDate: '03/30/2019',
+          description: 'First to 10',
+          minutesToFinish: 10
+        }
       ]
     }
   }
@@ -41,5 +41,3 @@ export default {
 <style>
 
 </style>
-
-
