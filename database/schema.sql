@@ -8,17 +8,18 @@ BEGIN;
 -- DROP TABLE IF EXISTS app_user;
 
 CREATE TABLE user (
-	user_name varchar(100) UNIQUE NOT NOT PRIMARY KEY,
+	user_name varchar(100) PRIMARY KEY,
 	password varchar(25),
 	family_id int NOT NULL, 
 	is_owner boolean,
-	salt varchar(255) NOT NULL
-		
+	salt varchar(255) NOT NULL,
+	
+	constraint fk_user_family_family_id foreign key (family_id) references family (family_id)
 ); 
 
 CREATE TABLE family (
   	family_id SERIAL PRIMARY KEY,
- 	 family_name varchar(32) NOT NULL UNIQUE,
+ 	family_name varchar(32) NOT NULL
   
 );
 

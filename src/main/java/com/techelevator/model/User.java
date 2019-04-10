@@ -12,24 +12,30 @@ public class User {
 		@Pattern(regexp=".*[A-Z].*", message="Must have a capital")
 	})
 	private String password;
-	private String role;
+	private long familyId;
+	private boolean isOwner;
 	
+	public long getFamilyId() {
+		return familyId;
+	}
+
+	public void setFamilyId(long familyId) {
+		this.familyId = familyId;
+	}
+
+	public boolean isOwner() {
+		return isOwner;
+	}
+
+	public void setOwner(boolean isOwner) {
+		this.isOwner = isOwner;
+	}
 	private String confirmPassword;
+	
 	public String getUserName() {
 		return userName;
 	}
-	/**
-	 * @return the role
-	 */
-	public String getRole() {
-		return role;
-	}
-	/**
-	 * @param role the role to set
-	 */
-	public void setRole(String role) {
-		this.role = role;
-	}
+	
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}

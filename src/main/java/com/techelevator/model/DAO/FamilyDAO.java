@@ -6,7 +6,4 @@ public interface FamilyDAO {
 	
 	public void addFamily(Family newFamily);
 	
-
-	
-
 }
