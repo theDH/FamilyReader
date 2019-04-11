@@ -14,8 +14,7 @@ export default {
   data () {
     return {
       members: [
-        {name: 'Tom'},
-        {name: 'Pig'}
+        
       ]
     }
   },
