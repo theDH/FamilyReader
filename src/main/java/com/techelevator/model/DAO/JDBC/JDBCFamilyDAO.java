@@ -5,10 +5,12 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Signup;
 import com.techelevator.model.DAO.FamilyDAO;
 
+@Component
 public class JDBCFamilyDAO implements FamilyDAO{
 	
 	private JdbcTemplate jdbcTemplate;
