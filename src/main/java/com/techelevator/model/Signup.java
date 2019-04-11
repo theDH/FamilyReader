@@ -26,7 +26,7 @@ public class Signup {
 	public void setFamilyName(String familyName) {
 		this.familyName = familyName;
 	}
-	public String getAccountId() {
+	public String getFamilyId() {
 		return familyId;
 	}
 	public void setFamilyId(String familyId) {

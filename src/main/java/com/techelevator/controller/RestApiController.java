@@ -37,6 +37,8 @@ public class RestApiController {
 	@RequestMapping(path="/signup", method=RequestMethod.POST)
 	public void addNewUser(@RequestBody Signup signup) {
 		long familyId = familyDAO.addFamily(signup);
+		System.out.println(familyId);
 		userDAO.saveUser(signup.getUserName(), signup.getPassword(), familyId);
+		
 	}
 }

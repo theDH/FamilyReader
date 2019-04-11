@@ -28,8 +28,10 @@ public class JDBCFamilyDAO implements FamilyDAO{
 		String sql = "INSERT INTO family (family_name) VALUES (?) RETURNING family_id";
 		SqlRowSet id = jdbcTemplate.queryForRowSet(sql, signup.getFamilyName());
 		id.next();
-		long familyId = id.getLong(0);
+		long familyId = id.getLong(1);
+		System.out.println(familyId);
 		return familyId;	
 	}
+	
 
 }

@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.model.Signup;
 import com.techelevator.model.User;
 import com.techelevator.model.DAO.UserDAO;
 import com.techelevator.security.PasswordHasher;
@@ -30,8 +31,8 @@ public class JDBCUserDAO implements UserDAO {
 		String hashedPassword = hashMaster.computeHash(password, salt);
 		String saltString = new String(Base64.encode(salt));
 		
-		jdbcTemplate.update("INSERT INTO family(family_id, user_name, password, salt) VALUES (?, ?, ?)",
-				getNextAccountId(), userName, hashedPassword, saltString);
+		jdbcTemplate.update("INSERT INTO account(user_name, password, family_id, is_owner, salt) VALUES (?, ?, ?, ?, ?)",
+				userName, hashedPassword, familyId, true, saltString);
 	}
 
 	@Override
