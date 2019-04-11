@@ -8,7 +8,11 @@ import Button from '@/components/Button'
 import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
 import GoalList from '@/components/GoalList'
+<<<<<<< HEAD
 import Vuetify from 'vuetify'
+=======
+import AddReadingActivity from '@/components/AddReadingActivity'
+>>>>>>> 927efb70c7209775a2cb58b403859b5545f42d8a
 
 Vue.use(Router)
 Vue.use(Vuetify)
@@ -57,6 +61,11 @@ export default new Router({
       path: '/goallist',
       name: 'goallist',
       component: GoalList
+    },
+    {
+      path: '/addreadingactivity',
+      name: 'addreadingactivity',
+      component: AddReadingActivity
     }
   ]
 })
