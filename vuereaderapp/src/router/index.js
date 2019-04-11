@@ -8,9 +8,13 @@ import Button from '@/components/Button'
 import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
 import GoalList from '@/components/GoalList'
+import Vuetify from 'vuetify'
 import AddReadingActivity from '@/components/AddReadingActivity'
+import 'vuetify/dist/vuetify.min.css'
+
 
 Vue.use(Router)
+Vue.use(Vuetify)
 
 export default new Router({
   routes: [
