@@ -30,7 +30,7 @@ public class RestApiController {
 	private PersonDAO personDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO) {
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
 		this.bookDAO = bookDAO;
