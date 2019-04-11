@@ -2,8 +2,7 @@
 <div>
   <button class="Button">Button</button>
 </div>
-  
-  
+
 </template>
 
 <script>
