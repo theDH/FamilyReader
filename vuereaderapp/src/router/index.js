@@ -12,7 +12,6 @@ import Vuetify from 'vuetify'
 import AddReadingActivity from '@/components/AddReadingActivity'
 import 'vuetify/dist/vuetify.min.css'
 
-
 Vue.use(Router)
 Vue.use(Vuetify)
 
