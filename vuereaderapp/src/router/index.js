@@ -8,6 +8,7 @@ import Button from '@/components/Button'
 import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
 import GoalList from '@/components/GoalList'
+import AddReadingActivity from '@/components/AddReadingActivity'
 
 Vue.use(Router)
 
@@ -55,6 +56,11 @@ export default new Router({
       path: '/goallist',
       name: 'goallist',
       component: GoalList
+    },
+    {
+      path: '/addreadingactivity',
+      name: 'addreadingactivity',
+      component: AddReadingActivity
     }
   ]
 })
