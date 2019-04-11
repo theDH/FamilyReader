@@ -99,4 +99,15 @@ public class JDBCBookDAO implements BookDAO {
 		return book;
 	}
 
+	@Override
+	public Book getBookDetail(long bookId) {
+		Book book = new Book();
+		String sql = "SELECT book_id FROM book WHERE book_id = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
+		while(results.next()) {
+			book = mapRowToBook(results);
+		}
+		return book;
+	}
+
 }
