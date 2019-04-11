@@ -7,10 +7,12 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Book;
 import com.techelevator.model.DAO.BookDAO;
 
+@Component
 public class JDBCBookDAO implements BookDAO {
 	
 	private JdbcTemplate jdbcTemplate;
@@ -92,8 +94,8 @@ public class JDBCBookDAO implements BookDAO {
 		book.setTitle(results.getString("title"));
 		book.setAuthorFirstName(results.getString("author_first"));
 		book.setAuthorLastName(results.getString("author_last"));
-		book.setIllustratorFirstName(results.getString("illustrator_first"));
-		book.setIllustratorLastName(results.getString("illustrator_last"));
+//		book.setIllustratorFirstName(results.getString("illustrator_first"));
+//		book.setIllustratorLastName(results.getString("illustrator_last"));
 		book.setBookType(results.getInt("book_type"));
 		book.setIsbn(results.getInt("isbn"));
 		return book;
@@ -101,8 +103,9 @@ public class JDBCBookDAO implements BookDAO {
 
 	@Override
 	public Book getBookDetail(long bookId) {
+		System.out.println(bookId);
 		Book book = new Book();
-		String sql = "SELECT book_id FROM book WHERE book_id = ?";
+		String sql = "SELECT * FROM book WHERE book_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
 		while(results.next()) {
 			book = mapRowToBook(results);

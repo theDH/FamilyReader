@@ -1,8 +1,9 @@
 <template>
   <div class="book-detail">
     <h1>Book Detail</h1>
+    <button v-on:click="getBookDetails">Button</button>
     <ul>
-      <li v-for="bookDetail in bookDetails" v-bind:key="bookDetail">{{bookDetail.title}}</li>
+      <li v-for="bookDetail in bookDetails" v-bind:key="bookDetail">{{bookDetail}}</li>
     </ul>
   </div>
 </template>
@@ -12,17 +13,19 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      bookDetails: []
+      bookDetails: null
     }
   },
-  mounted () {
-    axios({ method: 'GET', 'url': 'http://localhost:8081/bookDetail' }).then(result => {
-      this.bookDetails = result.data.origin
-    }, error => {
-      console.error(error)
-    })
+  methods: {
+    getBookDetails () {
+      this.loading = true
+      this.bookDetails = null
+      axios({
+        method: 'get',
+        url: 'http://localhost:8080/capstone/bookDetail'
+      }).then(response => { this.bookDetails = response.data })
+    }
   }
-
 }
 </script>
 

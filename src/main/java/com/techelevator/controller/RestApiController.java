@@ -24,9 +24,10 @@ public class RestApiController {
 	private BookDAO bookDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO) {
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
+		this.bookDAO = bookDAO;
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
@@ -47,8 +48,8 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="bookDetail", method=RequestMethod.GET)
-	public void getBookDetail(@RequestBody Book book) {
-		bookDAO.getBookDetail(1);
+	public Book getBookDetail() {
+		return bookDAO.getBookDetail(1);
 	}
 	
 }
