@@ -11,6 +11,7 @@ import SignupForm from './components/SignupForm'
 import BookList from './components/BookList'
 import Button from './components/Button'
 import PrimaryButton from './components/PrimaryButton'
+import AddReadingActivity from './components/AddReadingActivity'
 export default {
   data () {
     return {
@@ -24,7 +25,8 @@ export default {
     BookList,
     FamilyList,
     Button,
-    PrimaryButton
+    PrimaryButton,
+    AddReadingActivity
   }
 }
 </script>

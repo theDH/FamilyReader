@@ -10,8 +10,15 @@ public class Book {
 	private String illustratorLastName;
 	private int bookType;
 	private long isbn;
+	private String image;
 	
 	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	public long getBookId() {
 		return bookId;
 	}
