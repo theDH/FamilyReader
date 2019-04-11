@@ -7,7 +7,15 @@ BEGIN;
 -- CREATE statements go here
 -- DROP TABLE IF EXISTS app_user;
 
-CREATE TABLE user (
+
+
+CREATE TABLE family (
+  	family_id SERIAL PRIMARY KEY,
+ 	family_name varchar(32) NOT NULL
+  
+);
+
+CREATE TABLE account (
 	user_name varchar(100) PRIMARY KEY,
 	password varchar(25),
 	family_id int NOT NULL, 
@@ -16,12 +24,6 @@ CREATE TABLE user (
 	
 	constraint fk_user_family_family_id foreign key (family_id) references family (family_id)
 ); 
-
-CREATE TABLE family (
-  	family_id SERIAL PRIMARY KEY,
- 	family_name varchar(32) NOT NULL
-  
-);
 
 CREATE TABLE people (
 	people_id SERIAL PRIMARY KEY,
