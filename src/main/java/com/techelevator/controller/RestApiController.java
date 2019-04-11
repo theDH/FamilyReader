@@ -9,19 +9,17 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Signup;
 import com.techelevator.model.User;
-import com.techelevator.model.DAO.FamilyDAO;
-import com.techelevator.model.DAO.UserDAO;
 import com.techelevator.model.DAO.JDBC.JDBCFamilyDAO;
 import com.techelevator.model.DAO.JDBC.JDBCUserDAO;
 
 @RestController
 public class RestApiController {
 	
-	private UserDAO userDAO;
-	private FamilyDAO familyDAO;
+	private JDBCUserDAO userDAO;
+	private JDBCFamilyDAO familyDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO) {
+	public RestApiController(JDBCUserDAO userDAO, JDBCFamilyDAO familyDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
 	}
