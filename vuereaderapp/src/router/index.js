@@ -8,6 +8,7 @@ import Button from '@/components/Button'
 import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
 import GoalList from '@/components/GoalList'
+import BookDetail from '@/components/BookDetail'
 import Vuetify from 'vuetify'
 import AddReadingActivity from '@/components/AddReadingActivity'
 import 'vuetify/dist/vuetify.min.css'
@@ -64,6 +65,11 @@ export default new Router({
       path: '/addreadingactivity',
       name: 'addreadingactivity',
       component: AddReadingActivity
+    },
+    {
+      path: '/bookdetail',
+      name: 'bookdetail',
+      component: BookDetail
     }
   ]
 })
