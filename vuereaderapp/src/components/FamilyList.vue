@@ -1,14 +1,34 @@
  <template>
- <v-card>
-  <div class = "family-list">
-    <v-card-title>
-      <h1>Family Members</h1>
-    </v-card-title>
-    <v-card-text>
-        <h3 v-for="member in members" v-bind:key ="member">{{member.name}}</h3>
-    </v-card-text>
+
+  <div>
+    <v-app id="inspire">
+      <v-navigation-drawer permanent>
+        <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                Family Members
+              </v-list-tile-title>
+           </v-list-tile>
+          </v-list>
+        </v-toolbar>
+
+        <v-divider></v-divider>
+
+        <v-list dense class="pt-0">
+         <v-list-tile
+           v-for="member in members"
+           :key="member"
+         >
+            <v-list-tile-content>
+             <v-list-tile-title>{{ member.name }}</v-list-tile-title>
+           </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+      </v-navigation-drawer>
+    </v-app>
   </div>
- </v-card>
+
 </template>
 
 <script>
