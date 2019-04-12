@@ -103,7 +103,6 @@ public class JDBCBookDAO implements BookDAO {
 
 	@Override
 	public Book getBookDetail(long bookId) {
-		System.out.println(bookId);
 		Book book = new Book();
 		String sql = "SELECT * FROM book WHERE book_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);

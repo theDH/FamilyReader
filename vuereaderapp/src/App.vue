@@ -12,6 +12,7 @@ import BookList from './components/BookList'
 import Button from './components/Button'
 import PrimaryButton from './components/PrimaryButton'
 import BookDetail from './components/BookDetail'
+import GoalDetail from './components/GoalList'
 export default {
   data () {
     return {
@@ -26,7 +27,8 @@ export default {
     FamilyList,
     Button,
     PrimaryButton,
-    BookDetail
+    BookDetail,
+    GoalDetail
   }
 }
 </script>
