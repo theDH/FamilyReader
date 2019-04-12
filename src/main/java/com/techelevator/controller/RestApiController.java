@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Book;
+import com.techelevator.model.Competition;
 import com.techelevator.model.Goal;
 import com.techelevator.model.Person;
 import com.techelevator.model.Signup;
 import com.techelevator.model.User;
 import com.techelevator.model.DAO.BookDAO;
+import com.techelevator.model.DAO.CompetitionDAO;
 import com.techelevator.model.DAO.FamilyDAO;
 import com.techelevator.model.DAO.GoalDAO;
 import com.techelevator.model.DAO.PersonDAO;
@@ -30,14 +33,16 @@ public class RestApiController {
 	private BookDAO bookDAO;
 	private PersonDAO personDAO;
 	private GoalDAO goalDAO;
+	private CompetitionDAO competitionDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO) {
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO, CompetitionDAO competitionDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
 		this.bookDAO = bookDAO;
 		this.personDAO = personDAO;
 		this.goalDAO = goalDAO;
+		this.competitionDAO = competitionDAO;
 	}
 	
 	
@@ -89,9 +94,27 @@ public class RestApiController {
 		return goalDAO.getGoalDetail(1);
 	}
 	
+
+//	@CrossOrigin(origins = "http://localhost:8081")
+//	@RequestMapping(path="competitiondetail", method=RequestMethod.GET)
+//	public Competition getCompetitionDetail() {
+//		return competitionDAO.getCompetitionDetail(1);
+//	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="competitionlista", method=RequestMethod.GET)
+	public List<Competition> getListOfActiveCompetitions(@RequestParam LocalDate todayDate, long familyId) {
+		return competitionDAO.getListOfActiveCompetitions(todayDate, familyId);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="competitionlist", method=RequestMethod.GET)
+	public List<Person> getListOfPeopleInCompetition(@RequestParam long competitionId) {
+		return competitionDAO.getListOfPeopleInCompetition(competitionId);
+	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/homepage", method=RequestMethod.GET)
 	public void homepage() {
 		
+
 	}
 }

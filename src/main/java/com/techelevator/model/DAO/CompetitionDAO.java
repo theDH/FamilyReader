@@ -14,7 +14,7 @@ public interface CompetitionDAO {
 	
 	public List<Competition> getListOfFinishedCompetitions(LocalDate todayDate);
 	
-	public List<Competition> getListOfActiveCompetitions(LocalDate todayDate);
+	public List<Competition> getListOfActiveCompetitions(LocalDate todayDate, long familyId);
 	
 	public List<Person> getListOfPeopleInCompetition(long competitionId);
 	
