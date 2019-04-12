@@ -13,6 +13,6 @@ public interface UserDAO {
 
 	public Object getUserByUserName(String userName);
 	
-	public long getFamilyByUser(User user);
+	public User getFamilyByUser(User user);
 
 }
