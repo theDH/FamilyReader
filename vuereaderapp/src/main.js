@@ -7,8 +7,10 @@ import LoginForm from './components/LoginForm'
 import router from './router'
 import axios from 'axios'
 
+const VueSessionStorage = require('vue-sessionstorage')
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
+Vue.use(VueSessionStorage)
 
 /* eslint-disable no-new */
 new Vue({
