@@ -11,8 +11,10 @@ import Vuetify from 'vuetify'
 
 Vue.use(Vuetify)
 
+const VueSessionStorage = require('vue-sessionstorage')
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
+Vue.use(VueSessionStorage)
 
 /* eslint-disable no-new */
 new Vue({
