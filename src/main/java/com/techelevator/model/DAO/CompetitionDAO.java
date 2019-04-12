@@ -22,5 +22,7 @@ public interface CompetitionDAO {
 	
 	public void updateCompetition(Competition competition);
 	
+	public Competition showCompetitionDetails(long competitionId);
+	
 	
 }

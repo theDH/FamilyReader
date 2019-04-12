@@ -39,12 +39,20 @@ export default {
       members: null
     }
   },
+  computed: {
+    familyParams () {
+      const params = new URLSearchParams()
+      params.append('familyId', this.$session.familyId)
+      return params
+    }
+  },
   methods: {
     getMembers () {
       this.members = null
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/familylist?familyId=1'
+        url: 'http://localhost:8080/capstone/familylist',
+        params: this.familyParams
       }).then(response => { this.members = response.data })
     }
   },

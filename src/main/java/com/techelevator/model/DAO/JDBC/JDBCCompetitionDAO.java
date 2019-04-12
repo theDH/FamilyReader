@@ -117,4 +117,15 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 		person.setInactive(results.getBoolean("inactive"));
 		return person;
 	}
+
+	@Override
+	public Competition showCompetitionDetails(long competitionId) {
+		Competition comp = new Competition();
+		String sql = "SELECT * FROM competition WHERE competition_id = ?; ";
+		SqlRowSet results=jdbcTemplate.queryForRowSet(sql, competitionId);
+		while (results.next()) {
+			comp = mapRowToCompetition(results);
+		}
+		return comp;
+	}
 }
