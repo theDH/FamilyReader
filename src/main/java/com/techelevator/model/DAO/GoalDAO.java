@@ -19,4 +19,6 @@ public interface GoalDAO {
 	public void updateGoal(Goal goal);
 
 	public List<Goal> getListOfGoalsByFamily(long familyId);
+	
+	public Goal getGoalDetail(long goalId);
 }

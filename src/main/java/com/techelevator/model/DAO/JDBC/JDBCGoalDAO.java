@@ -84,6 +84,8 @@ public class JDBCGoalDAO implements GoalDAO{
 				goal.getDescription(), goal.getMinutesToReachGoal(), goal.isComplete());
 	}
 	
+	
+	
 	private long getNextGoalId() {
 		SqlRowSet nextIdResult = jdbcTemplate.queryForRowSet("SELECT nextval('goal_goal_id_seq')");
 		if(nextIdResult.next()) {
@@ -109,6 +111,17 @@ public class JDBCGoalDAO implements GoalDAO{
 	public List<Goal> getListOfGoalsByFamily(long familyId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public Goal getGoalDetail(long goalId) {
+		Goal goal = new Goal();
+		String sql = "SELECT * FROM goal WHERE goalId = ?";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, goalId);
+		while(results.next()) {
+			goal = mapRowToGoal(results);
+		}
+		return goal;
 	}
 
 }

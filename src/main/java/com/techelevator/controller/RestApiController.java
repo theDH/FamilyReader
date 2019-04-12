@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techelevator.model.Book;
+import com.techelevator.model.Goal;
 import com.techelevator.model.Person;
 import com.techelevator.model.Signup;
 import com.techelevator.model.User;
 import com.techelevator.model.DAO.BookDAO;
 import com.techelevator.model.DAO.FamilyDAO;
+import com.techelevator.model.DAO.GoalDAO;
 import com.techelevator.model.DAO.PersonDAO;
 import com.techelevator.model.DAO.UserDAO;
 import com.techelevator.model.DAO.JDBC.JDBCFamilyDAO;
@@ -28,6 +30,7 @@ public class RestApiController {
 	private FamilyDAO familyDAO;
 	private BookDAO bookDAO;
 	private PersonDAO personDAO;
+	private GoalDAO goalDAO;
 	
 	@Autowired
 	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO) {
@@ -35,6 +38,7 @@ public class RestApiController {
 		this.familyDAO = familyDAO;
 		this.bookDAO = bookDAO;
 		this.personDAO = personDAO;
+		this.goalDAO = goalDAO;
 	}
 	
 	
@@ -55,14 +59,20 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="bookDetail", method=RequestMethod.GET)
+	@RequestMapping(path="bookdetail", method=RequestMethod.GET)
 	public Book getBookDetail() {
 		return bookDAO.getBookDetail(1);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="familyList", method=RequestMethod.GET)
+	@RequestMapping(path="familylist", method=RequestMethod.GET)
 	public List<Person> getFamilyList(@RequestParam long familyId){
 		return personDAO.getListOfPeopleInFamily(familyId);
 		}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="goaldetail", method=RequestMethod.GET)
+	public Goal getGoalDetail() {
+		return goalDAO.getGoalDetail(1);
+	}
 }
