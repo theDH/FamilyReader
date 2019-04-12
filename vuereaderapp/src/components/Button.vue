@@ -3,8 +3,12 @@
 </template>
 
 <script>
-export default{
-
+export default {
+  data () {
+    return {
+      userName: this.$session.get('username')
+    }
+  }
 }
 </script>
 
