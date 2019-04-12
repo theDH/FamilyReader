@@ -7,17 +7,14 @@ import BookList from '@/components/BookList'
 import Button from '@/components/Button'
 import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
-import GoalList from '@/components/GoalList'
-import BookDetail from '@/components/BookDetail'
-import GoalDetail from '@/components/GoalDetail'
-import Vuetify from 'vuetify'
-import AddReadingActivity from '@/components/AddReadingActivity'
 import CompetitionDetail from '@/components/CompetitionDetail'
+import GoalList from '@/components/GoalList'
+import GoalDetail from '@/components/GoalDetail'
+import BookDetail from '@/components/BookDetail'
+import AddReadingActivity from '@/components/AddReadingActivity'
 import Homepage from '@/components/Homepage'
-import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Router)
-Vue.use(Vuetify)
 
 export default new Router({
   routes: [

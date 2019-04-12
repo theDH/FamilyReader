@@ -6,6 +6,10 @@ import App from './App'
 import LoginForm from './components/LoginForm'
 import router from './router'
 import axios from 'axios'
+import 'vuetify/dist/vuetify.min.css'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
 
 const VueSessionStorage = require('vue-sessionstorage')
 Vue.config.productionTip = false
