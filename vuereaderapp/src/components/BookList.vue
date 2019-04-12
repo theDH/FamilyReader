@@ -1,27 +1,30 @@
 <template>
   <main>
-    <div v-for="book in books" :key="book.id">
-      {{book.title}}
-      {{book.author}}
-    </div>
+    <h1>Active books</h1>
+    <ul>
+      <li v-for="book in books" v-bind:key="book.id">
+      {{book.title}} {{book.author}}
+      </li>   
+    </ul>
   </main>
 </template>
 
 <script>
-export default {
-  name: 'BookList',
-  data () {
-    return {
-      books: [
-        {
-          title: 'Book 1',
-          author: 'Author 1'
-        },
-        {
-          title: 'Book 2',
-          author: 'Author 2'
-        }
-      ]
+import axios from 'axios'
+export default {  
+    data () {
+      return {
+        books: null   
+      }
+    },
+  methods: {
+    getListOfBooksByPerson(){
+      this.loading = true
+      this.books = null
+      axios({
+        method: 'get',
+        url: 'http://localhost:8080/capstone/booksList'
+      }).then(response => {this.books = response.data })
     }
   }
 }
