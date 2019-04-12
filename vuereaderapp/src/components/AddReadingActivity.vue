@@ -1,25 +1,28 @@
  <template>
   <div class = "add-reading-activity">
     <h1>Add Reading Activity</h1>
+    <book-list/>
+    <input v-model="minutes" type="number"/>
+    <input v-model="date" type="date"/>
     <primary-button/>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import BookList from './BookList'
 import PrimaryButton from './PrimaryButton'
 export default {
   name: 'AddReadingActivity',
   data () {
     return {
-      members: null,
       activity: [
         {
           person: null,
           book: null,
           minutes: null,
           type: null,
-          date: null
+          date: new Date().toISOString().substring(0, 10)
         }
       ]
     }
@@ -33,7 +36,8 @@ export default {
     }
   },
   components: {
-    PrimaryButton
+    PrimaryButton,
+    BookList
   }
 }
 </script>
