@@ -6,6 +6,10 @@ import App from './App'
 import LoginForm from './components/LoginForm'
 import router from './router'
 import axios from 'axios'
+import 'vuetify/dist/vuetify.min.css'
+import Vuetify from 'vuetify'
+
+Vue.use(Vuetify)
 
 Vue.config.productionTip = false
 Vue.prototype.$http = axios
