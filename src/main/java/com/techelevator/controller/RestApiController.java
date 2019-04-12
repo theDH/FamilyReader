@@ -43,16 +43,18 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
-	public void authenticateLogin(@RequestBody User user) {
-		System.out.println(user.getUserName());
-		System.out.println(user.getPassword());
+	public boolean authenticateLogin(@RequestBody User user) {
+	//	if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
+			return true;
+//		} else {
+//			return false;
+//		}
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/signup", method=RequestMethod.POST)
 	public void addNewUser(@RequestBody Signup signup) {
 		long familyId = familyDAO.addFamily(signup);
-		System.out.println(familyId);
 		userDAO.saveUser(signup.getUserName(), signup.getPassword(), familyId);
 		
 	}
