@@ -20,9 +20,12 @@ export default {
       this.members = null
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/familyList?familyId=1'
+        url: 'http://localhost:8080/capstone/familylist?familyId=1'
       }).then(response => { this.members = response.data })
     }
+  },
+  mounted () {
+    this.getMembers()
   }
 }
 </script>

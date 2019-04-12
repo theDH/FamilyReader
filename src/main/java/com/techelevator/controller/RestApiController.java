@@ -88,4 +88,10 @@ public class RestApiController {
 	public Goal getGoalDetail() {
 		return goalDAO.getGoalDetail(1);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/homepage", method=RequestMethod.GET)
+	public void homepage() {
+		
+	}
 }
