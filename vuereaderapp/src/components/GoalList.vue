@@ -8,6 +8,7 @@
         {{goal.numberOfDays}}
         {{goal.description}}
         {{goal.minutesToFinish}}
+        {{goal.isComplete}}
         </li>
     </ul>
   </div>
@@ -17,6 +18,7 @@
 export default {
   data () {
     return {
+      personId: 1,
       goals: [
         {
           name: 'Goal1',
@@ -36,6 +38,25 @@ export default {
         }
       ]
     }
+  },
+  computed: {
+    goalParams () {
+      const params = new URLSearchParams()
+      params.append("personId", this.personId)
+      return params
+    }
+  }
+  methods: {
+    getGoals () {
+      axios({
+        method: get,
+        url: 'http://localhost:8080/capstone/GoalList',
+        params = this.goalParams
+      }).then(response => { this.goals = response.data })
+    }
+  },
+  created () {
+    getGoals()
   }
 }
 </script>
