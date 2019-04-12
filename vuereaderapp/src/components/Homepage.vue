@@ -1,7 +1,7 @@
 <template>
   <div>
-      <family-list id="familyList"/>
-      <book-list id="bookList"/>
+    <family-list id="familyList"/>
+    <book-list id="bookList"/>
   </div>
 </template>
 
