@@ -44,7 +44,7 @@ export default {
       this.$router.push('/signup')
     },
     launchLogin () {
-      this.$router.push('/button')
+      this.$router.push('/homepage')
     }
   }
 }
