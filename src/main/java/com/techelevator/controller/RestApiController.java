@@ -48,11 +48,11 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
-	public Long authenticateLogin(@RequestBody User user) {
+	public boolean authenticateLogin(@RequestBody User user) {
 		if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
-			return userDAO.getFamilyByUser(user);
+			return true;
 		} else {
-			return null;
+			return false;
 		}
 	}
 	
@@ -78,8 +78,8 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="bookdetail", method=RequestMethod.GET)
-	public Book getBookDetail() {
-		return bookDAO.getBookDetail(1);
+	public Book getBookDetail(@RequestParam long familyId) {
+		return bookDAO.getBookDetail(familyId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
@@ -90,16 +90,17 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="goaldetail", method=RequestMethod.GET)
-	public Goal getGoalDetail() {
-		return goalDAO.getGoalDetail(1);
+	public Goal getGoalDetail(@RequestParam long familyId) {
+		return goalDAO.getGoalDetail(familyId);
 	}
 	
 
-//	@CrossOrigin(origins = "http://localhost:8081")
-//	@RequestMapping(path="competitiondetail", method=RequestMethod.GET)
-//	public Competition getCompetitionDetail() {
-//		return competitionDAO.getCompetitionDetail(1);
-//	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="competitiondetail", method=RequestMethod.GET)
+	public Competition getCompetitionDetail(@RequestParam long familyId) {
+		return competitionDAO.showCompetitionDetails(familyId);
+	}
+	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="competitionlista", method=RequestMethod.GET)
 	public List<Competition> getListOfActiveCompetitions(@RequestParam LocalDate todayDate, long familyId) {
@@ -114,7 +115,6 @@ public class RestApiController {
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/homepage", method=RequestMethod.GET)
 	public void homepage() {
-		
 
 	}
 }

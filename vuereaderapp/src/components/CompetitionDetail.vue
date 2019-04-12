@@ -1,6 +1,6 @@
 <template>
   <div class="competition-detail">
-    <h1>Goal Detail</h1>
+    <h1>Competition Detail</h1>
     <button v-on:click="getCompetitionDetails">Button</button>
     <ul>
       <li v-for="competitionDetail in competitionDetails" v-bind:key="competitionDetail">{{competitionDetail}}</li>
@@ -22,7 +22,7 @@ export default {
       this.competitionDetails = null
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/competitionDetail'
+        url: 'http://localhost:8080/capstone/competitiondetail'
       }).then(response => { this.competitionDetails = response.data })
     }
   }
