@@ -1,10 +1,14 @@
  <template>
+ <v-card>
   <div class = "family-list">
-    <h1>Family Members</h1>
-    <ul>
-      <li v-for="member in members" v-bind:key ="member">{{member}}</li>
-    </ul>
+    <v-card-title>
+      <h1>Family Members</h1>
+    </v-card-title>
+    <v-card-text>
+        <h3 v-for="member in members" v-bind:key ="member">{{member.name}}</h3>
+    </v-card-text>
   </div>
+ </v-card>
 </template>
 
 <script>
