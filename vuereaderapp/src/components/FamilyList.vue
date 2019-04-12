@@ -1,10 +1,14 @@
  <template>
+ <v-card>
   <div class = "family-list">
-    <h1>Family Members</h1>
-    <ul>
-      <li v-for="member in members" v-bind:key ="member">{{member}}</li>
-    </ul>
+    <v-card-title>
+      <h1>Family Members</h1>
+    </v-card-title>
+    <v-card-text>
+        <h3 v-for="member in members" v-bind:key ="member">{{member.name}}</h3>
+    </v-card-text>
   </div>
+ </v-card>
 </template>
 
 <script>
@@ -20,9 +24,12 @@ export default {
       this.members = null
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/familyList?familyId=1'
+        url: 'http://localhost:8080/capstone/familylist?familyId=1'
       }).then(response => { this.members = response.data })
     }
+  },
+  mounted () {
+    this.getMembers()
   }
 }
 </script>

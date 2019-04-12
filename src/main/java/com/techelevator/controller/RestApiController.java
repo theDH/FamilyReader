@@ -49,11 +49,11 @@ public class RestApiController {
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
 	public boolean authenticateLogin(@RequestBody User user) {
-	//	if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
+		if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
 			return true;
-//		} else {
-//			return false;
-//		}
+		} else {
+			return false;
+		}
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
@@ -94,6 +94,7 @@ public class RestApiController {
 		return goalDAO.getGoalDetail(1);
 	}
 	
+
 //	@CrossOrigin(origins = "http://localhost:8081")
 //	@RequestMapping(path="competitiondetail", method=RequestMethod.GET)
 //	public Competition getCompetitionDetail() {
@@ -109,5 +110,11 @@ public class RestApiController {
 	@RequestMapping(path="competitionlist", method=RequestMethod.GET)
 	public List<Person> getListOfPeopleInCompetition(@RequestParam long competitionId) {
 		return competitionDAO.getListOfPeopleInCompetition(competitionId);
+	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/homepage", method=RequestMethod.GET)
+	public void homepage() {
+		
+
 	}
 }

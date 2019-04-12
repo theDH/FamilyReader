@@ -21,7 +21,6 @@ export default {
   },
   methods: {
     authorizeLogin () {
-      this.error = false
       axios({
         method: 'post',
         url: 'http://localhost:8080/capstone/authenticate',
@@ -30,7 +29,8 @@ export default {
           password: this.password
         }
       }).then(response => {
-        if (!response.data) {
+        if (response.data) {
+          this.error = false
           this.launchLogin()
         } else {
           this.error = true

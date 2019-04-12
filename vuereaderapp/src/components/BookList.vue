@@ -15,7 +15,21 @@ export default {
   data () {
     return {
       books: null,
+      familyId: 1,
+      personId: 1,
       family: false
+    }
+  },
+  computed: {
+    personParams () {
+      const params = new URLSearchParams()
+      params.append('personId', this.personId)
+      return params
+    },
+    familyParams () {
+      const params = new URLSearchParams()
+      params.append('familyId', this.familyId)
+      return params
     }
   },
   methods: {
@@ -25,15 +39,20 @@ export default {
       if (!this.family) {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/booksList'
+          url: 'http://localhost:8080/capstone/bookList',
+          params: this.personParams
         }).then(response => { this.books = response.data })
       } else {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/booksListByFamily'
+          url: 'http://localhost:8080/capstone/booksListByFamily',
+          params: this.familyParams
         }).then(response => { this.books = response.data })
       }
     }
+  },
+  created () {
+    this.getListOfBooks()
   }
 }
 </script>
