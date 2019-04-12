@@ -58,6 +58,18 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/bookList", method=RequestMethod.GET)
+	public List<Book> getListOfBooks(@RequestParam long personId){
+		return bookDAO.getListOfBooksByPerson(personId);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/bookListByFamily", method=RequestMethod.GET)
+	public List<Book> getListOfBooksByFamily(@RequestParam long familyId){
+		return bookDAO.getListOfBooksByFamily(familyId);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="bookdetail", method=RequestMethod.GET)
 	public Book getBookDetail() {
 		return bookDAO.getBookDetail(1);

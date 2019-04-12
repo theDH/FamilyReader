@@ -12,6 +12,7 @@ import BookDetail from '@/components/BookDetail'
 import GoalDetail from '@/components/GoalDetail'
 import Vuetify from 'vuetify'
 import AddReadingActivity from '@/components/AddReadingActivity'
+import CompetitionDetail from '@/components/CompetitionDetail'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Router)
@@ -38,8 +39,13 @@ export default new Router({
       component: FamilyList
     },
     {
-      path: '/booklist',
-      name: 'booklist',
+      path: '/bookList',
+      name: 'bookList',
+      component: BookList
+    },
+    {
+      path: '/bookListByFamily',
+      name: 'bookList',
       component: BookList
     },
     {
@@ -76,6 +82,11 @@ export default new Router({
       path: '/goaldetail',
       name: 'goaldetail',
       component: GoalDetail
+    },
+    {
+      path: '/competitiondetail',
+      name: 'competitiondetail',
+      component: CompetitionDetail
     }
   ]
 })
