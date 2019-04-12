@@ -46,7 +46,7 @@ CREATE TABLE book (
 	author_first varchar(100),
 	author_last varchar(100) NOT NULL,
 	book_type int,
-	isbn int,
+	isbn int UNIQUE,
 	image varchar(600),
 	
 	constraint fk_book_book_type_book_type foreign key (book_type) references book_type (book_type_id)
