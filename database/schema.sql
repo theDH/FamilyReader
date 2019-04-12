@@ -45,8 +45,6 @@ CREATE TABLE book (
 	title varchar(255) NOT NULL,
 	author_first varchar(100),
 	author_last varchar(100) NOT NULL,
-	illustrator_first varchar(100),
-	illustrator_last varchar(100),
 	book_type int,
 	isbn int,
 	image varchar(600),
@@ -117,5 +115,52 @@ CREATE TABLE competition_people (
 	constraint fk_competition_people_competition_id foreign key (competition_id) references competition (competition_id),
 	constraint fk_competition_people_people_id foreign key (people_id) references people (people_id)
 );
+
+
+
+INSERT INTO family (family_name) VALUES ('The Null Pointers');
+INSERT INTO account (user_name, password, family_id, is_owner, salt) VALUES ('abc@def.com', 'KRlSVnHn6JB/u0xtzhxgKA==', 1, true, 'LoZOO1KJLY0PfvoXrgi4Cb1elq2QazTAcIawXPjlWnvXhLmd826LKdbvKKgmmXC05BNWg0b45kCkVnFpBtEDHhIkFjvpsY2GlR2CU3nXP5uGPm2LjNC6hK7Kj5Eo7mwK3vTBwo5L86mCkf9531ni9ULZEa/VZdhnu/PZeCojg44=');
+INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Pepper', true, false);
+INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Oregano', true, false);
+INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Salt', false, false);
+INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Cumin', false, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Pepper', '03/01/2019', 7, 'Read 100 minutes per week', 100, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Oregano', '03/01/2019', 7, 'Read 100 minutes per week', 100, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Salt', '03/01/2019', 30, 'Read 1000 minutes per month', 1000, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Cumin', '03/01/2019', 14, 'Read 500 minutes per two week', 500, false);
+INSERT INTO competition (name_of_competition, start_date, end_date, description, minutes_to_finish) VALUES ('Family month competition', '03/01/2019', '03/30/2019', 'First two people to read 1000 minutes', 1000);
+INSERT INTO goal_people (goal_id, people_id) VALUES (1, 1);
+INSERT INTO goal_people (goal_id, people_id) VALUES (2, 2);
+INSERT INTO goal_people (goal_id, people_id) VALUES (3, 3);
+INSERT INTO goal_people (goal_id, people_id) VALUES (4, 4);
+INSERT INTO competition_people (competition_id, people_id) VALUES (1, 1);
+INSERT INTO competition_people (competition_id, people_id) VALUES (1, 2);
+INSERT INTO competition_people (competition_id, people_id) VALUES (1, 3);
+INSERT INTO competition_people (competition_id, people_id) VALUES (1, 4);
+INSERT INTO book_type (book_type) VALUES ('Picture Book');
+INSERT INTO book_type (book_type) VALUES ('Paperback');
+INSERT INTO book_type (book_type) VALUES ('Audiobook');
+INSERT INTO book_type (book_type) VALUES ('eBook');
+INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Hop on Pop', 'Dr.', 'Seuss', 1, 0375828370, 'https://covers.openlibrary.org/b/id/7130596-L.jpg');
+INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Gray''s anatomy', 'Spalding', 'Gray', 2, 0679751785, 'https://ia800604.us.archive.org/zipview.php?zip=/1/items/olcovers42/olcovers42-L.zip&file=420864-L.jpg');
+INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Firestarter', 'Stephen', 'King', 3, 0451150317, 'https://ia800300.us.archive.org/BookReader/BookReaderPreview.php?id=firestartersigne00step&itemPath=%2F18%2Fitems%2Ffirestartersigne00step&server=ia800300.us.archive.org&page=cover_w500_h500.jpg');
+INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Christmas With Eve (It Happened One Night...)', 'Elda', 'Minger', 4, 0373257147, 'https://ia800303.us.archive.org/BookReader/BookReaderPreview.php?id=christmaswitheve00ming&itemPath=%2F3%2Fitems%2Fchristmaswitheve00ming&server=ia800303.us.archive.org&page=cover_w500_h500.jpg');
+INSERT INTO reading_type (reading_type) VALUES ('Read-Aloud (reader)');
+INSERT INTO reading_type (reading_type) VALUES ('Read-Aloud (listener)');
+INSERT INTO reading_type (reading_type) VALUES ('Listened_To)');
+INSERT INTO reading_type (reading_type) VALUES ('Read-To_Self)');
+INSERT INTO people_book (book_id, people_id) VALUES (1, 1);
+INSERT INTO people_book (book_id, people_id) VALUES (1, 2);
+INSERT INTO people_book (book_id, people_id) VALUES (2, 1);
+INSERT INTO people_book (book_id, people_id) VALUES (3, 3);
+INSERT INTO people_book (book_id, people_id) VALUES (4, 4);
+INSERT INTO people_book (book_id, people_id) VALUES (2, 3);
+INSERT INTO session (people_book_id, date_of_reading, minutes_read, type_of_reading) VALUES (1, '03/12/2019', 15, 1);
+INSERT INTO session (people_book_id, date_of_reading, minutes_read, type_of_reading) VALUES (2, '03/12/2019', 20, 2);
+INSERT INTO session (people_book_id, date_of_reading, minutes_read, type_of_reading) VALUES (3, '03/11/2019', 30, 3);
+INSERT INTO session (people_book_id, date_of_reading, minutes_read, type_of_reading) VALUES (4, '03/01/2019', 15, 4);
+
+
+
 
 COMMIT;
