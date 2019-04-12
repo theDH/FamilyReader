@@ -4,33 +4,34 @@
     <ul>
       <li v-for="book in books" v-bind:key="book.id">
       {{book.title}} {{book.author}}
-      </li>   
+      </li>
     </ul>
   </main>
 </template>
 
 <script>
 import axios from 'axios'
-export default {  
-    data () {
-      return {
-        books: null   
-      }
-    },
+export default {
+  data () {
+    return {
+      books: null,
+      family: false
+    }
+  },
   methods: {
-    getListOfBooks(){
+    getListOfBooks () {
       this.loading = true
       this.books = null
-      if(family == false){
-      axios({
-        method: 'get',
-        url: 'http://localhost:8080/capstone/booksList'
-      }).then(response => {this.books = response.data })
-      }else{
+      if (!this.family) {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/booksList'
+        }).then(response => { this.books = response.data })
+      } else {
         axios({
           method: 'get',
           url: 'http://localhost:8080/capstone/booksListByFamily'
-        }).then(response => {this.books = response.data})
+        }).then(response => { this.books = response.data })
       }
     }
   }
