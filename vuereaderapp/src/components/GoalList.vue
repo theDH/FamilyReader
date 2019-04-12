@@ -13,8 +13,8 @@
     </ul>
   </div>
 </template>
-
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
@@ -42,25 +42,24 @@ export default {
   computed: {
     goalParams () {
       const params = new URLSearchParams()
-      params.append("personId", this.personId)
+      params.append('personId', this.personId)
       return params
     }
-  }
+  },
   methods: {
     getGoals () {
       axios({
-        method: get,
+        method: 'get',
         url: 'http://localhost:8080/capstone/GoalList',
-        params = this.goalParams
+        params: this.goalParams
       }).then(response => { this.goals = response.data })
     }
   },
   created () {
-    getGoals()
+    this.getGoals()
   }
 }
 </script>
-
 <style>
   .goal-list {
         width:450px;
@@ -93,5 +92,4 @@ export default {
     li:last-child{
         border:0px;
     }
-
 </style>
