@@ -18,13 +18,20 @@ export default {
       }
     },
   methods: {
-    getListOfBooksByPerson(){
+    getListOfBooks(){
       this.loading = true
       this.books = null
+      if(family == false){
       axios({
         method: 'get',
         url: 'http://localhost:8080/capstone/booksList'
       }).then(response => {this.books = response.data })
+      }else{
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/booksListByFamily'
+        }).then(response => {this.books = response.data})
+      }
     }
   }
 }
