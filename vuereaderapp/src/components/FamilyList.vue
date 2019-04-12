@@ -14,6 +14,9 @@
 <script>
 import axios from 'axios'
 export default {
+  components: {
+    PrimaryButton
+  },
   data () {
     return {
       members: null
