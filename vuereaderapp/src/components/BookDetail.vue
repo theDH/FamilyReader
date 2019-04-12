@@ -22,7 +22,7 @@ export default {
       this.bookDetails = null
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/bookDetail'
+        url: 'http://localhost:8080/capstone/bookdetail'
       }).then(response => { this.bookDetails = response.data })
     }
   }
