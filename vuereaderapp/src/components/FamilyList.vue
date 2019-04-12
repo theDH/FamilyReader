@@ -36,13 +36,14 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      familyId: this.$session.familyId,
       members: null
     }
   },
   computed: {
     familyParams () {
       const params = new URLSearchParams()
-      params.append('familyId', this.$session.familyId)
+      params.append('familyId', this.familyId)
       return params
     }
   },
