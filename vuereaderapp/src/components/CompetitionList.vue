@@ -28,12 +28,12 @@ export default {
       if (!this.family) {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/competitionListByPerson'
+          url: 'http://localhost:8080/capstone/competitionlista'
         }).then(response => { this.competitions = response.data })
       } else {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/competitionListByFamily'
+          url: 'http://localhost:8080/capstone/competitionlist'
         }).then(response => { this.competitions = response.data })
       }
     }

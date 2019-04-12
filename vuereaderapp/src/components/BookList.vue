@@ -9,14 +9,14 @@
             <v-toolbar-title>Active Books</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon>
-              <v-icon>more_vert</v-icon>
+              <v-icon>Thumbnail</v-icon>
             </v-btn>
           </v-toolbar>
           <v-list>
             <v-list-tile
               v-for="book in books"
               :key="book.title"
-              avatar
+              image
             >
               <v-list-tile-content>
                 <v-list-tile-title v-text="book.title"></v-list-tile-title>

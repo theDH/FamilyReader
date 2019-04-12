@@ -12,6 +12,7 @@ public class Competition {
 	private int minutesToFinish;
 	
 	
+	
 	public long getCompetitionId() {
 		return competitionId;
 	}
