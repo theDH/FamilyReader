@@ -28,7 +28,7 @@ export default {
     Button,
     PrimaryButton,
     BookDetail,
-    GoalList
+    GoalDetail
   }
 }
 </script>
