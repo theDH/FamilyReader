@@ -1,9 +1,6 @@
  <template>
   <div class = "add-reading-activity">
     <h1>Add Reading Activity</h1>
-    <ul>
-      <li v-for="activity in activities" v-bind:key ="activity">{{activity.session}}</li>
-    </ul>
     <primary-button/>
   </div>
 </template>
@@ -14,9 +11,24 @@ export default {
   name: 'AddReadingActivity',
   data () {
     return {
-      activities: [
-        {session: 'cheese'}
+      members = null,
+      activity: [
+        {
+          person: null,
+          book: null,
+          minutes: null,
+          type: null,
+          date: null
+        }
       ]
+    }
+  },
+  methods: {
+    getFamilyMembers () {
+    axios({
+        method: 'get',
+        url: 'http://localhost:8080/capstone/familyList?familyId=1'
+      }).then(response => { this.members = response.data })
     }
   },
   components: {
