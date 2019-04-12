@@ -2,6 +2,7 @@
 <div>
     <input v-model="userName" placeholder="email"/>
     <input v-model="password" type="password" placeholder="password"/>
+    <div v-if="this.error">Your email and/or password was invalid. Please try again.</div>
     <button @click="authorizeLogin">Log In</button>
     <button @click="launchSignup">Sign Up</button>
   </div>
@@ -15,23 +16,32 @@ export default {
     return {
       userName: '',
       password: '',
-      posts: axios.get('https://jsonplaceholder.typicode.com/posts').then(response => { console.log(response) }).catch(e => this.errors.push(e))
+      error: false
     }
   },
   methods: {
     authorizeLogin () {
-      console.log('login')
       axios({
         method: 'post',
         url: 'http://localhost:8080/capstone/authenticate',
         data: {
-          userName: 'testusername',
-          password: 'testpassword'
+          userName: this.userName,
+          password: this.password
         }
-      }).then(response => { console.log(response) }).catch(e => console.log(e))
+      }).then(response => {
+        if (response.data) {
+          this.error = false
+          this.launchLogin()
+        } else {
+          this.error = true
+        }
+      }).catch(e => console.log(e))
     },
     launchSignup () {
       this.$router.push('/signup')
+    },
+    launchLogin () {
+      this.$router.push('/button')
     }
   }
 }
