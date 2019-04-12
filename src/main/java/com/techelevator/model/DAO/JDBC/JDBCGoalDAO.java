@@ -118,7 +118,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	@Override
 	public Goal getGoalDetail(long goalId) {
 		Goal goal = new Goal();
-		String sql = "SELECT * FROM goal WHERE goalId = ?";
+		String sql = "SELECT * FROM goal WHERE goal_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, goalId);
 		while(results.next()) {
 			goal = mapRowToGoal(results);
