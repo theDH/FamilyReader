@@ -14,26 +14,33 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data () {
     return {
-      competitions: [
-        {
-          name: 'Comp1',
-          startDate: '09/29/2019',
-          endDate: '10/10/2019',
-          description: 'First to 100',
-          minutesToFinish: 100
-        },
-        {
-          name: 'Comp2',
-          startDate: '03/20/2019',
-          endDate: '03/30/2019',
-          description: 'First to 10',
-          minutesToFinish: 10
-        }
-      ]
+      competitions: null,
+      family: null
     }
+  },
+  methods: {
+    getListOfCompetitions () {
+      this.competitions = null
+      if (!this.family) {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/competitionListByPerson'
+        }).then(response => { this.competitions = response.data })
+      } else {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/competitionListByFamily'
+        }).then(response => { this.competitions = response.data })
+      }
+    }
+  },
+  created () {
+    this.getListOfActiveCompetitions()
+    this.getListOfPeopleInCompetition()
   }
 }
 </script>
