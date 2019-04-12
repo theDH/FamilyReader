@@ -7,10 +7,12 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Goal;
 import com.techelevator.model.DAO.GoalDAO;
 
+@Component
 public class JDBCGoalDAO implements GoalDAO{
 	
 	private JdbcTemplate jdbcTemplate;

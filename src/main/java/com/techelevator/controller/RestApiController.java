@@ -20,8 +20,7 @@ import com.techelevator.model.DAO.FamilyDAO;
 import com.techelevator.model.DAO.GoalDAO;
 import com.techelevator.model.DAO.PersonDAO;
 import com.techelevator.model.DAO.UserDAO;
-import com.techelevator.model.DAO.JDBC.JDBCFamilyDAO;
-import com.techelevator.model.DAO.JDBC.JDBCUserDAO;
+
 
 @RestController
 public class RestApiController {
@@ -33,7 +32,7 @@ public class RestApiController {
 	private GoalDAO goalDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO) {
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
 		this.bookDAO = bookDAO;

@@ -9,6 +9,7 @@ import PrimaryButton from '@/components/PrimaryButton'
 import CompetitionList from '@/components/CompetitionList'
 import GoalList from '@/components/GoalList'
 import BookDetail from '@/components/BookDetail'
+import GoalDetail from '@/components/GoalDetail'
 import Vuetify from 'vuetify'
 import AddReadingActivity from '@/components/AddReadingActivity'
 import 'vuetify/dist/vuetify.min.css'
@@ -70,6 +71,11 @@ export default new Router({
       path: '/bookdetail',
       name: 'bookdetail',
       component: BookDetail
+    },
+    {
+      path: '/goaldetail',
+      name: 'goaldetail',
+      component: GoalDetail
     }
   ]
 })
