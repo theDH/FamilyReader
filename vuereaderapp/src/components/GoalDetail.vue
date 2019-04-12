@@ -22,7 +22,7 @@ export default {
       this.goalDetails = null
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/goalDetail'
+        url: 'http://localhost:8080/capstone/goaldetail'
       }).then(response => { this.goalDetails = response.data })
     }
   }

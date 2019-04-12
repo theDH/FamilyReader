@@ -6,12 +6,13 @@
 </template>
 
 <script>
+import axios from 'axios'
 import PrimaryButton from './PrimaryButton'
 export default {
   name: 'AddReadingActivity',
   data () {
     return {
-      members = null,
+      members: null,
       activity: [
         {
           person: null,
@@ -25,7 +26,7 @@ export default {
   },
   methods: {
     getFamilyMembers () {
-    axios({
+      axios({
         method: 'get',
         url: 'http://localhost:8080/capstone/familyList?familyId=1'
       }).then(response => { this.members = response.data })
