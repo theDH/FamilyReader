@@ -44,11 +44,11 @@ public class RestApiController {
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
 	public boolean authenticateLogin(@RequestBody User user) {
-	//	if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
+		if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
 			return true;
-//		} else {
-//			return false;
-//		}
+		} else {
+			return false;
+		}
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
