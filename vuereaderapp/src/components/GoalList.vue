@@ -18,25 +18,8 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      personId: 1,
-      goals: [
-        {
-          name: 'Goal1',
-          startDate: '09/29/2019',
-          numberOfDays: 7,
-          description: 'Read 100 minutes in a week',
-          minutesToFinish: 100,
-          isComplete: false
-        },
-        {
-          name: 'Goal2',
-          startDate: '03/20/2019',
-          numberOfDays: 30,
-          description: 'Read 1000 minutes in a week',
-          minutesToFinish: 1000,
-          isComplete: true
-        }
-      ]
+      personId: this.$session.get('personId'),
+      goals: []
     }
   },
   computed: {
@@ -50,7 +33,7 @@ export default {
     getGoals () {
       axios({
         method: 'get',
-        url: 'http://localhost:8080/capstone/GoalList',
+        url: 'http://localhost:8080/capstone/goallist',
         params: this.goalParams
       }).then(response => { this.goals = response.data })
     }

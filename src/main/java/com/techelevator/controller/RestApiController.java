@@ -115,6 +115,12 @@ public class RestApiController {
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/homepage", method=RequestMethod.GET)
 	public void homepage() {
-
 	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/goallist", method=RequestMethod.GET)
+	public List<Goal> getGoalList(@RequestParam long personId) {
+		return goalDAO.getListOfAllGoals(personId);
+	}
+	
+	
 }

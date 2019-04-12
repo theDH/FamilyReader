@@ -36,7 +36,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      familyId: this.$session.familyId,
+      familyId: this.$session.get('familyId'),
       members: null
     }
   },

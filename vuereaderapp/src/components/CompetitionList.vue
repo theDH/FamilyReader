@@ -18,8 +18,8 @@ import axios from 'axios'
 export default {
   data () {
     return {
-      competitions: null,
-      family: null
+      competitions: this.$session.get('competitions'),
+      family: this.$session.get('family')
     }
   },
   methods: {
@@ -39,8 +39,7 @@ export default {
     }
   },
   created () {
-    this.getListOfActiveCompetitions()
-    this.getListOfPeopleInCompetition()
+    this.getListOfCompetitions()
   }
 }
 </script>

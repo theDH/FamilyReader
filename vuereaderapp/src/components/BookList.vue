@@ -39,9 +39,9 @@ export default {
   data () {
     return {
       books: null,
-      familyId: 1,
-      personId: 1,
-      family: false
+      familyId: this.$session.get('familyId'),
+      personId: this.$session.get('personId'),
+      family: this.$session.get('family')
     }
   },
   computed: {

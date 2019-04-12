@@ -33,7 +33,7 @@ export default {
           this.error = false
           this.$session.set('username', this.userName)
           this.$session.set('familyId', response.data.familyId)
-          this.$session.set('familyview', true)
+          this.$session.set('family', true)
           this.launchLogin()
         } else {
           this.error = true
