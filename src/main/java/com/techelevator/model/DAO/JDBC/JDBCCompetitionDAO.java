@@ -50,10 +50,15 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	}
 
 	@Override
-	public List<Competition> getListOfActiveCompetitions(LocalDate todayDate) {
+	public List<Competition> getListOfActiveCompetitions(LocalDate todayDate, long familyId) {
 		List<Competition> activeCompetitions = new ArrayList<Competition>();
-		String getSqlOfActiveCompetitions = "SELECT * FROM competition WHERE ? BETWEEN start_date AND end_date";
-		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfActiveCompetitions, todayDate);
+		todayDate =  LocalDate.now();
+		String getSqlOfActiveCompetitions = "SELECT * FROM competition JOIN competition_people ON competition.competition_id = competition_people.competition_id " +
+				"JOIN people ON people.people_id = competition_people.people_id " +
+				"JOIN family ON people.family_id = family.family_id " +
+				"WHERE family.family_id = ? " +
+				"AND competition.end_date > ?; ";
+		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfActiveCompetitions, familyId, todayDate);
 		while (results.next()) {
 			Competition competition = mapRowToCompetition(results);
 			activeCompetitions.add(competition);
