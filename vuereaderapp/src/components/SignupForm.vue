@@ -36,7 +36,8 @@ export default {
         data: {
           userName: this.email,
           password: this.password,
-          familyName: this.familyName
+          familyName: this.familyName,
+          familyId: this.familyId
         }
       }).then(response => { console.log(response) }).catch(e => console.log(e))
     },

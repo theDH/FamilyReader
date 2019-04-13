@@ -48,11 +48,11 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
-	public boolean authenticateLogin(@RequestBody User user) {
+	public Long authenticateLogin(@RequestBody User user) {
 		if(userDAO.searchForUsernameAndPassword(user.getUserName(), user.getPassword())) {
-			return true;
+			return userDAO.getFamilyByUser(user);
 		} else {
-			return false;
+			return null;
 		}
 	}
 	
@@ -65,50 +65,50 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="/bookList", method=RequestMethod.GET)
+	@RequestMapping(path="/booklist", method=RequestMethod.GET)
 	public List<Book> getListOfBooks(@RequestParam long personId){
 		return bookDAO.getListOfBooksByPerson(personId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="/bookListByFamily", method=RequestMethod.GET)
+	@RequestMapping(path="/booklistbyfamily", method=RequestMethod.GET)
 	public List<Book> getListOfBooksByFamily(@RequestParam long familyId){
 		return bookDAO.getListOfBooksByFamily(familyId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="bookdetail", method=RequestMethod.GET)
+	@RequestMapping(path="/bookdetail", method=RequestMethod.GET)
 	public Book getBookDetail(@RequestParam long familyId) {
 		return bookDAO.getBookDetail(familyId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="familylist", method=RequestMethod.GET)
+	@RequestMapping(path="/familylist", method=RequestMethod.GET)
 	public List<Person> getFamilyList(@RequestParam long familyId){
 		return personDAO.getListOfPeopleInFamily(familyId);
 		}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="goaldetail", method=RequestMethod.GET)
+	@RequestMapping(path="/goaldetail", method=RequestMethod.GET)
 	public Goal getGoalDetail(@RequestParam long familyId) {
 		return goalDAO.getGoalDetail(familyId);
 	}
 	
 
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="competitiondetail", method=RequestMethod.GET)
+	@RequestMapping(path="/competitiondetail", method=RequestMethod.GET)
 	public Competition getCompetitionDetail(@RequestParam long familyId) {
 		return competitionDAO.showCompetitionDetails(familyId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="competitionlista", method=RequestMethod.GET)
+	@RequestMapping(path="/competitionlista", method=RequestMethod.GET)
 	public List<Competition> getListOfActiveCompetitions(@RequestParam LocalDate todayDate, long familyId) {
 		return competitionDAO.getListOfActiveCompetitions(todayDate, familyId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="competitionlist", method=RequestMethod.GET)
+	@RequestMapping(path="/competitionlist", method=RequestMethod.GET)
 	public List<Person> getListOfPeopleInCompetition(@RequestParam long competitionId) {
 		return competitionDAO.getListOfPeopleInCompetition(competitionId);
 	}

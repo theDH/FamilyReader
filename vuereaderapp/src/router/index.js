@@ -37,13 +37,13 @@ export default new Router({
       component: FamilyList
     },
     {
-      path: '/bookList',
-      name: 'bookList',
+      path: '/booklist',
+      name: 'booklist',
       component: BookList
     },
     {
-      path: '/bookListByFamily',
-      name: 'bookList',
+      path: '/booklistbyfamily',
+      name: 'booklist',
       component: BookList
     },
     {

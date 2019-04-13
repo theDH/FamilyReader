@@ -63,13 +63,13 @@ export default {
       if (!this.family) {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/bookList',
+          url: 'http://localhost:8080/capstone/booklist',
           params: this.personParams
         }).then(response => { this.books = response.data })
       } else {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/booksListByFamily',
+          url: 'http://localhost:8080/capstone/bookslistbyfamily',
           params: this.familyParams
         }).then(response => { this.books = response.data })
       }
