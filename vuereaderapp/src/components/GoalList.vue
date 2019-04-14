@@ -3,28 +3,24 @@
     <h1>List Of Active Goals</h1>
     <ul>
       <li v-for="goal in goals" v-bind:key="goal">
-        {{goal.nameOfGoal}}
-        {{goal.description}}
-        {{ getDaysRemaining(goal.startDate, goal.numberOfDays) }}
-        {{goal.minutesToReachGoal}}
+        {{goal.nameOfGoal}}<br>
+        {{goal.description}}<br>
+        {{ getDaysRemaining(goal.startDate, goal.numberOfDays) }} days remaining<br>
+        {{goal.minutesToReachGoal}} minutes remaining
       </li>
     </ul>
   </div>
 </template>
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   data () {
     return {
       personId: this.$session.get('personId'),
       family: this.$session.get('family'),
       familyId: this.$session.get('familyId'),
-      goals: [],
-      testDate: {
-        year: 2019,
-        monthValue: 4,
-        dayOfMonth: 10
-      }
+      goals: []
     }
   },
   computed: {
@@ -69,6 +65,14 @@ export default {
   },
   created () {
     this.getGoals()
+  },
+  mounted () {
+    EventBus.$on('familyPersonState', (fState, pState) => {
+      console.log('listener')
+      this.family = fState
+      this.personId = pState
+      this.getGoals()
+    })
   }
 }
 </script>
