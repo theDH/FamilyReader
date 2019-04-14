@@ -31,9 +31,9 @@ export default {
       }).then(response => {
         if (response.data >= 0) {
           this.error = false
-          this.$session.setItem('username', this.userName)
-          this.$session.setItem('familyId', response.data.familyId)
-          this.$session.setItem('family', true)
+          this.$session.set('username', this.userName)
+          this.$session.set('familyId', response.data.familyId)
+          this.$session.set('family', true)
           this.launchLogin()
         } else {
           this.error = true

@@ -4,13 +4,14 @@ import Vue from 'vue'
 import './plugins/vuetify'
 import App from './App'
 import LoginForm from './components/LoginForm'
-import './session.js'
 import Vuetify from 'vuetify'
+import VueSessionStorage from 'vue-sessionstorage'
 import router from './router'
 import axios from 'axios'
 import 'vuetify/dist/vuetify.min.css'
 
 Vue.use(Vuetify)
+Vue.use(VueSessionStorage)
 
 // const VueSessionStorage = require('vue-sessionstorage')
 Vue.config.productionTip = false

@@ -1,14 +1,10 @@
 <template>
   <div>
-    <v-layout justify-start>
     <family-list/>
-    </v-layout>
-    <v-layout justify-center>
-      <book-list/>
-    </v-layout>
+    <book-list/>
     <add-reading-activity/>
     <goal-list/>
-    <cometition-list/>
+    <competition-list/>
   </div>
 </template>
 
