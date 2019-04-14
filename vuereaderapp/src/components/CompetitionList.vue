@@ -18,6 +18,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      familyId: this.$session.get('familyId'),
       competitions: this.$session.get('competitions'),
       family: this.$session.get('family')
     }

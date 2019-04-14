@@ -86,9 +86,12 @@ public class JDBCUserDAO implements UserDAO {
 
 	@Override
 	public Long getFamilyByUser(User user) {
+		long familyId = 0;
 		String sqlFamilyIdSearch = "Select family_id FROM account WHERE account.user_name = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlFamilyIdSearch, user.getUserName());
-		results.next();
-		return results.getLong("family_id");
+		while(results.next()) {
+			familyId = results.getLong("family_id");
+		}
+		return familyId;
 	}
 }
