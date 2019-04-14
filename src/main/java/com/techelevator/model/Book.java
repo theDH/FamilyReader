@@ -12,6 +12,14 @@ public class Book {
 	private long isbn;
 	private String image;
 	
+	@Override
+	public boolean equals(Object anObject) {
+		if(!(anObject instanceof Book)) {
+			return false;
+		}
+		Book otherBook = (Book)anObject;
+		return otherBook.getBookId() == (getBookId());
+	}
 	
 	public String getImage() {
 		return image;

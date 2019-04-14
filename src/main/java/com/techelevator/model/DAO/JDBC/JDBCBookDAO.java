@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -112,5 +113,16 @@ public class JDBCBookDAO implements BookDAO {
 		}
 		return book;
 	}
+	
+	@Override
+	public List<Book> getListOfBooksNotReading(long familyId, long personId) {
+		List<Book> noBooks = new ArrayList<Book>(); 
+		List<Book> yesBooks = new ArrayList<Book>();
+		noBooks = getListOfBooksByPerson(personId);
+		yesBooks = getListOfBooksByFamily(familyId);
+		yesBooks.removeAll(noBooks);
+		return yesBooks;
+	}
+
 
 }
