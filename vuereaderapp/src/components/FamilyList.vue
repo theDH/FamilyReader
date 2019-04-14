@@ -72,8 +72,11 @@ export default {
       EventBus.$emit('familyPersonState', false, personId)
     }
   },
-  mounted () {
+  created () {
     this.getMembers()
+  },
+  mounted () {
+    EventBus.$on('personAdded', value => { if (value) { this.getMembers() } })
   }
 }
 </script>
