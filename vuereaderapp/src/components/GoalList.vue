@@ -3,13 +3,11 @@
     <h1>List Of Active Goals</h1>
     <ul>
       <li v-for="goal in goals" v-bind:key="goal">
-        {{goal.name}}
-        {{goal.startDate}}
-        {{goal.numberOfDays}}
+        {{goal.nameOfGoal}}
         {{goal.description}}
         {{goal.minutesToFinish}}
         {{goal.isComplete}}
-        </li>
+      </li>
     </ul>
   </div>
 </template>
@@ -37,6 +35,13 @@ export default {
     }
   },
   methods: {
+    getDaysRemaining (javaDate, days) {
+      let date = new Date(Date(javaDate.year, javaDate.monthValue - 1, javaDate.dayOfMonth))
+      let end = date.setDate(date.getDate() + days)
+      let today = new Date()
+      let diff = end.getTime() - today.getTime()
+      return Math.round(diff / 86400000)
+    },
     getGoals () {
       if (!this.family) {
         axios({
@@ -47,7 +52,7 @@ export default {
       } else {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/captstone/goallistbyfamily',
+          url: 'http://localhost:8080/capstone/goallistbyfamily',
           params: this.familyParams
         }).then(response => { this.goals = response.data })
       }
