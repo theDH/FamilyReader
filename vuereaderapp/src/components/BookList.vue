@@ -1,28 +1,28 @@
 <template>
   <div id="app">
-  <v-app id="inspire">
-    <v-layout justify-center>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <v-toolbar color="indigo" dark>
-            <v-toolbar-title>Active Books</v-toolbar-title>
-            <v-spacer></v-spacer>
-          </v-toolbar>
-          <v-list>
-            <v-list-tile v-for="book in books" :key="book.title">
-              <v-list-tile-avatar>
-                <img :src="book.image">
-              </v-list-tile-avatar>
-              <v-list-tile-content>
-                <v-list-tile-title v-text="book.title"></v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-app>
-</div>
+    <v-app id="inspire">
+      <v-layout justify-center>
+        <v-flex xs12 sm6 offset-sm3>
+          <v-card>
+            <v-toolbar color="indigo" dark>
+              <v-toolbar-title>Active Books</v-toolbar-title>
+              <v-spacer></v-spacer>
+            </v-toolbar>
+            <v-list>
+              <v-list-tile v-for="book in books" :key="book.title">
+                <v-list-tile-avatar>
+                  <img :src="book.image">
+                </v-list-tile-avatar>
+                <v-list-tile-content>
+                  <v-list-tile-title v-text="book.title"></v-list-tile-title>
+                </v-list-tile-content>
+              </v-list-tile>
+            </v-list>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-app>
+  </div>
 </template>
 
 <script>

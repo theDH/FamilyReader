@@ -1,9 +1,19 @@
 <template>
-  <div>
+  <div id="app">
+    <v-app id="inspire">
+      <!-- <v-navigation-drawer
+      :clipped="drawer.clipped"
+      :fixed="drawer.fixed"
+      :permanent="drawer.permanent"
+      :mini-variant="drawer.mini"
+      v-model="drawer.open"
+      app
+      > -->
     <family-list/>
+      <!-- </v-navigation-drawer> -->
     <book-list/>
     <goal-list/>
-    <competition-list/>
+    </v-app>
   </div>
 </template>
 

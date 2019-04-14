@@ -1,32 +1,17 @@
 <template>
-  <div id="app">
+  <!-- <div id="app"> -->
+  <v-app>
+    <v-toolbar class="cyan darken-2">Family Reading App</v-toolbar>
+      <v-toolbar-title></v-toolbar-title>
+    <v-content>
     <router-view/>
-  </div>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
-import LoginForm from './components/LoginForm'
-import FamilyList from './components/FamilyList'
-import SignupForm from './components/SignupForm'
-import BookList from './components/BookList'
-import Button from './components/Button'
-import PrimaryButton from './components/PrimaryButton'
-import BookDetail from './components/BookDetail'
-import GoalDetail from './components/GoalDetail'
-import CompetitionDetail from './components/CompetitionDetail'
 export default {
-  name: 'App',
-  components: {
-    LoginForm,
-    SignupForm,
-    BookList,
-    FamilyList,
-    Button,
-    PrimaryButton,
-    BookDetail,
-    GoalDetail,
-    CompetitionDetail
-  }
+
 }
 </script>
 
