@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type=text v-model="name" placeholder="name e.g. 'Janet', 'The Rock'"/>
+    <input type=text v-model="name" placeholder="'Janet', 'The Rock'"/>
     <select v-model="parent">
       <option value="" selected disabled>Choose role:</option>
       <option value=true>Parent</option>
