@@ -7,22 +7,15 @@
           <v-toolbar color="indigo" dark>
             <v-toolbar-title>Active Books</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>Thumbnail</v-icon>
-            </v-btn>
           </v-toolbar>
           <v-list>
-            <v-list-tile
-              v-for="book in books"
-              :key="book.title"
-              image
-            >
-              <v-list-tile-content>
-                <v-list-tile-title v-text="book.title"></v-list-tile-title>
-              </v-list-tile-content>
+            <v-list-tile v-for="book in books" :key="book.title">
               <v-list-tile-avatar>
                 <img :src="book.image">
               </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title v-text="book.title"></v-list-tile-title>
+              </v-list-tile-content>
             </v-list-tile>
           </v-list>
         </v-card>
@@ -34,6 +27,7 @@
 
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   data () {
     return {
@@ -76,6 +70,14 @@ export default {
   },
   created () {
     this.getListOfBooks()
+  },
+  mounted () {
+    EventBus.$on('familyPersonState', (fState, pState) => {
+      console.log('listener')
+      this.family = fState
+      this.personId = pState
+      this.getListOfBooks()
+    })
   }
 }
 </script>

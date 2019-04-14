@@ -9,17 +9,19 @@
               <v-list-tile-title class="title">
                 Family Members
               </v-list-tile-title>
-           </v-list-tile>
+            </v-list-tile>
           </v-list>
         </v-toolbar>
 
         <v-divider></v-divider>
 
         <v-list dense class="pt-0">
-         <v-list-tile
-           v-for="member in members"
-           :key="member"
-         >
+          <v-list-tile @click="setFamilySession">
+            <v-list-tile-content>
+              <v-list-tile-title>All Family Members</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile v-for="member in members" :key="member" @click="setPersonSession(member.peopleId)">
             <v-list-tile-content>
              <v-list-tile-title>{{ member.name }}</v-list-tile-title>
            </v-list-tile-content>
@@ -33,6 +35,7 @@
 
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   data () {
     return {
@@ -55,6 +58,18 @@ export default {
         url: 'http://localhost:8080/capstone/familylist',
         params: this.familyParams
       }).then(response => { this.members = response.data })
+    },
+    setFamilySession () {
+      console.log('setfamilysession')
+      this.$session.set('personId', null)
+      this.$session.set('family', true)
+      EventBus.$emit('familyPersonState', true, null)
+    },
+    setPersonSession (personId) {
+      console.log('setpersonsession')
+      this.$session.set('personId', personId)
+      this.$session.set('family', false)
+      EventBus.$emit('familyPersonState', false, personId)
     }
   },
   mounted () {

@@ -42,7 +42,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	@Override
 	public List<Goal> getListOfAllGoals(long personId) {
 		ArrayList<Goal> goals = new ArrayList<Goal>();
-		String sql = "SELECT * FROM goals JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " +
+		String sql = "SELECT * FROM goal JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " +
 					"goal_people.people_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, personId);
 		while(results.next()) {
@@ -55,7 +55,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	@Override
 	public List<Goal> getListOfFinishedGoals(long personId) {
 		ArrayList<Goal> goals = new ArrayList<Goal>();
-		String sql = "SELECT * FROM goals JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " + 
+		String sql = "SELECT * FROM goal JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " + 
 				"goal_people.people_id = ? and goal.is_complete = true";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, personId);
 		while(results.next()) {
@@ -68,7 +68,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	@Override
 	public List<Goal> getListOfOpenGoals(long personId) {
 		ArrayList<Goal> goals = new ArrayList<Goal>();
-		String sql = "SELECT * FROM goals JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " + 
+		String sql = "SELECT * FROM goal JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " + 
 				"goal_people.people_id = ? and goal.is_complete = false";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, personId);
 		while(results.next()) {
