@@ -68,7 +68,7 @@ export default {
       } else {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/bookslistbyfamily',
+          url: 'http://localhost:8080/capstone/booklistbyfamily',
           params: this.familyParams
         }).then(response => { this.books = response.data })
       }

@@ -29,10 +29,11 @@ export default {
           password: this.password
         }
       }).then(response => {
-        if (response.data >= 0) {
+        if (response.data > 0) {
+          console.log(response.data)
           this.error = false
           this.$session.set('username', this.userName)
-          this.$session.set('familyId', response.data.familyId)
+          this.$session.set('familyId', response.data)
           this.$session.set('family', true)
           this.launchLogin()
         } else {

@@ -6,7 +6,8 @@
 export default {
   data () {
     return {
-      userName: this.$session.get('username')
+      userName: this.$session.get('username'),
+      familyId: this.$session.get('familyId')
     }
   }
 }

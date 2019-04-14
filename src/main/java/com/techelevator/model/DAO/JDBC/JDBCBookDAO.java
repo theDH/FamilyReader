@@ -44,10 +44,10 @@ public class JDBCBookDAO implements BookDAO {
 	@Override
 	public List<Book> getListOfBooksByFamily(long familyId) {
 		ArrayList<Book> books = new ArrayList<Book>();
-		String sql = "SELECT * FROM book JOIN people_book ON people_book.book_id = book.book_id " + 
+		String sql = "SELECT DISTINCT book.* FROM book JOIN people_book ON people_book.book_id = book.book_id " + 
 				"JOIN people ON people.people_id = people_book.people_id " + 
 				"JOIN family ON people.family_id = family.family_id " + 
-				"WHERE people_book.people_id = ?; LIMIT 10";
+				"WHERE family.family_id = ? LIMIT 10;";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
 		while(results.next()) {
 			Book book = mapRowToBook(results);

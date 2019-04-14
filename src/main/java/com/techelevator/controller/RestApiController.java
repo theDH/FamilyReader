@@ -122,5 +122,9 @@ public class RestApiController {
 		return goalDAO.getListOfAllGoals(personId);
 	}
 	
-	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/goallistbyfamily", method=RequestMethod.GET)
+	public List<Goal>getFamilyGoalList(@RequestParam long familyId) {
+		return null;
+	}
 }

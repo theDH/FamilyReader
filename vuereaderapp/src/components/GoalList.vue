@@ -19,23 +19,38 @@ export default {
   data () {
     return {
       personId: this.$session.get('personId'),
+      family: this.$session.get('family'),
+      familyId: this.$session.get('familyId'),
       goals: []
     }
   },
   computed: {
-    goalParams () {
+    personParams () {
       const params = new URLSearchParams()
       params.append('personId', this.personId)
+      return params
+    },
+    familyParams () {
+      const params = new URLSearchParams()
+      params.append('familyId', this.familyId)
       return params
     }
   },
   methods: {
     getGoals () {
-      axios({
-        method: 'get',
-        url: 'http://localhost:8080/capstone/goallist',
-        params: this.goalParams
-      }).then(response => { this.goals = response.data })
+      if (!this.family) {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/goallist',
+          params: this.personParams
+        }).then(response => { this.goals = response.data })
+      } else {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/captstone/goallistbyfamily',
+          params: this.familyParams
+        }).then(response => { this.goals = response.data })
+      }
     }
   },
   created () {
