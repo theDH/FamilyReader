@@ -114,7 +114,7 @@ public class JDBCGoalDAO implements GoalDAO{
 		List<Goal> goals = new ArrayList<Goal>();
 		String sql = "SELECT * FROM goal JOIN goal_people ON goal.goal_id = goal_people.goal_id " + 
 				"JOIN people ON people.people_id = goal_people.people_id JOIN family ON " + 
-				"people.family_id = family.family_id WHERE family.family_id = ?";
+				"people.family_id = family.family_id WHERE family.family_id = ? AND goal.is_complete = false";
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, familyId);
 		while(result.next()) {
 			Goal goal = mapRowToGoal(result);
