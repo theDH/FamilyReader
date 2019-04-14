@@ -1,10 +1,14 @@
 <template>
   <div>
-    <family-list id="familyList"/>
-    <book-list id="bookList"/>
-    <add-reading-activity id ="activityList"/>
-    <goal-list id="goalList"/>
-    <competition-list id="competitionList"/>
+    <v-layout justify-start>
+    <family-list/>
+    </v-layout>
+    <v-layout justify-center>
+      <book-list/>
+    </v-layout>
+    <add-reading-activity/>
+    <goal-list/>
+    <cometition-list/>
   </div>
 </template>
 
@@ -22,7 +26,6 @@ export default {
     GoalList,
     CompetitionList
   }
-
 }
 </script>
 

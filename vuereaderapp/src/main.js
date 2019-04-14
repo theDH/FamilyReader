@@ -5,10 +5,10 @@ import './plugins/vuetify'
 import App from './App'
 import LoginForm from './components/LoginForm'
 import './session.js'
+import Vuetify from 'vuetify'
 import router from './router'
 import axios from 'axios'
 import 'vuetify/dist/vuetify.min.css'
-import Vuetify from 'vuetify'
 
 Vue.use(Vuetify)
 

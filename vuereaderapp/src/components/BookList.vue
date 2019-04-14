@@ -1,11 +1,10 @@
 <template>
   <div id="app">
   <v-app id="inspire">
-    <v-layout row>
+    <v-layout justify-center>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
           <v-toolbar color="indigo" dark>
-            <v-toolbar-side-icon></v-toolbar-side-icon>
             <v-toolbar-title>Active Books</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon>
