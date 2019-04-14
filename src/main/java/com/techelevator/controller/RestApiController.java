@@ -102,13 +102,13 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="/competitionlista", method=RequestMethod.GET)
+	@RequestMapping(path="/competitionlistperson", method=RequestMethod.GET)
 	public List<Competition> getListOfActiveCompetitions(@RequestParam LocalDate todayDate, long familyId) {
 		return competitionDAO.getListOfActiveCompetitions(todayDate, familyId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="/competitionlist", method=RequestMethod.GET)
+	@RequestMapping(path="/competitionlistfamily", method=RequestMethod.GET)
 	public List<Person> getListOfPeopleInCompetition(@RequestParam long competitionId) {
 		return competitionDAO.getListOfPeopleInCompetition(competitionId);
 	}
