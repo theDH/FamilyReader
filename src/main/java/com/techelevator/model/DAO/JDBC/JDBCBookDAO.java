@@ -59,13 +59,10 @@ public class JDBCBookDAO implements BookDAO {
 
 	@Override
 	public void addNewBook(Book newBook) {
-		String sql = "INSERT INTO book (book_id, title, author_first, author_last, " +
-				"illustrator_first, illustrator_last, book_type, isbn) " +
+		String sql = "INSERT INTO book (book_id, title, author, isbn) " +
 				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		newBook.setBookId(getNextBookId());
-		jdbcTemplate.update(sql, newBook.getBookId(), newBook.getTitle(), newBook.getAuthorFirstName(),
-				newBook.getAuthorLastName(), newBook.getIllustratorFirstName(), newBook.getIllustratorLastName(),
-				newBook.getBookType(), newBook.getIsbn());
+		jdbcTemplate.update(sql, newBook.getBookId(), newBook.getTitle(), newBook.getAuthor(), newBook.getIsbn());
 	}
 	
 	
@@ -93,12 +90,8 @@ public class JDBCBookDAO implements BookDAO {
 		Book book = new Book();
 		book.setBookId(results.getLong("book_id"));
 		book.setTitle(results.getString("title"));
-		book.setAuthorFirstName(results.getString("author_first"));
-		book.setAuthorLastName(results.getString("author_last"));
-//		book.setIllustratorFirstName(results.getString("illustrator_first"));
-//		book.setIllustratorLastName(results.getString("illustrator_last"));
+		book.setAuthor(results.getString("author_first"));
 		book.setImage(results.getString("image"));
-		book.setBookType(results.getInt("book_type"));
 		book.setIsbn(results.getInt("isbn"));
 		return book;
 	}
