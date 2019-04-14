@@ -4,14 +4,18 @@ public class Book {
 	
 	private long bookId;
 	private String title;
-	private String authorFirstName;
-	private String authorLastName;
-	private String illustratorFirstName;
-	private String illustratorLastName;
-	private int bookType;
+	private String author;
 	private long isbn;
 	private String image;
 	
+	@Override
+	public boolean equals(Object anObject) {
+		if(!(anObject instanceof Book)) {
+			return false;
+		}
+		Book otherBook = (Book)anObject;
+		return otherBook.getBookId() == (getBookId());
+	}
 	
 	public String getImage() {
 		return image;
@@ -31,35 +35,11 @@ public class Book {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getAuthorFirstName() {
-		return authorFirstName;
+	public String getAuthor() {
+		return author;
 	}
-	public void setAuthorFirstName(String authorFirstName) {
-		this.authorFirstName = authorFirstName;
-	}
-	public String getAuthorLastName() {
-		return authorLastName;
-	}
-	public void setAuthorLastName(String authorLastName) {
-		this.authorLastName = authorLastName;
-	}
-	public String getIllustratorFirstName() {
-		return illustratorFirstName;
-	}
-	public void setIllustratorFirstName(String illustratorFirstName) {
-		this.illustratorFirstName = illustratorFirstName;
-	}
-	public String getIllustratorLastName() {
-		return illustratorLastName;
-	}
-	public void setIllustratorLastName(String illustratorLastName) {
-		this.illustratorLastName = illustratorLastName;
-	}
-	public int getBookType() {
-		return bookType;
-	}
-	public void setBookType(int bookType) {
-		this.bookType = bookType;
+	public void setAuthor(String author) {
+		this.author = author;
 	}
 	public long getIsbn() {
 		return isbn;
