@@ -14,11 +14,11 @@ public interface CompetitionDAO {
 	
 	public List<Competition> getListOfFinishedCompetitions(LocalDate todayDate);
 	
-	public List<Competition> getListOfActiveCompetitions(LocalDate todayDate, long familyId);
+	public List<Competition> getListOfActiveCompetitionsByFamily(LocalDate todayDate, long familyId);
 	
 	public List<Person> getListOfPeopleInCompetition(long competitionId);
 	
-	public List<Competition> getListOfCompetitionsByPerson(long personId);
+	public List<Competition> getListOfCompetitionsByPerson(LocalDate today, long personId);
 	
 	public void updateCompetition(Competition competition);
 	

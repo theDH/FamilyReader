@@ -5,8 +5,8 @@
       <li v-for="goal in goals" v-bind:key="goal">
         {{goal.nameOfGoal}}
         {{goal.description}}
-        {{goal.minutesToFinish}}
-        {{goal.isComplete}}
+        {{ getDaysRemaining(goal.startDate, goal.numberOfDays) }}
+        {{goal.minutesToReachGoal}}
       </li>
     </ul>
   </div>
@@ -19,7 +19,12 @@ export default {
       personId: this.$session.get('personId'),
       family: this.$session.get('family'),
       familyId: this.$session.get('familyId'),
-      goals: []
+      goals: [],
+      testDate: {
+        year: 2019,
+        monthValue: 4,
+        dayOfMonth: 10
+      }
     }
   },
   computed: {
@@ -36,10 +41,14 @@ export default {
   },
   methods: {
     getDaysRemaining (javaDate, days) {
-      let date = new Date(Date(javaDate.year, javaDate.monthValue - 1, javaDate.dayOfMonth))
-      let end = date.setDate(date.getDate() + days)
+      let date = new Date(javaDate.year, javaDate.monthValue - 1, javaDate.dayOfMonth)
+      console.log(date)
+      let end = new Date(date.setDate(date.getDate() + days))
+      console.log(end)
       let today = new Date()
+      console.log(today)
       let diff = end.getTime() - today.getTime()
+      console.log(diff)
       return Math.round(diff / 86400000)
     },
     getGoals () {

@@ -19,22 +19,36 @@ export default {
   data () {
     return {
       familyId: this.$session.get('familyId'),
-      competitions: this.$session.get('competitions'),
-      family: this.$session.get('family')
+      family: this.$session.get('family'),
+      personId: this.$session.get('personId'),
+      competitions: []
+    }
+  },
+  computed: {
+    personParams () {
+      const params = new URLSearchParams()
+      params.append('personId', this.personId)
+      return params
+    },
+    familyParams () {
+      const params = new URLSearchParams()
+      params.append('familyId', this.familyId)
+      return params
     }
   },
   methods: {
     getListOfCompetitions () {
-      this.competitions = null
       if (!this.family) {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/competitionlista'
+          url: 'http://localhost:8080/capstone/competitionlistperson',
+          params: this.personParams
         }).then(response => { this.competitions = response.data })
       } else {
         axios({
           method: 'get',
-          url: 'http://localhost:8080/capstone/competitionlist'
+          url: 'http://localhost:8080/capstone/competitionlistfamily',
+          params: this.familyParams
         }).then(response => { this.competitions = response.data })
       }
     }
