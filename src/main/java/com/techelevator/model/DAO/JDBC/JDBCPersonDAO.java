@@ -23,10 +23,9 @@ public class JDBCPersonDAO implements PersonDAO{
 
 	@Override
 	public void addPerson(long familyId, String name, boolean isParent, boolean isInactive) {
-		String sqlInsertPerson = "INSERT INTO people(people_id, family_id, name, is_parent, inactive) " +
+		String sqlInsertPerson = "INSERT INTO people(family_id, name, is_parent, inactive) " +
 				   "VALUES(?, ?, ?, ?)";
-		long personId = getNextPersonId();
-		jdbcTemplate.update(sqlInsertPerson, personId, familyId, name, isParent, false);
+		jdbcTemplate.update(sqlInsertPerson, familyId, name, isParent, false);
 	}
 
 	@Override

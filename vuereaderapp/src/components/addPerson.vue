@@ -1,22 +1,24 @@
 <template>
   <div>
-    <input type=text v-model="name" placeholder="name e.g. 'Janet', 'The Rock'"/>
+    <input type=text v-model="name" placeholder="'Janet', 'The Rock'"/>
     <select v-model="parent">
       <option value="" selected disabled>Choose role:</option>
       <option value=true>Parent</option>
       <option vaule=false>Child</option>
-    </select>
-    <button @click="returnToHomepage">Add New Person</button>
+    </select><br>
+    <button @click="validate">Add New Person</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import PrimaryButton from './PrimaryButton'
+import EventBus from './EventBus'
 export default {
   name: 'AddPerson',
   data () {
     return {
-      name: null,
+      name: '',
       familyId: this.$session.get('familyId'),
       parent: ''
     }
@@ -35,7 +37,19 @@ export default {
     },
     returnToHomepage () {
       this.$router.push('/homepage')
+    },
+    validate () {
+      console.log('validate')
+      if (this.name || this.parent !== '') {
+        console.log('validated')
+        this.addPerson()
+        EventBus.$emit('personAdded', true)
+        this.returnToHomepage()
+      }
     }
+  },
+  components: {
+    PrimaryButton
   }
 }
 </script>

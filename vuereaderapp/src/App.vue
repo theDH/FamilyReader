@@ -1,12 +1,17 @@
 <template>
-  <!-- <div id="app"> -->
+  <div id="app">
   <v-app>
-    <v-toolbar class="cyan darken-2">Family Reading App</v-toolbar>
+    <v-toolbar class="cyan darken-2">
+      <h1>Booknanza</h1>
+    </v-toolbar>
       <v-toolbar-title></v-toolbar-title>
     <v-content>
     <router-view/>
+    <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
     </v-content>
+    <v-navigation-drawer></v-navigation-drawer>
   </v-app>
+  </div>
 </template>
 
 <script>

@@ -1,7 +1,7 @@
  <template>
 
   <div>
-    <v-app id="inspire">
+    <!-- <v-app id="inspire"> -->
       <v-navigation-drawer permanent>
         <v-toolbar flat>
           <v-list>
@@ -28,7 +28,7 @@
           </v-list-tile>
         </v-list>
       </v-navigation-drawer>
-    </v-app>
+    <!-- </v-app> -->
   </div>
 
 </template>
@@ -72,8 +72,11 @@ export default {
       EventBus.$emit('familyPersonState', false, personId)
     }
   },
-  mounted () {
+  created () {
     this.getMembers()
+  },
+  mounted () {
+    EventBus.$on('personAdded', value => { if (value) { this.getMembers() } })
   }
 }
 </script>

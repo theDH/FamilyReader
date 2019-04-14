@@ -49,8 +49,8 @@ public class RestApiController {
 	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addperson", method=RequestMethod.POST)
-	public void addNewPerson(@RequestParam long familyId, @RequestParam String name, @RequestParam boolean isParent) {
-		personDAO.addPerson(familyId, name, isParent, false);
+	public void addNewPerson(@RequestBody Person person) {
+		personDAO.addPerson(person.getFamilyId(), person.getName(), person.isParent(), false);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")

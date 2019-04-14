@@ -1,6 +1,6 @@
 <template>
 <div>
-  <button class="Button">Button</button>
+  <button class="Button">Submit</button>
 </div>
 
 </template>
