@@ -22,11 +22,11 @@ public class JDBCPersonDAO implements PersonDAO{
 	}
 
 	@Override
-	public void addPerson(Person newPerson) {
+	public void addPerson(long familyId, String name, boolean isParent, boolean isInactive) {
 		String sqlInsertPerson = "INSERT INTO people(people_id, family_id, name, is_parent, inactive) " +
 				   "VALUES(?, ?, ?, ?)";
-		newPerson.setPeopleId(getNextPersonId());
-		jdbcTemplate.update(sqlInsertPerson, newPerson.getPeopleId(), newPerson.getFamilyId(), newPerson.getName(), newPerson.isParent(), newPerson.isInactive());
+		long personId = getNextPersonId();
+		jdbcTemplate.update(sqlInsertPerson, personId, familyId, name, isParent, false);
 	}
 
 	@Override

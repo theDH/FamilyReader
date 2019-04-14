@@ -6,7 +6,7 @@ import com.techelevator.model.Person;
 
 public interface PersonDAO {
 	
-	public void addPerson(Person newPerson);
+	public void addPerson(long familyId, String name, boolean isParent, boolean isInactive);
 	
 	public void deletePerson(long personId);
 	
