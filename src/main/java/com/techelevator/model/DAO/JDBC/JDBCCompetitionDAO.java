@@ -50,10 +50,10 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	}
 
 	@Override
-	public List<Competition> getListOfActiveCompetitions(LocalDate todayDate, long familyId) {
+	public List<Competition> getListOfActiveCompetitionsByFamily(LocalDate todayDate, long familyId) {
 		List<Competition> activeCompetitions = new ArrayList<Competition>();
 		todayDate =  LocalDate.now();
-		String getSqlOfActiveCompetitions = "SELECT * FROM competition JOIN competition_people ON competition.competition_id = competition_people.competition_id " +
+		String getSqlOfActiveCompetitions = "SELECT DISTINCT competition.* FROM competition JOIN competition_people ON competition.competition_id = competition_people.competition_id " +
 				"JOIN people ON people.people_id = competition_people.people_id " +
 				"JOIN family ON people.family_id = family.family_id " +
 				"WHERE family.family_id = ? " +
@@ -79,10 +79,10 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	}
 
 	@Override
-	public List<Competition> getListOfCompetitionsByPerson(long personId) {
+	public List<Competition> getListOfCompetitionsByPerson(LocalDate today, long personId) {
 		List<Competition> competitionsByPerson = new ArrayList<Competition>();
-		String getSqlOfCompetitionsByPeople = "SELECT * FROM competition JOIN competition_people ON competition.competition_id=competition_people.competition_id WHERE people_id = ?";
-		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfCompetitionsByPeople, personId);
+		String getSqlOfCompetitionsByPeople = "SELECT * FROM competition JOIN competition_people ON competition.competition_id=competition_people.competition_id WHERE people_id = ? AND competition.end_date > ?";
+		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfCompetitionsByPeople, personId, today);
 		while (results.next()) {
 			Competition competition = mapRowToCompetition(results);
 			competitionsByPerson.add(competition);
