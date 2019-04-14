@@ -90,7 +90,7 @@ public class JDBCBookDAO implements BookDAO {
 		Book book = new Book();
 		book.setBookId(results.getLong("book_id"));
 		book.setTitle(results.getString("title"));
-		book.setAuthor(results.getString("author_first"));
+		book.setAuthor(results.getString("author"));
 		book.setImage(results.getString("image"));
 		book.setIsbn(results.getInt("isbn"));
 		return book;
