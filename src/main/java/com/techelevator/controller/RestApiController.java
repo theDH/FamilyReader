@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.sym.Name;
 import com.techelevator.model.Book;
 import com.techelevator.model.Competition;
 import com.techelevator.model.Goal;
@@ -44,7 +45,11 @@ public class RestApiController {
 		this.goalDAO = goalDAO;
 		this.competitionDAO = competitionDAO;
 	}
-	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/addperson", method=RequestMethod.POST)
+	public void addNewPerson(@RequestParam long familyId, @RequestParam String name, @RequestParam boolean isParent) {
+		personDAO.addPerson(familyId, name, isParent, false);
+	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/authenticate", method=RequestMethod.POST)
