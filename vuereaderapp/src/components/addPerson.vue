@@ -40,7 +40,7 @@ export default {
     },
     validate () {
       console.log('validate')
-      if (this.name && this.parent != '') {
+      if (this.name && this.parent !== '') {
         console.log('validated')
         this.addPerson()
         EventBus.$emit('personAdded', true)
