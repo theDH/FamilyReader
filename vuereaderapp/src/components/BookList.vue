@@ -1,15 +1,15 @@
 <template>
   <div id="app">
   <v-app id="inspire">
-    <v-layout justify-center>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <v-toolbar color="indigo" dark>
-            <v-toolbar-title>Active Books</v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>Thumbnail</v-icon>
-            </v-btn>
+      <v-navigation-drawer permanent>
+        <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                Current Book List
+              </v-list-tile-title>
+           </v-list-tile>
+          </v-list>
           </v-toolbar>
           <v-list>
             <v-list-tile
@@ -25,11 +25,9 @@
               </v-list-tile-avatar>
             </v-list-tile>
           </v-list>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-app>
-</div>
+      </v-navigation-drawer>
+    </v-app>
+  </div>
 </template>
 
 <script>
