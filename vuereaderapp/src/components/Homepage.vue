@@ -10,7 +10,8 @@
               <v-card-text><book-list/></v-card-text>
           </v-card>
           <v-card>
-            <v-card-text><goal-list/></v-card-text>
+            <v-card-text><goal-list v-if="!showAddGoal" /></v-card-text>
+            <v-card-text><add-goal v-if="showAddGoal" /></v-card-text>
           </v-card>
           <v-card>
             <v-card-text><competition-list/></v-card-text>
@@ -35,17 +36,24 @@ import FamilyList from './FamilyList'
 import BookList from './BookList'
 import GoalList from './GoalList'
 import CompetitionList from './CompetitionList'
+import AddGoal from './AddGoal'
+import EventBus from './EventBus'
 export default {
   data () {
     return {
-      family: this.$session.get('family')
+      family: this.$session.get('family'),
+      showAddGoal: false
     }
   },
   components: {
     FamilyList,
     BookList,
     GoalList,
-    CompetitionList
+    CompetitionList,
+    AddGoal
+  },
+  mounted () {
+    EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
   }
 }
 </script>

@@ -9,7 +9,7 @@
         {{goal.minutesToReachGoal}} minutes remaining
       </li>
     </ul>
-    <v-btn v-if='!family'>Add Goals</v-btn>
+    <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
   </div>
 </template>
 <script>
@@ -47,6 +47,9 @@ export default {
       let diff = end.getTime() - today.getTime()
       console.log(diff)
       return Math.round(diff / 86400000)
+    },
+    addGoal () {
+      EventBus.$emit('toggleAddGoal', true)
     },
     getGoals () {
       if (!this.family) {
