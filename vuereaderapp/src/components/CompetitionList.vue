@@ -10,11 +10,13 @@
         {{competition.minutesToFinish}}
         </li>
     </ul>
+      <v-btn v-if='family'>Add Competition</v-btn>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   data () {
     return {
@@ -55,6 +57,14 @@ export default {
   },
   created () {
     this.getListOfCompetitions()
+  },
+  mounted () {
+    EventBus.$on('familyPersonState', (fState, pState) => {
+      console.log('listener')
+      this.family = fState
+      this.personId = pState
+      this.getGoals()
+    })
   }
 }
 </script>

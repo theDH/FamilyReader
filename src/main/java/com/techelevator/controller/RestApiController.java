@@ -13,9 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.sym.Name;
 import com.techelevator.model.Book;
+import com.techelevator.model.BookPerson;
 import com.techelevator.model.Competition;
 import com.techelevator.model.Goal;
 import com.techelevator.model.Person;
+import com.techelevator.model.Session;
+import com.techelevator.model.SessionRequest;
 import com.techelevator.model.Signup;
 import com.techelevator.model.User;
 import com.techelevator.model.DAO.BookDAO;
@@ -108,7 +111,7 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/competitionlistperson", method=RequestMethod.GET)
-	public List<Competition> getListOfActiveCompetitionsByPerson(long personId) {
+	public List<Competition> getListOfActiveCompetitionsByPerson(@RequestParam long personId) {
 		LocalDate todayDate = LocalDate.now();
 		return competitionDAO.getListOfCompetitionsByPerson(todayDate, personId);
 	}
@@ -121,10 +124,6 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="/homepage", method=RequestMethod.GET)
-	public void homepage() {
-	}
-	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/goallist", method=RequestMethod.GET)
 	public List<Goal> getGoalList(@RequestParam long personId) {
 		return goalDAO.getListOfAllGoals(personId);
@@ -134,5 +133,29 @@ public class RestApiController {
 	@RequestMapping(path="/goallistbyfamily", method=RequestMethod.GET)
 	public List<Goal> getFamilyGoalList(@RequestParam long familyId) {
 		return goalDAO.getListOfGoalsByFamily(familyId);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/getbooksnotreading", method=RequestMethod.GET)
+	public List<Book> getBooksNotReading(@RequestParam long familyId, @RequestParam long personId) {
+		return bookDAO.getListOfBooksNotReading(familyId, personId);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/addbook", method=RequestMethod.POST)
+	public void addBook(@RequestBody Book book) {
+		bookDAO.addNewBook(book);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/addpersonbook", method=RequestMethod.POST)
+	public void addBookToPerson(@RequestBody BookPerson bookPerson) {
+		bookDAO.addBookToPerson(bookPerson.getBook(), bookPerson.getPersonId());
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/addreadingactivity", method=RequestMethod.POST)
+	public void addReadingActivity(@RequestBody SessionRequest session) {
+		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId());
 	}
 }

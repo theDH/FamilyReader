@@ -16,4 +16,5 @@ public interface BookDAO {
 	
 	public Book getBookDetail(long bookId);
 
+	public List<Book> getListOfBooksNotReading(long familyId, long personId);
 }
