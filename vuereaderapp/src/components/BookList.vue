@@ -1,15 +1,15 @@
 <template>
   <div class="book-list">
     <v-card>
-      <v-list>
         <v-toolbar flat>
+          <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
                 Active Books
               </v-list-tile-title>
             </v-list-tile>
-          </v-toolbar>
-        </v-list>
+          </v-list>
+        </v-toolbar>
           <v-list-tile v-for="book in books" :key="book.title">
             <v-list-tile-avatar>
               <img :src="book.image">
@@ -78,7 +78,5 @@ export default {
   }
 }
 </script>
-
 <style>
-
 </style>
