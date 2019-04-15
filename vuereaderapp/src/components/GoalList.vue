@@ -1,6 +1,7 @@
 <template>
   <div class="goal-list">
     <v-card>
+      <v-navigation-drawer permanent>
        <v-toolbar flat>
           <v-list>
             <v-list-tile>
@@ -11,17 +12,19 @@
           </v-list>
         </v-toolbar>
     <v-divider></v-divider>
-      <v-list>
+      <v-list three-line>
         <v-list-tile v-for="goal in goals" :key="goal.goalId">
           <v-list-tile-content>
             <v-list-tile-title v-text="goal.nameOfGoal"></v-list-tile-title>
           </v-list-tile-content>
+          <v-divider></v-divider>
           <v-list-tile-sub-content>
              <v-list-tile-title v-text="goal.description"></v-list-tile-title>
           </v-list-tile-sub-content>
         </v-list-tile>
       </v-list>
       <v-btn v-if='!family'>Add Goals</v-btn>
+       </v-navigation-drawer>
     </v-card>
   </div>
 </template>
