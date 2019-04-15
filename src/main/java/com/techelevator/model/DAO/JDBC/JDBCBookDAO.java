@@ -116,6 +116,13 @@ public class JDBCBookDAO implements BookDAO {
 		yesBooks.removeAll(noBooks);
 		return yesBooks;
 	}
-
-
+	
+	@Override
+	public long getPeopleBookId(long peopleId, long isbn) {
+		String sql = "SELECT people_book.people_book_id FROM people_book JOIN book ON book.book_id = people_book.book_id"
+				+ " WHERE people_book.people_id = ? AND book.isbn = ?;";
+		SqlRowSet set = jdbcTemplate.queryForRowSet(sql, peopleId, isbn);
+		set.next();
+		return set.getLong(1);
+	}
 }

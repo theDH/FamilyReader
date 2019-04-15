@@ -26,6 +26,7 @@ import com.techelevator.model.DAO.CompetitionDAO;
 import com.techelevator.model.DAO.FamilyDAO;
 import com.techelevator.model.DAO.GoalDAO;
 import com.techelevator.model.DAO.PersonDAO;
+import com.techelevator.model.DAO.SessionDAO;
 import com.techelevator.model.DAO.UserDAO;
 
 
@@ -38,15 +39,17 @@ public class RestApiController {
 	private PersonDAO personDAO;
 	private GoalDAO goalDAO;
 	private CompetitionDAO competitionDAO;
+	private SessionDAO sessionDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO, CompetitionDAO competitionDAO) {
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO, CompetitionDAO competitionDAO, SessionDAO sessionDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
 		this.bookDAO = bookDAO;
 		this.personDAO = personDAO;
 		this.goalDAO = goalDAO;
 		this.competitionDAO = competitionDAO;
+		this.sessionDAO = sessionDAO;
 	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addperson", method=RequestMethod.POST)
@@ -163,7 +166,16 @@ public class RestApiController {
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addreadingactivity", method=RequestMethod.POST)
 	public void addReadingActivity(@RequestBody SessionRequest session) {
-		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId());
+		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId() + " " + session.getDateOfReading());
+		LocalDate date = LocalDate.parse(session.getDateOfReading());
+		Session newSession = new Session();
+		newSession.setDateOfReading(date);
+		newSession.setMinutesRead(session.getMinutesRead());
+		long peopleBookId = bookDAO.getPeopleBookId(session.getPersonId(), session.getIsbn());
+		newSession.setPeopleBookId(peopleBookId);
+		newSession.setTypeOfReading(session.getTypeOfReading());
+		sessionDAO.addSession(newSession);
+		
 	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/deleteperson", method=RequestMethod.POST)

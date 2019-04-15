@@ -7,10 +7,12 @@ import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import com.techelevator.model.Session;
 import com.techelevator.model.DAO.SessionDAO;
 
+@Component
 public class JDBCSessionDAO implements SessionDAO {
 
 	private JdbcTemplate jdbcTemplate;
@@ -22,12 +24,27 @@ public class JDBCSessionDAO implements SessionDAO {
 	@Override
 	public void addSession(Session newSession) {
 
-		String sqlInsertAddSession = "INSERT INTO session (people_book_id, date_reading, minutes_read, type_of_reading) Values "
-				+ "?, ?, ?, ? ";
-
-		jdbcTemplate.update(sqlInsertAddSession, newSession.getPeople_book_id(), newSession.getDateOfReading(),
-				newSession.getMinutesRead(), newSession.getTypeOfReading());
-
+		String sqlInsertAddSession = "INSERT INTO session (people_book_id, date_of_reading, minutes_read, type_of_reading) VALUES "
+				+ "(?, ?, ?, ?);";
+		int readingType = 0;
+		switch (newSession.getTypeOfReading()) {
+		case "readaloudreader":
+			readingType = 1;
+			break;
+		case "readaloudlistener":
+			readingType = 2;
+			break;
+		case "listenedto":
+			readingType = 3;
+			break;
+		case "readtoself":
+			readingType = 4;
+			break;
+		default:
+			break;
+		}
+		jdbcTemplate.update(sqlInsertAddSession, newSession.getPeopleBookId(), newSession.getDateOfReading(),
+				newSession.getMinutesRead(), readingType);
 	}
 
 	@Override
@@ -69,7 +86,7 @@ public class JDBCSessionDAO implements SessionDAO {
 		Session theSession = new Session();
 
 		theSession.setId(results.getLong("id"));
-		theSession.setPeople_book_id(results.getLong("people_book_id"));
+		theSession.setPeopleBookId(results.getLong("people_book_id"));
 		theSession.setDateOfReading((results.getDate("date_of_reading").toLocalDate()));
 		theSession.setTypeOfReading(results.getString("type_of_reading"));
 		theSession.setMinutesRead(results.getInt("minutes_read"));
@@ -81,7 +98,7 @@ public class JDBCSessionDAO implements SessionDAO {
 		Session theSession = new Session();
 
 		theSession.setId(results.getLong("id"));
-		theSession.setPeople_book_id(results.getLong("people_book_id"));
+		theSession.setPeopleBookId(results.getLong("people_book_id"));
 		theSession.setDateOfReading((results.getDate("date_of_reading").toLocalDate()));
 		theSession.setTypeOfReading(results.getString("type_of_reading"));
 		theSession.setMinutesRead(results.getInt("minutes_read"));
