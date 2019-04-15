@@ -89,6 +89,8 @@ export default {
           peopleId: this.$session.get('personId')
         }
       })
+      this.getMembers()
+      this.setFamilySession()
     }
   },
   created () {

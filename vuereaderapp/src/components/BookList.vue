@@ -10,7 +10,7 @@
             </v-list-tile>
           </v-toolbar>
         </v-list>
-          <v-list-tile v-for="book in books" :key="book.title">
+          <v-list-tile v-for="book in books" :key="book.title" @click="bookDetail(book.bookId)">
             <v-list-tile-avatar>
               <img :src="book.image">
             </v-list-tile-avatar>
@@ -47,6 +47,9 @@ export default {
     }
   },
   methods: {
+    bookDetail (bookId) {
+      EventBus.$emit('toggleBookDetail', true)
+    },
     getListOfBooks () {
       this.loading = true
       this.books = null
