@@ -10,6 +10,7 @@
         {{competition.minutesToFinish}}
         </li>
     </ul>
+      <v-btn v-if='family'>Add Competition</v-btn>
   </div>
 </template>
 

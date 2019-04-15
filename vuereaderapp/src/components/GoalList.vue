@@ -9,6 +9,7 @@
         {{goal.minutesToReachGoal}} minutes remaining
       </li>
     </ul>
+    <v-btn v-if='!family'>Add Goals</v-btn>
   </div>
 </template>
 <script>
