@@ -137,7 +137,7 @@ export default {
         data: {
           minutesRead: this.minutes,
           dateOfReading: this.date,
-          typeOfReading: 'string',
+          typeOfReading: 'readaloudreader',
           isbn: this.book.isbn,
           personId: this.personId
         }
