@@ -1,22 +1,27 @@
 <template>
   <div id="app">
-  <v-app>
-    <v-toolbar class="cyan darken-2">
-      <h1>Booknanza</h1>
-    </v-toolbar>
-      <v-toolbar-title></v-toolbar-title>
-    <v-content>
-    <router-view/>
-    <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
-    </v-content>
-    <v-navigation-drawer></v-navigation-drawer>
-  </v-app>
+    <v-app>
+      <v-toolbar dense="true" class="cyan darken-2">
+        <v-toolbar-title>Booknanza</v-toolbar-title>
+      </v-toolbar>
+      <v-content>
+        <router-view/>
+        <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
 <script>
 export default {
-
+  data () {
+    return {
+      navigation: this.$session.get('navigation')
+    }
+  },
+  created () {
+    this.$session.set('navigation', 'Log In')
+  }
 }
 </script>
 
@@ -27,6 +32,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
