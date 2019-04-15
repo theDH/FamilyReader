@@ -1,16 +1,23 @@
 <template>
   <div class="book-list">
     <v-card>
-      <v-list>
+      <v-navigation-drawer permanent>
         <v-toolbar flat>
+          <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
                 Active Books
               </v-list-tile-title>
             </v-list-tile>
+<<<<<<< HEAD
           </v-toolbar>
         </v-list>
           <v-list-tile v-for="book in books" :key="book.title" @click="bookDetail(book.bookId)">
+=======
+          </v-list>
+        </v-toolbar>
+          <v-list-tile v-for="book in books" :key="book.title">
+>>>>>>> 6bf8056853be591bc3fddae94321067df045531b
             <v-list-tile-avatar>
               <img :src="book.image">
             </v-list-tile-avatar>
@@ -18,6 +25,7 @@
                 <v-list-tile-title v-text="book.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+       </v-navigation-drawer>
     </v-card>
   </div>
 </template>
@@ -81,7 +89,5 @@ export default {
   }
 }
 </script>
-
 <style>
-
 </style>

@@ -1,15 +1,31 @@
 <template>
   <div class="goal-list">
-    <h1>List Of Active Goals</h1>
-    <ul>
-      <li v-for="goal in goals" v-bind:key="goal">
-        {{goal.nameOfGoal}}<br>
-        {{goal.description}}<br>
-        {{ getDaysRemaining(goal.startDate, goal.numberOfDays) }} days remaining<br>
-        {{goal.minutesToReachGoal}} minutes remaining
-      </li>
-    </ul>
-    <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
+    <v-card>
+      <v-navigation-drawer permanent>
+       <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                List of Active Goals
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+    <v-divider></v-divider>
+      <v-list three-line>
+        <v-list-tile v-for="goal in goals" :key="goal.goalId">
+          <v-list-tile-content>
+            <v-list-tile-title v-text="goal.nameOfGoal"></v-list-tile-title>
+          </v-list-tile-content>
+          <v-divider></v-divider>
+          <v-list-tile-sub-content>
+             <v-list-tile-title v-text="goal.description"></v-list-tile-title>
+          </v-list-tile-sub-content>
+        </v-list-tile>
+      </v-list>
+      <v-btn v-if='!family'>Add Goals</v-btn>
+       </v-navigation-drawer>
+    </v-card>
   </div>
 </template>
 <script>
@@ -21,7 +37,7 @@ export default {
       personId: this.$session.get('personId'),
       family: this.$session.get('family'),
       familyId: this.$session.get('familyId'),
-      goals: []
+      goals: null
     }
   },
   computed: {
@@ -47,9 +63,6 @@ export default {
       let diff = end.getTime() - today.getTime()
       console.log(diff)
       return Math.round(diff / 86400000)
-    },
-    addGoal () {
-      EventBus.$emit('toggleAddGoal', true)
     },
     getGoals () {
       if (!this.family) {

@@ -67,8 +67,11 @@ export default {
   mounted () {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
     EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
+<<<<<<< HEAD
     EventBus.$on('toggleAddPerson', state => { this.showAddPerson = state })
     EventBus.$on('toggleBookDetail', state => { this.showBookDetail = state })
+=======
+>>>>>>> 6bf8056853be591bc3fddae94321067df045531b
   }
 }
 </script>
