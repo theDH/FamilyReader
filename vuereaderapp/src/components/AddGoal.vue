@@ -12,8 +12,7 @@
 
 <script>
 import axios from 'axios'
-import PrimaryButton from './PrimaryButton'
-import EventBus from './EventBus';
+import EventBus from './EventBus'
 export default {
   name: 'AddGoal',
   data () {
@@ -22,7 +21,7 @@ export default {
       startDate: new Date().toISOString().substring(0, 10),
       numberOfDays: '',
       description: '',
-      minutesToReachGoal: '',
+      minutesToReachGoal: ''
     }
   },
   methods: {

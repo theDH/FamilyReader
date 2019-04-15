@@ -4,7 +4,8 @@
       <v-container fluid grid-list-md fill-height>
       <v-layout row fil-height>
           <v-card>
-            <v-card-text><family-list/></v-card-text>
+            <v-card-text><family-list v-if="!showAddPerson"/></v-card-text>
+            <v-card-text><add-person v-if="showAddPerson"/></v-card-text>
           </v-card>
             <v-card>
               <v-card-text><book-list/></v-card-text>
@@ -40,12 +41,14 @@ import CompetitionList from './CompetitionList'
 import AddGoal from './AddGoal'
 import EventBus from './EventBus'
 import AddCompetition from './AddCompetition'
+import addPerson from './addPerson'
 export default {
   data () {
     return {
       family: this.$session.get('family'),
       showAddGoal: false,
-      showAddCompetition: false
+      showAddCompetition: false,
+      showAddPerson: false
     }
   },
   components: {
@@ -54,12 +57,13 @@ export default {
     GoalList,
     CompetitionList,
     AddGoal,
-    AddCompetition
+    AddCompetition,
+    addPerson
   },
   mounted () {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
     EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
-
+    EventBus.$on('toggleAddPerson', state => { this.showAddPerson = state })
   }
 }
 </script>
