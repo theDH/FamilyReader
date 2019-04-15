@@ -158,4 +158,10 @@ public class RestApiController {
 	public void addReadingActivity(@RequestBody SessionRequest session) {
 		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId());
 	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/deleteperson", method=RequestMethod.POST)
+	public void deletePerson(@RequestBody Person person) {
+		personDAO.deletePerson(person.getPeopleId());
+
+	}
 }
