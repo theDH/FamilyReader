@@ -15,6 +15,7 @@
 
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   data () {
     return {
@@ -55,6 +56,14 @@ export default {
   },
   created () {
     this.getListOfCompetitions()
+  },
+  mounted () {
+    EventBus.$on('familyPersonState', (fState, pState) => {
+      console.log('listener')
+      this.family = fState
+      this.personId = pState
+      this.getGoals()
+    })
   }
 }
 </script>
