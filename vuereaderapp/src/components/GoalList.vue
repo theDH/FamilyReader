@@ -12,13 +12,13 @@
         </v-toolbar>
     <v-divider></v-divider>
       <v-list>
-        <v-list-tile v-for="goal in goals" :key="goal.id">
+        <v-list-tile v-for="goal in goals" :key="goal.goalId">
           <v-list-tile-content>
-            <v-list-tile-title>{{ goal.nameOfGoal }}</v-list-tile-title>
-            <v-list-tile-title>{{ goal.description }}</v-list-tile-title>
-            <v-list-tile-title>{{ goal.getDaysRemaining(goal.startDate, goal.numberOfDays) }} days remaining</v-list-tile-title>
-            <v-list-tile-title>{{ goal.minutesToReachGoal }} minutes to reach goal</v-list-tile-title>
+            <v-list-tile-title v-text="goal.nameOfGoal"></v-list-tile-title>
           </v-list-tile-content>
+          <v-list-tile-sub-content>
+             <v-list-tile-title v-text="goal.description"></v-list-tile-title>
+          </v-list-tile-sub-content>
         </v-list-tile>
       </v-list>
       <v-btn v-if='!family'>Add Goals</v-btn>
@@ -34,7 +34,7 @@ export default {
       personId: this.$session.get('personId'),
       family: this.$session.get('family'),
       familyId: this.$session.get('familyId'),
-      goals: []
+      goals: null
     }
   },
   computed: {

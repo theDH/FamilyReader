@@ -1,16 +1,5 @@
 <template>
   <div id="app">
-<<<<<<< HEAD
-  <v-app>
-    <v-toolbar class="cyan darken-2">
-      <v-toolbar-title>Booknanza</v-toolbar-title>
-    </v-toolbar>
-    <v-content>
-      <router-view/>
-      <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
-    </v-content>
-  </v-app>
-=======
     <v-app>
       <v-toolbar dense="true" class="cyan darken-2">
         <v-toolbar-title>Booknanza</v-toolbar-title>
@@ -20,7 +9,6 @@
         <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
       </v-content>
     </v-app>
->>>>>>> da21a6abde9a14bae1817b8495577778710f1702
   </div>
 </template>
 
