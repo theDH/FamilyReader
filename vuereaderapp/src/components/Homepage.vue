@@ -2,17 +2,18 @@
   <div id="app">
     <v-app id="inspire">
       <v-container fluid grid-list-md fill-height>
-      <v-layout row>
-          <v-card color="green lighten-2">
-            <v-card-text> <family-list/> </v-card-text>
+      <v-layout row fil-height>
+          <v-card>
+            <v-card-text><family-list/></v-card-text>
           </v-card>
-          <template>
-          <v-card color="green lighten-2">
-            <v-card-text><book-list/></v-card-text>
+            <v-card>
+              <v-card-text><book-list/></v-card-text>
           </v-card>
-          </template>
-          <v-card color="green lighten-2">
-            <v-card-text> <goal-list/></v-card-text>
+          <v-card>
+            <v-card-text><goal-list/></v-card-text>
+          </v-card>
+          <v-card>
+            <v-card-text><competition-list/></v-card-text>
           </v-card>
       </v-layout>
       </v-container>
