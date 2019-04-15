@@ -2,6 +2,7 @@
 
   <div>
     <!-- <v-app id="inspire"> -->
+    <v-card>
       <v-navigation-drawer permanent>
         <v-toolbar flat>
           <v-list>
@@ -12,9 +13,7 @@
             </v-list-tile>
           </v-list>
         </v-toolbar>
-
         <v-divider></v-divider>
-
         <v-list dense class="pt-0">
           <v-list-tile @click="setFamilySession">
             <v-list-tile-content>
@@ -31,6 +30,7 @@
         <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
+    </v-card>
   </div>
 
 </template>
@@ -89,6 +89,8 @@ export default {
           peopleId: this.$session.get('personId')
         }
       })
+      this.getMembers()
+      this.setFamilySession()
     }
   },
   created () {
@@ -106,7 +108,7 @@ export default {
 <style scoped>
 .family-list{
   background: #fff;
-  margin: 50px auto;
+  margin: 50px;
   font-family: 'Roboto Condensed', sans-serif;
   border-radius: 10px;
 }
