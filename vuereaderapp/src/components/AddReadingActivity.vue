@@ -53,7 +53,7 @@ export default {
       book: '',
       minutes: null,
       type: null,
-      date: new Date()
+      date: ''
     }
   },
   computed: {
@@ -101,7 +101,7 @@ export default {
       }).then(response => { this.newBookResults = response.data.docs })
     },
     postActivity () {
-      if (this.book !== '' && this.minutes) {
+      if (this.book !== '' && this.minutes && this.date !== '') {
         if (this.bookIsNew) {
           this.addNewBook()
         } else {
@@ -136,7 +136,7 @@ export default {
         url: 'http://localhost:8080/capstone/addreadingactivity',
         data: {
           minutesRead: this.minutes,
-          dateOfReading: this.date.toISOString().substring(0, 10),
+          dateOfReading: this.date,
           typeOfReading: 'string',
           isbn: this.book.isbn,
           personId: this.personId
