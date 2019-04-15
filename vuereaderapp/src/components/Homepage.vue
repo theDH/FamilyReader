@@ -59,7 +59,6 @@ export default {
   mounted () {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
     EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
-
   }
 }
 </script>

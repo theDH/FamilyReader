@@ -1,6 +1,7 @@
 <template>
   <div class="book-list">
     <v-card>
+      <v-navigation-drawer permanent>
         <v-toolbar flat>
           <v-list>
             <v-list-tile>
@@ -18,6 +19,7 @@
                 <v-list-tile-title v-text="book.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+       </v-navigation-drawer>
     </v-card>
   </div>
 </template>
