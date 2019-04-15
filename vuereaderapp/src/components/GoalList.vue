@@ -1,15 +1,28 @@
 <template>
   <div class="goal-list">
-    <h1>List Of Active Goals</h1>
-    <ul>
-      <li v-for="goal in goals" v-bind:key="goal">
-        {{goal.nameOfGoal}}<br>
-        {{goal.description}}<br>
-        {{ getDaysRemaining(goal.startDate, goal.numberOfDays) }} days remaining<br>
-        {{goal.minutesToReachGoal}} minutes remaining
-      </li>
-    </ul>
-    <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
+    <v-card>
+       <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                List of Active Goals
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+    <v-divider></v-divider>
+      <v-list>
+        <v-list-tile v-for="goal in goals" v-bind:key="goal.id">
+          <v-list-tile-content>
+            <v-list-tile-title>{{ goal.nameOfGoal }}</v-list-tile-title>
+            <v-list-tile-title>{{ goal.description }}</v-list-tile-title>
+            <v-list-tile-title>{{ goal.getDaysRemaining(goal.startDate, goal.numberOfDays) }} days remaining</v-list-tile-title>
+            <v-list-tile-title>{{ goal.minutesToReachGoal }} minutes to reach goal</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
+      <v-btn v-if='!family'>Add Goals</v-btn>
+    </v-card>
   </div>
 </template>
 <script>
@@ -47,9 +60,6 @@ export default {
       let diff = end.getTime() - today.getTime()
       console.log(diff)
       return Math.round(diff / 86400000)
-    },
-    addGoal () {
-      EventBus.$emit('toggleAddGoal', true)
     },
     getGoals () {
       if (!this.family) {

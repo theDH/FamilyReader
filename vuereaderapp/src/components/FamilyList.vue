@@ -26,7 +26,8 @@
            </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <v-btn v-if="!family">Delete Person</v-btn>
+        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
+        <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
     </v-card>
@@ -76,6 +77,9 @@ export default {
       this.$session.set('family', false)
       EventBus.$emit('familyPersonState', false, personId)
       this.family = false
+    },
+    addPerson () {
+      EventBus.$emit('toggleAddPerson', true)
     },
     deleteFamilyMember (personId) {
       this.$session.set('personId', personId)
