@@ -27,13 +27,8 @@
            </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <select v-model="deletePerson">
-            <option value="" selected disabled>Select person to delete</option>
-            <option v-for="member in members" v-bind:key="member">
-            {{member.name}}
-            </option>
-        </select>
-        <v-btn @click="deleteFamilyMember">Delete Person</v-btn>
+        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
+        <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
   </div>
@@ -49,6 +44,7 @@ export default {
     return {
       familyId: this.$session.get('familyId'),
       members: null,
+      family: this.$session.get('family'),
       deletePerson: ''
     }
   },
@@ -72,6 +68,7 @@ export default {
       console.log('setfamilysession')
       this.$session.set('personId', null)
       this.$session.set('family', true)
+      this.family = true
       EventBus.$emit('familyPersonState', true, null)
     },
     setPersonSession (personId) {
@@ -79,14 +76,17 @@ export default {
       this.$session.set('personId', personId)
       this.$session.set('family', false)
       EventBus.$emit('familyPersonState', false, personId)
+      this.family = false
+    },
+    addPerson () {
+      EventBus.$emit('toggleAddPerson', true)
     },
     deleteFamilyMember (personId) {
-      this.$session.set('personId', personId)
       axios({
         method: 'post',
         url: 'http://localhost:8080/capstone/deleteperson',
         data: {
-          personId: this.personId
+          peopleId: this.$session.get('personId')
         }
       })
     }
@@ -104,4 +104,10 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.family-list{
+  background: #fff;
+  margin: 50px auto;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-radius: 10px;
+}
 </style>

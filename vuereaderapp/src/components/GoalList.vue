@@ -9,7 +9,7 @@
         {{goal.minutesToReachGoal}} minutes remaining
       </li>
     </ul>
-    <v-btn v-if='!family'>Add Goals</v-btn>
+    <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
   </div>
 </template>
 <script>
@@ -48,6 +48,9 @@ export default {
       console.log(diff)
       return Math.round(diff / 86400000)
     },
+    addGoal () {
+      EventBus.$emit('toggleAddGoal', true)
+    },
     getGoals () {
       if (!this.family) {
         axios({
@@ -79,11 +82,8 @@ export default {
 </script>
 <style>
   .goal-list {
-        width:450px;
         background: #fff;
-        margin: 50px auto;
         font-family: 'Roboto Condensed', sans-serif;
-        border-radius: 10px;
     }
     h1 {
         background:#f2f2f2;
@@ -102,9 +102,9 @@ export default {
         padding:0px;
     }
     li {
-        font-size: 24px;
+        font-size: 12px;
         border-bottom:1px solid #f2f2f2;
-        padding:10px 20px;
+        padding:10px;
     }
     li:last-child{
         border:0px;

@@ -10,9 +10,16 @@ public class Competition {
 	private LocalDate endDate;
 	private String description;
 	private int minutesToFinish;
+	private Long familyId;
 	
 	
 	
+	public Long getFamilyId() {
+		return familyId;
+	}
+	public void setFamilyId(Long familyId) {
+		this.familyId = familyId;
+	}
 	public long getCompetitionId() {
 		return competitionId;
 	}

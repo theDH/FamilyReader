@@ -10,7 +10,7 @@
         {{competition.minutesToFinish}}
         </li>
     </ul>
-      <v-btn v-if='family'>Add Competition</v-btn>
+      <v-btn v-if='family' @click="addCompetition">Add Competition</v-btn>
   </div>
 </template>
 
@@ -39,6 +39,9 @@ export default {
     }
   },
   methods: {
+    addCompetition () {
+      EventBus.$emit('toggleAddCompetition', true)
+    },
     getListOfCompetitions () {
       if (!this.family) {
         axios({
@@ -64,18 +67,16 @@ export default {
       this.family = fState
       this.personId = pState
       this.getGoals()
-    })
+    }),
+    EventBus.$on('competitionAdded', value => { if (value) { this.getListOfCompetitions() } })
   }
 }
 </script>
 
 <style>
   .competition-list {
-        width:450px;
         background: #fff;
-        margin: 50px auto;
         font-family: 'Roboto Condensed', sans-serif;
-        border-radius: 10px;
     }
     h1 {
         background:#f2f2f2;

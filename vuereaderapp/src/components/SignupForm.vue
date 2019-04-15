@@ -39,7 +39,11 @@ export default {
           familyName: this.familyName,
           familyId: this.familyId
         }
-      }).then(response => { console.log(response) }).catch(e => console.log(e))
+      }).then(response => {
+        this.$session.set('familyId', response.data)
+        this.$session.set('personId', null)
+        this.$router.push('/homepage')
+      }).catch(e => console.log(e))
     },
     launchLogin () {
       this.$router.push('/login')

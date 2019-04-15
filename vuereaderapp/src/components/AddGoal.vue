@@ -6,12 +6,13 @@
     <input type=text v-model="description" placeholder="'Get a hug if you read 100 minutes in a week'"/>
     <input type=number v-model="minutesToReachGoal" placeholder="'100'"/>
     <button @click="validate">Add New Goal</button>
+    <button @click="cancel">Cancel</button>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import PrimaryButton from './PrimaryButton'
+import EventBus from './EventBus'
 export default {
   name: 'AddGoal',
   data () {
@@ -20,7 +21,7 @@ export default {
       startDate: new Date().toISOString().substring(0, 10),
       numberOfDays: '',
       description: '',
-      minutesToReachGoal: '',
+      minutesToReachGoal: ''
     }
   },
   methods: {
@@ -38,7 +39,7 @@ export default {
       }).then(response => { console.log(response) }).catch(e => console.log(e))
     },
     returnToHomepage () {
-      this.$router.push('/homepage')
+      EventBus.$emit('toggleAddGoal', false)
     },
     validate () {
       console.log('validate')
@@ -48,6 +49,9 @@ export default {
         EventBus.$emit('goalAdded', true)
         this.returnToHomepage()
       }
+    },
+    cancel () {
+      EventBus.$emit('toggleAddGoal', false)
     }
   }
 }
