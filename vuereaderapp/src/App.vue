@@ -1,15 +1,14 @@
 <template>
   <div id="app">
-  <v-app>
-    <v-toolbar class="cyan darken-2">
-      <v-toolbar-title>Booknanza</v-toolbar-title>
-    </v-toolbar>
-    <v-content>
-      <router-view/>
-      <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
-    </v-content>
-    <v-navigation-drawer></v-navigation-drawer>
-  </v-app>
+    <v-app>
+      <v-toolbar dense="true" class="cyan darken-2">
+        <v-toolbar-title>Booknanza</v-toolbar-title>
+      </v-toolbar>
+      <v-content>
+        <router-view/>
+        <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
+      </v-content>
+    </v-app>
   </div>
 </template>
 
@@ -33,6 +32,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
