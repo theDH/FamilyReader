@@ -25,7 +25,7 @@ public class JDBCSessionDAO implements SessionDAO {
 	public void addSession(Session newSession) {
 
 		String sqlInsertAddSession = "INSERT INTO session (people_book_id, date_of_reading, minutes_read, type_of_reading) VALUES "
-				+ "?, ?, ?, ? ";
+				+ "(?, ?, ?, ?);";
 		int readingType = 0;
 		switch (newSession.getTypeOfReading()) {
 		case "readaloudreader":
