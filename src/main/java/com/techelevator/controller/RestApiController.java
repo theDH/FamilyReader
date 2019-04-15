@@ -18,6 +18,7 @@ import com.techelevator.model.Competition;
 import com.techelevator.model.Goal;
 import com.techelevator.model.Person;
 import com.techelevator.model.Session;
+import com.techelevator.model.SessionRequest;
 import com.techelevator.model.Signup;
 import com.techelevator.model.User;
 import com.techelevator.model.DAO.BookDAO;
@@ -110,7 +111,7 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/competitionlistperson", method=RequestMethod.GET)
-	public List<Competition> getListOfActiveCompetitionsByPerson(long personId) {
+	public List<Competition> getListOfActiveCompetitionsByPerson(@RequestParam long personId) {
 		LocalDate todayDate = LocalDate.now();
 		return competitionDAO.getListOfCompetitionsByPerson(todayDate, personId);
 	}
@@ -154,7 +155,7 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addreadingactivity", method=RequestMethod.POST)
-	public void addReadingActivity(@RequestBody Session session) {
-		
+	public void addReadingActivity(@RequestBody SessionRequest session) {
+		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId());
 	}
 }

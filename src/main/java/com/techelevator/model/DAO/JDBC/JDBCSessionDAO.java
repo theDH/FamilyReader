@@ -73,7 +73,6 @@ public class JDBCSessionDAO implements SessionDAO {
 		theSession.setDateOfReading((results.getDate("date_of_reading").toLocalDate()));
 		theSession.setTypeOfReading(results.getString("type_of_reading"));
 		theSession.setMinutesRead(results.getInt("minutes_read"));
-		theSession.setName(results.getString("name"));
 
 		return theSession;
 	}

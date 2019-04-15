@@ -33,7 +33,7 @@
             {{member.name}}
             </option>
         </select>
-        <v-btn @click="deletePerson">Delete Person</v-btn>
+        <v-btn @click="deleteFamilyMember">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
   </div>
@@ -80,7 +80,7 @@ export default {
       this.$session.set('family', false)
       EventBus.$emit('familyPersonState', false, personId)
     },
-    deletePerson (personId) {
+    deleteFamilyMember (personId) {
       this.$session.set('personId', personId)
       axios({
         method: 'post',
