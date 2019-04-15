@@ -10,7 +10,7 @@
               </v-list-tile-title>
               </v-list-tile>
             </v-list>
-          </v-toolbar> 
+          </v-toolbar>
           <v-list-tile v-for="book in books" :key="book.title" @click="bookDetail(book.bookId)">
             <v-list-tile-avatar>
               <img :src="book.image">
