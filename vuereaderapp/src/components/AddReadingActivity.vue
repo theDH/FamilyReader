@@ -31,7 +31,7 @@
       </v-list-tile>
     </v-list>
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
-    <input v-model="date" type="date"/>
+    <input v-model="date" type="date"/><br>
     <button @click="postActivity">Submit</button>
   </div>
 </template>
