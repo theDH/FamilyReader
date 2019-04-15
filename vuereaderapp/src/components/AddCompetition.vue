@@ -3,7 +3,7 @@
     <input type="text" v-model="nameOfCompetition" placeholder="Name your competition"/>
     <input v-model="startDate" type="date" placeholder="start date"/>
     <input v-model="endDate" type="date" placeholder="end date"/>
-    <input type="test" v-model="description" placeholder="describe your competition"/>
+    <input type="text" v-model="description" placeholder="describe your competition"/>
     <input type="number" v-model="minutesInCompetition" placeholder="enter minutes in competition"/>
     <button @click="validate">Add New competition</button>
     <button @click="cancel">Cancel</button>
@@ -14,14 +14,13 @@
 import axios from 'axios'
 import EventBus from './EventBus'
 export default {
-  name: 'AddCompetition',
   data () {
     return {
-      nameOfCompetition: '',
-      startDate: new Date().toISOString().substring(0, 10),
-      endDate: new Date().toISOString().substring(0, 10),
+      nameOfCompetition: null,
+      startDate: null,
+      endDate: null,
       description: '',
-      minutesInCompetition: '',
+      minutesInCompetition: null,
       familyId: this.$session.get('familyId')
     }
   },
@@ -42,7 +41,7 @@ export default {
           startDate: this.startDate,
           endDate: this.endDate,
           description: this.description,
-          minutesInCompetition: this.minutesInCompetition,
+          minutesToFinish: this.minutesInCompetition,
           familyId: this.familyId
         }
       }).then(response => { console.log(response)
