@@ -73,6 +73,13 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/addcompetition", method=RequestMethod.POST)
+	public void addNewCompetition(@RequestParam Competition competition) {
+		System.out.println("hello");
+		competitionDAO.createNewCompetition(competition.getNameOfCompetition(), competition.getStartDate(), competition.getEndDate(), competition.getDescription(), competition.getMinutesToFinish(), competition.getFamilyId());
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/booklist", method=RequestMethod.GET)
 	public List<Book> getListOfBooks(@RequestParam long personId){
 		return bookDAO.getListOfBooksByPerson(personId);

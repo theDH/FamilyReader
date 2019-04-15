@@ -18,8 +18,8 @@ export default {
   data () {
     return {
       nameOfCompetition: '',
-      startDate: new Date().toISOString().substring(0,10),
-      endDate: new Date().toISOString().substring(0,10),
+      startDate: new Date().toISOString().substring(0, 10),
+      endDate: new Date().toISOString().substring(0, 10),
       description: '',
       minutesInCompetition: '',
       familyId: this.$session.get('familyId')
@@ -41,7 +41,7 @@ export default {
           nameOfCompetition: this.nameOfCompetition,
           startDate: this.startDate,
           endDate: this.endDate,
-          description: this.endDate,
+          description: this.description,
           minutesInCompetition: this.minutesInCompetition,
           familyId: this.familyId
         }

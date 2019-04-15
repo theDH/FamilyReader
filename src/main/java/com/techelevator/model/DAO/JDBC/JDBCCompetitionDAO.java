@@ -32,9 +32,9 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	}
 
 	@Override
-	public void createNewCompetition(Competition newCompetition) {
-		String insertNewCompetition="INSERT INTO competition (competition_id, name_of_competition, start_date, end_date, description, minutes_to_finish) VALUES (?,?,?,?,?,?)";
-		jdbcTemplate.update(insertNewCompetition,newCompetition.getCompetitionId(),newCompetition.getNameOfCompetition(),newCompetition.getStartDate(),newCompetition.getEndDate(),newCompetition.getDescription(),newCompetition.getMinutesToFinish());
+	public void createNewCompetition(String name, LocalDate start, LocalDate end, String description, int minutes, Long familyId) {
+		String insertNewCompetition="INSERT INTO competition (name_of_competition, start_date, end_date, description, minutes_to_finish, family_id) VALUES (?,?,?,?,?,?)";
+		jdbcTemplate.update(insertNewCompetition, name, start, end, description, minutes, familyId);
 	}
 
 	@Override
