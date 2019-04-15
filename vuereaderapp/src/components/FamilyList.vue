@@ -27,6 +27,13 @@
            </v-list-tile-content>
           </v-list-tile>
         </v-list>
+        <select v-model="deletePerson">
+            <option value="" selected disabled>Select person to delete</option>
+            <option v-for="member in members" v-bind:key="member">
+            {{member.name}}
+            </option>
+        </select>
+        <v-btn @click="deletePerson">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
   </div>
@@ -36,11 +43,13 @@
 <script>
 import axios from 'axios'
 import EventBus from './EventBus'
+import PrimaryButton from './PrimaryButton'
 export default {
   data () {
     return {
       familyId: this.$session.get('familyId'),
-      members: null
+      members: null,
+      deletePerson: ''
     }
   },
   computed: {
@@ -70,6 +79,16 @@ export default {
       this.$session.set('personId', personId)
       this.$session.set('family', false)
       EventBus.$emit('familyPersonState', false, personId)
+    },
+    deletePerson (personId) {
+      this.$session.set('personId', personId)
+      axios({
+        method: 'post',
+        url: 'http://localhost:8080/capstone/deleteperson',
+        data: {
+          personId: this.personId
+        }
+      })
     }
   },
   created () {
@@ -77,6 +96,9 @@ export default {
   },
   mounted () {
     EventBus.$on('personAdded', value => { if (value) { this.getMembers() } })
+  },
+  components: {
+    PrimaryButton
   }
 }
 </script>

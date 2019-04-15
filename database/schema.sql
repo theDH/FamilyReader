@@ -35,21 +35,14 @@ CREATE TABLE people (
 	constraint fk_people_family_family_id foreign key (family_id) references family (family_id)
 );
 
-CREATE TABLE book_type (
-	book_type_id SERIAL PRIMARY KEY,
-	book_type varchar(50) NOT NULL
-);
 
 CREATE TABLE book (
 	book_id SERIAL PRIMARY KEY,
 	title varchar(255) NOT NULL,
-	author_first varchar(100),
-	author_last varchar(100) NOT NULL,
-	book_type int,
+	author varchar(200) NOT NULL,
 	isbn int UNIQUE,
-	image varchar(600),
+	image varchar(600)
 	
-	constraint fk_book_book_type_book_type foreign key (book_type) references book_type (book_type_id)
 );
 
 
@@ -137,14 +130,10 @@ INSERT INTO competition_people (competition_id, people_id) VALUES (1, 1);
 INSERT INTO competition_people (competition_id, people_id) VALUES (1, 2);
 INSERT INTO competition_people (competition_id, people_id) VALUES (1, 3);
 INSERT INTO competition_people (competition_id, people_id) VALUES (1, 4);
-INSERT INTO book_type (book_type) VALUES ('Picture Book');
-INSERT INTO book_type (book_type) VALUES ('Paperback');
-INSERT INTO book_type (book_type) VALUES ('Audiobook');
-INSERT INTO book_type (book_type) VALUES ('eBook');
-INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Hop on Pop', 'Dr.', 'Seuss', 1, 0375828370, 'https://covers.openlibrary.org/b/id/7130596-L.jpg');
-INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Gray''s anatomy', 'Spalding', 'Gray', 2, 0679751785, 'https://ia800604.us.archive.org/zipview.php?zip=/1/items/olcovers42/olcovers42-L.zip&file=420864-L.jpg');
-INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Firestarter', 'Stephen', 'King', 3, 0451150317, 'https://ia800300.us.archive.org/BookReader/BookReaderPreview.php?id=firestartersigne00step&itemPath=%2F18%2Fitems%2Ffirestartersigne00step&server=ia800300.us.archive.org&page=cover_w500_h500.jpg');
-INSERT INTO book (title, author_first, author_last, book_type, isbn, image) VALUES ('Christmas With Eve (It Happened One Night...)', 'Elda', 'Minger', 4, 0373257147, 'https://ia800303.us.archive.org/BookReader/BookReaderPreview.php?id=christmaswitheve00ming&itemPath=%2F3%2Fitems%2Fchristmaswitheve00ming&server=ia800303.us.archive.org&page=cover_w500_h500.jpg');
+INSERT INTO book (title, author, isbn, image) VALUES ('Hop on Pop', 'Dr. Seuss', 0375828370, 'https://covers.openlibrary.org/b/id/7130596-L.jpg');
+INSERT INTO book (title, author, isbn, image) VALUES ('Gray''s anatomy', 'Spalding Gray', 0679751785, 'https://ia800604.us.archive.org/zipview.php?zip=/1/items/olcovers42/olcovers42-L.zip&file=420864-L.jpg');
+INSERT INTO book (title, author, isbn, image) VALUES ('Firestarter', 'Stephen King', 0451150317, 'https://ia800300.us.archive.org/BookReader/BookReaderPreview.php?id=firestartersigne00step&itemPath=%2F18%2Fitems%2Ffirestartersigne00step&server=ia800300.us.archive.org&page=cover_w500_h500.jpg');
+INSERT INTO book (title, author, isbn, image) VALUES ('Christmas With Eve (It Happened One Night...)', 'Elda Minger', 0373257147, 'https://ia800303.us.archive.org/BookReader/BookReaderPreview.php?id=christmaswitheve00ming&itemPath=%2F3%2Fitems%2Fchristmaswitheve00ming&server=ia800303.us.archive.org&page=cover_w500_h500.jpg');
 INSERT INTO reading_type (reading_type) VALUES ('Read-Aloud (reader)');
 INSERT INTO reading_type (reading_type) VALUES ('Read-Aloud (listener)');
 INSERT INTO reading_type (reading_type) VALUES ('Listened_To)');
