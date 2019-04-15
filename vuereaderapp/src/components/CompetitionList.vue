@@ -67,7 +67,7 @@ export default {
       this.family = fState
       this.personId = pState
       this.getGoals()
-    }),
+    })
     EventBus.$on('competitionAdded', value => { if (value) { this.getListOfCompetitions() } })
   }
 }

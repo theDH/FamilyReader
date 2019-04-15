@@ -9,8 +9,8 @@
           </v-card>
             <v-card>
               <v-card-text><book-list v-if="!showBookDetail"/></v-card-text>
-              <v-card-text<book-detail v-if="showBookDetail"/></v-card>
-          </v-card>
+              <v-card-text><book-detail v-if="showBookDetail"/></v-card-text>
+            </v-card>
           <v-card>
             <v-card-text><goal-list v-if="!showAddGoal" /></v-card-text>
             <v-card-text><add-goal v-if="showAddGoal" /></v-card-text>
@@ -67,11 +67,8 @@ export default {
   mounted () {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
     EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
-<<<<<<< HEAD
     EventBus.$on('toggleAddPerson', state => { this.showAddPerson = state })
     EventBus.$on('toggleBookDetail', state => { this.showBookDetail = state })
-=======
->>>>>>> 6bf8056853be591bc3fddae94321067df045531b
   }
 }
 </script>
