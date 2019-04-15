@@ -69,6 +69,7 @@ export default {
       this.getGoals()
     })
     EventBus.$on('competitionAdded', value => { if (value) { this.getListOfCompetitions() } })
+    EventBus.$on('rebootCompetitionList', value => { if (value) { this.getListOfCompetitions() } })
   }
 }
 </script>

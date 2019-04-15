@@ -45,7 +45,9 @@ export default {
           minutesInCompetition: this.minutesInCompetition,
           familyId: this.familyId
         }
-      }).then(response => { console.log(response) }).catch(e => console.log(e))
+      }).then(response => { console.log(response)
+        EventBus.$emit('rebootCompetitionList', true)
+      }).catch(e => console.log(e))
     },
     validate () {
       console.log('validate')
