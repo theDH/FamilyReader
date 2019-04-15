@@ -27,7 +27,8 @@
            </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <v-btn v-if="!family">Delete Person</v-btn>
+        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
+        <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
   </div>
@@ -77,13 +78,15 @@ export default {
       EventBus.$emit('familyPersonState', false, personId)
       this.family = false
     },
+    addPerson () {
+      EventBus.$emit('toggleAddPerson', true)
+    },
     deleteFamilyMember (personId) {
-      this.$session.set('personId', personId)
       axios({
         method: 'post',
         url: 'http://localhost:8080/capstone/deleteperson',
         data: {
-          personId: this.personId
+          peopleId: this.$session.get('personId')
         }
       })
     }

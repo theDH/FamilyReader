@@ -30,7 +30,8 @@ public class JDBCPersonDAO implements PersonDAO{
 
 	@Override
 	public void deletePerson(long personId) {
-		String sqlDelete = "DELETE FROM people WHERE id = ?;";
+		String sqlDelete = "UPDATE people SET inactive = true WHERE people_id = ?;";
+		System.out.println(personId);
 		jdbcTemplate.update(sqlDelete, personId);
 		
 	}
@@ -39,7 +40,7 @@ public class JDBCPersonDAO implements PersonDAO{
 	public List<Person> getListOfPeopleInFamily(long familyId) {
 	ArrayList<Person> persons = new ArrayList<Person>();
 	String sql = " SELECT * FROM people JOIN family ON people.family_id = family.family_id " +
-	" WHERE people.family_id =?; ";
+	" WHERE people.family_id =? AND people.inactive = false; ";
 	SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
 	while (results.next()) {
 		Person person = mapRowToPerson(results);
