@@ -67,6 +67,7 @@ export default {
       console.log('setfamilysession')
       this.$session.set('personId', null)
       this.$session.set('family', true)
+      this.family = true
       EventBus.$emit('familyPersonState', true, null)
     },
     setPersonSession (personId) {
@@ -74,6 +75,7 @@ export default {
       this.$session.set('personId', personId)
       this.$session.set('family', false)
       EventBus.$emit('familyPersonState', false, personId)
+      this.family = false
     },
     deleteFamilyMember (personId) {
       this.$session.set('personId', personId)
