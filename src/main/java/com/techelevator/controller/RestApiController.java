@@ -66,10 +66,10 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/signup", method=RequestMethod.POST)
-	public void addNewUser(@RequestBody Signup signup) {
+	public long addNewUser(@RequestBody Signup signup) {
 		long familyId = familyDAO.addFamily(signup);
 		userDAO.saveUser(signup.getUserName(), signup.getPassword(), familyId);
-		
+		return familyId;
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
