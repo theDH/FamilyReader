@@ -81,7 +81,6 @@ export default {
   .goal-list {
         background: #fff;
         font-family: 'Roboto Condensed', sans-serif;
-        border-radius: 10px;
     }
     h1 {
         background:#f2f2f2;

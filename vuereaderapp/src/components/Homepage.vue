@@ -6,10 +6,10 @@
           <v-card>
             <v-card-text> <family-list/> </v-card-text>
           </v-card>
-            <v-card color="green lighten-2">
+            <v-card>
               <v-card-text><book-list/></v-card-text>
           </v-card>
-          <v-card color="green lighten-2">
+          <v-card>
             <v-card-text> <goal-list/></v-card-text>
           </v-card>
           <v-card>
