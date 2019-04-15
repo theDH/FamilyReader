@@ -6,11 +6,9 @@
           <v-card>
             <v-card-text> <family-list/> </v-card-text>
           </v-card>
-          <template v-if='family'>
             <v-card color="green lighten-2">
               <v-card-text><book-list/></v-card-text>
-            </v-card>
-          </template>
+          </v-card>
           <v-card color="green lighten-2">
             <v-card-text> <goal-list/></v-card-text>
           </v-card>
