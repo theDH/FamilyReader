@@ -91,8 +91,8 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/bookdetail", method=RequestMethod.GET)
-	public Book getBookDetail(@RequestParam long familyId) {
-		return bookDAO.getBookDetail(familyId);
+	public Book getBookDetail(@RequestParam long bookId) {
+		return bookDAO.getBookDetail(bookId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
