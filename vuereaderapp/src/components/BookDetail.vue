@@ -2,7 +2,7 @@
   <div class="book-detail">
     <h1>Book Detail</h1>
     <ul>
-      <li v-for="bookDetail in bookDetails" v-bind:key="bookDetail">{{ bookDetail }}</li>
+      <li>{{ book }}</li>
     </ul>
     <v-btn fab dark color="primary" @click="back">
         <v-icon dark>Back</v-icon>
@@ -16,8 +16,8 @@ import EventBus from './EventBus'
 export default {
   data () {
     return {
-      bookDetails: null,
-      bookId: null
+      bookId: this.$session.get('bookId'),
+      book: null
     }
   },
   computed: {
@@ -30,20 +30,25 @@ export default {
   methods: {
     getBookDetails () {
       this.loading = true
-      this.bookDetails = null
+      this.book = null
       axios({
         method: 'get',
         url: 'http://localhost:8080/capstone/bookdetail',
         params: this.bookParams
-      }).then(response => { this.bookDetails = response.data })
+      }).then(response => { this.book = response.data })
     },
     back () {
       EventBus.$emit('showBookDetail', false)
     }
   },
+  created () {
+    this.getBookDetails()
+  },
   mounted () {
-    EventBus.$on('showBookDdetail', (value, book) => {
-      this.bookDetails = book
+    EventBus.$on('showBookDetail', (state, bookId) => {
+      this.bookId = bookId
+      this.state = true
+      this.getBookDetails()
     })
   }
 }
