@@ -12,7 +12,7 @@
         </v-toolbar>
     <v-divider></v-divider>
       <v-list>
-        <v-list-tile v-for="goal in goals" v-bind:key="goal.id">
+        <v-list-tile v-for="goal in goals" :key="goal.id">
           <v-list-tile-content>
             <v-list-tile-title>{{ goal.nameOfGoal }}</v-list-tile-title>
             <v-list-tile-title>{{ goal.description }}</v-list-tile-title>

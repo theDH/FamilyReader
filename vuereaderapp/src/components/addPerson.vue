@@ -4,7 +4,7 @@
     <select v-model="parent">
       <option value="" selected disabled>Choose role:</option>
       <option value=true>Parent</option>
-      <option vaule=false>Child</option>
+      <option value=false>Child</option>
     </select><br>
     <button @click="validate">Add New Person</button>
     <button @click="cancel">Cancel</button>
@@ -37,7 +37,7 @@ export default {
       }).then(response => { console.log(response) }).catch(e => console.log(e))
     },
     returnToHomepage () {
-      EventBus.$emit('toggleAddGoal', false)
+      EventBus.$emit('toggleAddPerson', false)
     },
     validate () {
       console.log('validate')

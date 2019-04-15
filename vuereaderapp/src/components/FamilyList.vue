@@ -82,12 +82,11 @@ export default {
       EventBus.$emit('toggleAddPerson', true)
     },
     deleteFamilyMember (personId) {
-      this.$session.set('personId', personId)
       axios({
         method: 'post',
         url: 'http://localhost:8080/capstone/deleteperson',
         data: {
-          personId: this.personId
+          peopleId: this.$session.get('personId')
         }
       })
     }

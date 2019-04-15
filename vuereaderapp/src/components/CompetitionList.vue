@@ -10,7 +10,7 @@
         {{competition.minutesToFinish}}
         </li>
     </ul>
-      <v-btn v-if='family' @click="addCompetiton">Add Competition</v-btn>
+      <v-btn v-if='family' @click="addCompetition">Add Competition</v-btn>
   </div>
 </template>
 
@@ -67,7 +67,8 @@ export default {
       this.family = fState
       this.personId = pState
       this.getGoals()
-    })
+    }),
+    EventBus.$on('competitionAdded', value => { if (value) { this.getListOfCompetitions() } })
   }
 }
 </script>
