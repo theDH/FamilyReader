@@ -2,30 +2,30 @@ package com.techelevator.model;
 
 import java.time.LocalDate;
 
-public class Session {
-	
-	private long id;
-	private LocalDate dateOfReading;
+public class SessionRequest {
+
+	private String dateOfReading;
 	private int minutesRead;
 	private String typeOfReading;
-	private long people_book_id;
+	private long personId;
+	private long isbn;
 	
-	public long getPeople_book_id() {
-		return people_book_id;
+	public long getPersonId() {
+		return personId;
 	}
-	public void setPeople_book_id(long people_book_id) {
-		this.people_book_id = people_book_id;
+	public void setPersonId(long personId) {
+		this.personId = personId;
 	}
-	public long getId() {
-		return id;
+	public long getIsbn() {
+		return isbn;
 	}
-	public void setId(long id) {
-		this.id = id;
+	public void setIsbn(long isbn) {
+		this.isbn = isbn;
 	}
-	public LocalDate getDateOfReading() {
+	public String getDateOfReading() {
 		return dateOfReading;
 	}
-	public void setDateOfReading(LocalDate dateOfReading) {
+	public void setDateOfReading(String dateOfReading) {
 		this.dateOfReading = dateOfReading;
 	}
 	public int getMinutesRead() {
@@ -40,7 +40,4 @@ public class Session {
 	public void setTypeOfReading(String typeOfReading) {
 		this.typeOfReading = typeOfReading;
 	}
-	
-	
-
 }
