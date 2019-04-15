@@ -68,7 +68,7 @@ CREATE TABLE session (
 	minutes_read int NOT NULL,
 	type_of_reading int,
 	
-	constraint fk_session_people_book_id foreign key (people_book_id) references people_book (people_book_id),
+	constraint fk_session_people_book_id foreign key (people_book_id) references people_book (people_book_id)
 );
 
 
