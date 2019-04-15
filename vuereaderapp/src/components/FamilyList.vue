@@ -27,13 +27,7 @@
            </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <select v-model="deletePerson">
-            <option value="" selected disabled>Select person to delete</option>
-            <option v-for="member in members" v-bind:key="member">
-            {{member.name}}
-            </option>
-        </select>
-        <v-btn @click="deleteFamilyMember">Delete Person</v-btn>
+        <v-btn v-if="!family">Delete Person</v-btn>
       </v-navigation-drawer>
     <!-- </v-app> -->
   </div>
@@ -49,6 +43,7 @@ export default {
     return {
       familyId: this.$session.get('familyId'),
       members: null,
+      family: this.$session.get('family'),
       deletePerson: ''
     }
   },

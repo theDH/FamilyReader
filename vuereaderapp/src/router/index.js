@@ -14,6 +14,7 @@ import BookDetail from '@/components/BookDetail'
 import AddReadingActivity from '@/components/AddReadingActivity'
 import Homepage from '@/components/Homepage'
 import AddPerson from '@/components/addPerson'
+import AddGoal from '@/components/AddGoal'
 
 Vue.use(Router)
 
@@ -26,6 +27,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: LoginForm
+    },
+    {
+      path: '/addgoal',
+      name: 'addgoal',
+      component: AddGoal
     },
     {
       path: '/addperson',

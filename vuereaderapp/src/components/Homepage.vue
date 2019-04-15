@@ -6,7 +6,7 @@
           <v-card color="green lighten-2">
             <v-card-text> <family-list/> </v-card-text>
           </v-card>
-          <template v-if='family'>
+          <template>
           <v-card color="green lighten-2">
             <v-card-text><book-list/></v-card-text>
           </v-card>
