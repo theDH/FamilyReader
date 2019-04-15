@@ -88,9 +88,10 @@ export default {
         data: {
           peopleId: this.$session.get('personId')
         }
+      }).then(response => {
+        this.getMembers()
+        this.setFamilySession()
       })
-      this.getMembers()
-      this.setFamilySession()
     }
   },
   created () {
@@ -98,6 +99,7 @@ export default {
   },
   mounted () {
     EventBus.$on('personAdded', value => { if (value) { this.getMembers() } })
+    EventBus.$on('rebootFamilyList', value => { if (value) { this.getMembers() } })
   },
   components: {
     PrimaryButton

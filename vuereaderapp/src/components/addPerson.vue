@@ -34,7 +34,10 @@ export default {
           parent: this.parent,
           familyId: this.familyId
         }
-      }).then(response => { console.log(response) }).catch(e => console.log(e))
+      }).then(response => {
+        console.log(response)
+        EventBus.$emit('rebootFamilyList', true)
+      }).catch(e => console.log(e))
     },
     returnToHomepage () {
       EventBus.$emit('toggleAddPerson', false)

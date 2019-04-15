@@ -4,6 +4,7 @@
       <v-toolbar dense="true" class="cyan darken-2">
         <v-toolbar-title>Booknanza</v-toolbar-title>
       </v-toolbar>
+      <v-toolbar flat color="white"></v-toolbar>
       <v-content>
         <router-view/>
         <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
