@@ -37,7 +37,7 @@ import CompetitionList from './CompetitionList'
 export default {
   data () {
     return {
-    family: this.$session.get('family')
+      family: this.$session.get('family')
     }
   },
   components: {
