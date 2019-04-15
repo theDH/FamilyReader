@@ -82,4 +82,10 @@ export default {
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.family-list{
+  background: #fff;
+  margin: 50px auto;
+  font-family: 'Roboto Condensed', sans-serif;
+  border-radius: 10px;
+}
 </style>
