@@ -10,7 +10,7 @@
         {{competition.minutesToFinish}}
         </li>
     </ul>
-      <v-btn v-if='family'>Add Competition</v-btn>
+      <v-btn v-if='family' @click="addCompetiton">Add Competition</v-btn>
   </div>
 </template>
 
@@ -39,6 +39,9 @@ export default {
     }
   },
   methods: {
+    addCompetition () {
+      EventBus.$emit('toggleAddCompetition', true)
+    },
     getListOfCompetitions () {
       if (!this.family) {
         axios({

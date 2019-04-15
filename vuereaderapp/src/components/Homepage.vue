@@ -14,7 +14,8 @@
             <v-card-text><add-goal v-if="showAddGoal" /></v-card-text>
           </v-card>
           <v-card>
-            <v-card-text><competition-list/></v-card-text>
+            <v-card-text><competition-list v-if="!showAddCompetition" /></v-card-text>
+            <v-card-text><add-competition v-if="showAddCompetition" /></v-card-text>
           </v-card>
       </v-layout>
       </v-container>
@@ -38,11 +39,13 @@ import GoalList from './GoalList'
 import CompetitionList from './CompetitionList'
 import AddGoal from './AddGoal'
 import EventBus from './EventBus'
+import AddCompetition from './AddCompetition'
 export default {
   data () {
     return {
       family: this.$session.get('family'),
-      showAddGoal: false
+      showAddGoal: false,
+      showAddCompetition: false
     }
   },
   components: {
@@ -50,10 +53,13 @@ export default {
     BookList,
     GoalList,
     CompetitionList,
-    AddGoal
+    AddGoal,
+    AddCompetition
   },
   mounted () {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
+    EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
+
   }
 }
 </script>
