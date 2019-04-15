@@ -72,7 +72,6 @@ export default {
 <style>
   .competition-list {
         background: #fff;
-        margin: 50px auto;
         font-family: 'Roboto Condensed', sans-serif;
     }
     h1 {
