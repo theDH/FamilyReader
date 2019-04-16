@@ -24,9 +24,9 @@ public class JDBCBookDAO implements BookDAO {
 	
 	@Override
 	public void addBookToPerson(Book book, long personId) {
-		String sql = "INSERT INTO people_book (id, book_id, people_id) " +
-					"VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, getNextPeopleBookId(), book.getBookId(), personId);
+		String sql = "INSERT INTO people_book (book_id, people_id) " +
+					"VALUES (?, ?)";
+		jdbcTemplate.update(sql, book.getBookId(), personId);
 	}
 
 	@Override
