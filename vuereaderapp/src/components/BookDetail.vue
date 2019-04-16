@@ -1,12 +1,37 @@
 <template>
   <div class="book-detail">
-    <h1>Book Detail</h1>
-    <ul>
-      <li>{{ book }}</li>
-    </ul>
-    <v-btn fab dark color="primary" @click="back">
-        <v-icon dark>Back</v-icon>
+    <v-card>
+      <v-navigation-drawer permanent>
+       <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                Book Details
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+    <v-divider></v-divider>
+      <v-list three-line>
+        <v-list-tile :key="book">
+          <v-list-tile-content>
+            <v-list-tile-title v-text="book.title"></v-list-tile-title>
+          </v-list-tile-content>
+          <v-list-tile-sub-content>
+             <v-list-tile-title v-text="book.author"></v-list-tile-title>
+          </v-list-tile-sub-content>
+          <v-list-tile-sub-content>
+
+             <v-list-tile-title v-text="book.isbn"></v-list-tile-title>
+
+          </v-list-tile-sub-content>
+        </v-list-tile>
+      </v-list>
+    <v-btn @click="back">
+       Back
       </v-btn>
+      </v-navigation-drawer>
+    </v-card>
   </div>
 </template>
 
@@ -54,6 +79,33 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+  .book-detail {
+          background: #fff;
+          font-family: 'Roboto Condensed', sans-serif;
+      }
+      h1 {
+          background:#f2f2f2;
+          color:#4b86A6;
+          padding:10px;
+          font-size:24px;
+          text-transform: uppercase;
+          text-align: center;
+          margin-bottom: 0px;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+      }
+      ul {
+          list-style-type: none;
+          margin:0px;
+          padding:0px;
+      }
+      li {
+          font-size: 12px;
+          border-bottom:1px solid #f2f2f2;
+          padding:10px;
+      }
+      li:last-child{
+          border:0px;
+      }
 </style>
