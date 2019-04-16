@@ -115,7 +115,10 @@ export default {
         method: 'post',
         url: 'http://localhost:8080/capstone/addbook',
         data: {
-          book: this.book
+          title: this.book.title,
+          author: this.book.author,
+          isbn: this.book.isbn,
+          image: this.book.image
         }
       }).then(response => { this.addBookPerson() })
     },
