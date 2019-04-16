@@ -13,9 +13,9 @@
   </v-toolbar>
   <v-divider></v-divider>
   <v-list>
-    <v-list-tile v-for="session in sessions" :key="session">
+    <v-list-tile v-for="session in sessions" :key="session.sessionId">
       <v-list-tile-content>
-        <v-list-tile-title v-text="session"></v-list-tile-title>
+        <v-list-tile-title v-text="session.personId"></v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
@@ -39,17 +39,17 @@ export default {
     }
   },
   computed: {
-    personSessionParams (){
-    const params = new URLSearchParams()
-    params.append('personId', this.personId)
-    return params
+    personSessionParams () {
+      const params = new URLSearchParams()
+      params.append('personId', this.personId)
+      return params
+    },
+    familySessionParams () {
+      const params = new URLSearchParams()
+      params.append('familyId', this.familyId)
+      return params
   },
-  familySessionParams () {
-    const params = new URLSearchParams()
-    params.append('personId', this.personId)
-    return params
-  },
-    methods: {
+  methods: {
     getListOfActivities () {
       this.loading = true
       this.sessions = null
