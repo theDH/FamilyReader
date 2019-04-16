@@ -19,6 +19,8 @@
               <v-list-tile-title v-text="book.title"></v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
+        <br>
+        <!-- <v-btn id = "add-button" @click="addActivity">Add New Reading Activity</v-btn> -->
        </v-navigation-drawer>
     </v-card>
   </div>
@@ -84,5 +86,9 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
+add-btn{
+  color:cadetblue;
+}
+
 </style>
