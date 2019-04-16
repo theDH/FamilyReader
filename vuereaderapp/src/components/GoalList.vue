@@ -17,7 +17,7 @@
            <v-card-text-title>Minutes to reach goal:</v-card-text-title>
            <v-card-text-condensed goal v-text="goal.minutesToReachGoal"></v-card-text-condensed>
            <v-card-text-title>Days remaining to reach goal:</v-card-text-title>
-           <v-card-text-condensed v-text="getDaysRemaining(goal.startDate, goal.numberOfDays)"></v-card-text-condensed>
+           <v-card-text v-text="getDaysRemaining(goal.startDate, goal.numberOfDays)"></v-card-text>
            <v-divider></v-divider>
          </v-card-text>
       <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
