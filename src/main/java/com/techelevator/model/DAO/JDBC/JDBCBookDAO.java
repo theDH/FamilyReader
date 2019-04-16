@@ -25,7 +25,15 @@ public class JDBCBookDAO implements BookDAO {
 	public void addBookToPerson(Book book, long personId) {
 		String sql = "INSERT INTO people_book (book_id, people_id) " +
 					"VALUES (?, ?)";
-		jdbcTemplate.update(sql, book.getBookId(), personId);
+		jdbcTemplate.update(sql, getBookIdByIsbn(book.getIsbn()), personId);
+	}
+	
+	@Override
+	public long getBookIdByIsbn(long isbn) {
+		String sql = "SELECT book_id FROM book WHERE isbn = ?";
+		SqlRowSet set = jdbcTemplate.queryForRowSet(sql, isbn);
+		set.next();
+		return set.getLong(1);
 	}
 
 	@Override
@@ -54,6 +62,13 @@ public class JDBCBookDAO implements BookDAO {
 			books.add(book);
 		}
 		return books;
+	}
+	
+	@Override
+	public void setBookInactive(long personId, long isbn) {
+		String sql = "INSERT INTO people_book (inactive) VALUES (?) WHERE people_id = ? AND book_id = ?";
+		long bookId = getBookIdByIsbn(isbn);
+		jdbcTemplate.update(sql, personId, bookId);
 	}
 
 	@Override

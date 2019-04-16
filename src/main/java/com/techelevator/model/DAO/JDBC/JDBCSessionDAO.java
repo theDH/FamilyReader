@@ -28,16 +28,16 @@ public class JDBCSessionDAO implements SessionDAO {
 				+ "(?, ?, ?, ?);";
 		int readingType = 0;
 		switch (newSession.getTypeOfReading()) {
-		case "readaloudreader":
+		case "Read-Aloud (reader)":
 			readingType = 1;
 			break;
-		case "readaloudlistener":
+		case "Read-Aloud (listener)":
 			readingType = 2;
 			break;
-		case "listenedto":
+		case "Listened_To":
 			readingType = 3;
 			break;
-		case "readtoself":
+		case "Read-To_Self":
 			readingType = 4;
 			break;
 		default:

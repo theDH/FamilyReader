@@ -186,8 +186,11 @@ public class RestApiController {
 		newSession.setPeopleBookId(peopleBookId);
 		newSession.setTypeOfReading(session.getTypeOfReading());
 		sessionDAO.addSession(newSession);
-		
+		if (session.isFinished()) {
+			bookDAO.setBookInactive(session.getPersonId(), session.getIsbn());
+		}
 	}
+	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addcompetition", method=RequestMethod.POST)
 	public void addNewCompetition(@RequestBody CompetitionRequest competition) {
