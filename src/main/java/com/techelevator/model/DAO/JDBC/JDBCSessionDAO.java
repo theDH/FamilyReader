@@ -52,7 +52,7 @@ public class JDBCSessionDAO implements SessionDAO {
 		
 		List<Session> listOfSession = new ArrayList<>();
 
-		String sqlSearchGetListOfSessionByPerson = "Select * FROM session JOIN session ON session.people_book_id = people_book.people_book_id "
+		String sqlSearchGetListOfSessionByPerson = "Select * FROM session JOIN people ON people.people_id = session.people_book_id "
 				+ "JOIN people_book ON people_book.people_id = people.people_id "
 				+ "WHERE people.people_id = ? "
 				+ "ORDER BY date_of_reading DESC LIMIT 10; ";
@@ -100,7 +100,7 @@ public class JDBCSessionDAO implements SessionDAO {
 	private Session mapRowToSession(SqlRowSet results) {
 		Session theSession = new Session();
 
-		theSession.setId(results.getLong("id"));
+		theSession.setId(results.getLong("people_id"));
 		theSession.setPeopleBookId(results.getLong("people_book_id"));
 		theSession.setDateOfReading((results.getDate("date_of_reading").toLocalDate()));
 		theSession.setTypeOfReading(results.getString("type_of_reading"));
