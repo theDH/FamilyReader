@@ -20,7 +20,7 @@
     </v-list-tile>
   </v-list>
   <br>
-  <v-btn id = "add-button" @click="addActivity">Add New Reading Activity</v-btn>
+  <v-btn id = "add-button" @click="addReadingActivity">Add New Reading Activity</v-btn>
   </v-navigation-drawer>
 </v-card>
 </v-div>
@@ -34,8 +34,20 @@ export default {
     return {
       sessions: null,
       familyId: this.$session.get('familyId'),
-      family:this.$session.get('family')
+      personId: this.$session.get('personId'),
+      family: this.$session.get('family')
     }
+  },
+  computed: {
+    personSessionParams (){
+    const params = new URLSearchParams()
+    params.append('personId', this.personId)
+    return params
+  },
+  familySessionParams () {
+    const params = new URLSearchParams()
+    params.append('personId', this.personId)
+    return params
   },
     methods: {
     getListOfActivities () {
@@ -45,23 +57,22 @@ export default {
         axios({
           method: 'get',
           url: 'http://localhost:8080/capstone/getpersonsession',
-          params: this.personParams
+          params: this.personSessionParams
         }).then(response => { this.sessions = response.data })
       } else {
         axios({
           method: 'get',
           url: 'http://localhost:8080/capstone/getfamilysession',
-          params: this.familyParams
+          params: this.familySessionParams
         }).then(response => { this.sessions = response.data })
       }
     }
   },
   created () {
-    this.getListOfSessionsByPerson()
-    this.getListOfSessionsByFamily()
+    this.getListOfActvities()
   }
 
-
+  }
 }
 </script>
 
