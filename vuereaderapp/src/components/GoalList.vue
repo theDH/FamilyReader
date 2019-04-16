@@ -94,6 +94,7 @@ export default {
       this.getGoals()
     })
     EventBus.$on('goalAdded', value => { if (value) { this.getGoals() } })
+    EventBus.$on('rebootGetGoals', value => { if (value) { this.getGoals() } })
   }
 }
 </script>
