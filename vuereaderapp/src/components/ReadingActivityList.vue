@@ -19,6 +19,8 @@
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
+  <br>
+  <v-btn id = "add-button" @click="addActivity">Add New Reading Activity</v-btn>
   </v-navigation-drawer>
 </v-card>
 </v-div>
