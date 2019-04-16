@@ -20,7 +20,7 @@
     </v-list-tile>
   </v-list>
   <br>
-  <v-btn id = "add-button" @click="addReadingActivity">Add New Reading Activity</v-btn>
+  <v-btn v-if='!family' @click="addReadingActivity">Add New Reading Activity</v-btn>
   </v-navigation-drawer>
 </v-card>
 </v-div>
@@ -48,9 +48,12 @@ export default {
       const params = new URLSearchParams()
       params.append('familyId', this.familyId)
       return params
-  }
+    }
   },
   methods: {
+    addReadingActivity () {
+      EventBus.$emit("toggleAddReadingActivity", true)
+    },
     getListOfActivities () {
       this.loading = true
       this.sessions = null
