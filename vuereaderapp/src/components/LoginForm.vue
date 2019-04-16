@@ -46,6 +46,7 @@ export default {
       this.$router.push('/signup')
     },
     launchLogin () {
+      EventBus.$emit('navEvent', 'Home')
       this.$router.push('/homepage')
     }
   },
