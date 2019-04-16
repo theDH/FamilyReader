@@ -88,7 +88,7 @@ public class JDBCSessionDAO implements SessionDAO {
 	private Session mapRowToThatSession(SqlRowSet results) {
 		Session theSession = new Session();
 
-		theSession.setId(results.getLong("id"));
+		theSession.setId(results.getLong("session_id"));
 		theSession.setPeopleBookId(results.getLong("people_book_id"));
 		theSession.setDateOfReading((results.getDate("date_of_reading").toLocalDate()));
 		theSession.setTypeOfReading(results.getString("type_of_reading"));
@@ -100,7 +100,7 @@ public class JDBCSessionDAO implements SessionDAO {
 	private Session mapRowToSession(SqlRowSet results) {
 		Session theSession = new Session();
 
-		theSession.setId(results.getLong("people_id"));
+		theSession.setId(results.getLong("session_id"));
 		theSession.setPeopleBookId(results.getLong("people_book_id"));
 		theSession.setDateOfReading((results.getDate("date_of_reading").toLocalDate()));
 		theSession.setTypeOfReading(results.getString("type_of_reading"));
