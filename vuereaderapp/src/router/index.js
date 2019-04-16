@@ -15,6 +15,7 @@ import AddReadingActivity from '@/components/AddReadingActivity'
 import Homepage from '@/components/Homepage'
 import AddPerson from '@/components/addPerson'
 import AddGoal from '@/components/AddGoal'
+import ReadingActivityList from '@/components/ReadingActivityList'
 
 Vue.use(Router)
 
@@ -102,6 +103,11 @@ export default new Router({
       path: '/homepage',
       name: 'homepage',
       component: Homepage
+    },
+    {
+      path: '/readingactivitylist',
+      name: 'readingactivitylist',
+      component: ReadingActivityList
     }
   ]
 })
