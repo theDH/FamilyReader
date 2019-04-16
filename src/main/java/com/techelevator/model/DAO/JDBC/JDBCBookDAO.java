@@ -69,7 +69,6 @@ public class JDBCBookDAO implements BookDAO {
 		String sql = "INSERT INTO people_book (inactive) VALUES (?) WHERE people_id = ? AND book_id = ?";
 		long bookId = getBookIdByIsbn(isbn);
 		jdbcTemplate.update(sql, personId, bookId);
-		
 	}
 
 	@Override

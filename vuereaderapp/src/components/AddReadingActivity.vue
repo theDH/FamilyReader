@@ -31,6 +31,8 @@
     </v-list>
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
     <input v-model="date" type="date"/><br>
+    <br>
+    <v-checkbox v-model="finished"></v-checkbox>
     <button @click="postActivity">Submit</button>
   </div>
 </template>
@@ -52,7 +54,8 @@ export default {
       book: '',
       minutes: null,
       type: null,
-      date: ''
+      date: '',
+      finished: false
     }
   },
   computed: {
@@ -139,9 +142,10 @@ export default {
         data: {
           minutesRead: this.minutes,
           dateOfReading: this.date,
-          typeOfReading: 'readaloudreader',
+          typeOfReading: 'Read-To_Self',
           isbn: this.book.isbn,
-          personId: this.personId
+          personId: this.personId,
+          finished: this.finished
         }
       })
     },
