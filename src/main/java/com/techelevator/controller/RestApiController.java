@@ -187,7 +187,7 @@ public class RestApiController {
 		newSession.setTypeOfReading(session.getTypeOfReading());
 		sessionDAO.addSession(newSession);
 		if (session.isFinished()) {
-			
+			bookDAO.setBookInactive(session.getPersonId(), session.getIsbn());
 		}
 	}
 	

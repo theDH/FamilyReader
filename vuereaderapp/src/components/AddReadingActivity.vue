@@ -32,7 +32,7 @@
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
     <input v-model="date" type="date"/><br>
     <br>
-    <v-checkbox v-model="finished"></v-checkbox>
+    <checkbox v-model="finished"></checkbox>
     <button @click="postActivity">Submit</button>
   </div>
 </template>
