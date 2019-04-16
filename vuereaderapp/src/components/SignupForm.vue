@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   name: 'SignupForm',
   data () {
@@ -77,6 +78,9 @@ export default {
         }
       }
     }
+  },
+  created () {
+    EventBus.$emit('navEvent', 'Sign Up')
   }
 }
 </script>
