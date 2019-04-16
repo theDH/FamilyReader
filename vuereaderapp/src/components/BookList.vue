@@ -83,6 +83,7 @@ export default {
       this.personId = pState
       this.getListOfBooks()
     })
+    EventBus.$on('rebootBookList', value => { if (value) { this.getListOfBooks() } })
   }
 }
 </script>
