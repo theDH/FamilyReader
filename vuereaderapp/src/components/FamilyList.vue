@@ -20,7 +20,7 @@
               <v-list-tile-title>All Family Members</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
-          <v-list-tile v-for="member in members" :key="member" @click="setPersonSession(member.peopleId)">
+          <v-list-tile v-for="member in members" :key="member" @click="setPersonSession(member)">
             <v-list-tile-content>
              <v-list-tile-title>{{ member.name }}</v-list-tile-title>
            </v-list-tile-content>
@@ -70,12 +70,14 @@ export default {
       this.$session.set('family', true)
       this.family = true
       EventBus.$emit('familyPersonState', true, null)
+      EventBus.$emit('navEvent', 'Home')
     },
-    setPersonSession (personId) {
+    setPersonSession (member) {
       console.log('setpersonsession')
-      this.$session.set('personId', personId)
+      this.$session.set('personId', member.personId)
       this.$session.set('family', false)
-      EventBus.$emit('familyPersonState', false, personId)
+      EventBus.$emit('familyPersonState', false, member.personId)
+      EventBus.$emit('navEvent', member.name)
       this.family = false
     },
     addPerson () {

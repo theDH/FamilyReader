@@ -14,14 +14,15 @@
 </template>
 
 <script>
+import EventBus from './components/EventBus';
 export default {
   data () {
     return {
-      navigation: this.$session.get('navigation')
+      navigation: 'Log In'
     }
   },
-  created () {
-    this.$session.set('navigation', 'Log In')
+  mounted () {
+    EventBus.$on('navEvent', value => { this.navigation = value })
   }
 }
 </script>

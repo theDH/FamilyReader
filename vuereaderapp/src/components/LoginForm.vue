@@ -10,6 +10,7 @@
 
 <script>
 import axios from 'axios'
+import EventBus from './EventBus'
 export default {
   name: 'LoginForm',
   data () {
@@ -47,6 +48,9 @@ export default {
     launchLogin () {
       this.$router.push('/homepage')
     }
+  },
+  created () {
+    EventBus.$emit('navEvent', 'Log In')
   }
 }
 </script>
