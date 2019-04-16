@@ -209,4 +209,14 @@ public class RestApiController {
 		personDAO.deletePerson(person.getPeopleId());
 
 	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/getpersonsession", method=RequestMethod.GET)
+	public List<Session> getListOfSessionsByPerson(@RequestParam long personId) {
+		return sessionDAO.getListOfSessionsByPerson(personId);
+	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/getfamilysession", method=RequestMethod.GET)
+	public List<Session> getListOfSessionsByFamily(@RequestParam long familyId) {
+		return sessionDAO.getListOfSessionsByFamily(familyId);
+	}
 }
