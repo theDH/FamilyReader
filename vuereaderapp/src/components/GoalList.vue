@@ -23,7 +23,7 @@
           </v-list-tile-sub-content>
         </v-list-tile>
       </v-list>
-      <v-btn v-if='!family'>Add Goals</v-btn>
+      <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
        </v-navigation-drawer>
     </v-card>
   </div>
@@ -53,6 +53,9 @@ export default {
     }
   },
   methods: {
+    addGoal () {
+      EventBus.$emit('toggleAddGoal', true)
+    },
     getDaysRemaining (javaDate, days) {
       let date = new Date(javaDate.year, javaDate.monthValue - 1, javaDate.dayOfMonth)
       console.log(date)
@@ -90,6 +93,7 @@ export default {
       this.personId = pState
       this.getGoals()
     })
+    EventBus.$on('goalAdded', value => { if (value) { this.getGoals() } })
   }
 }
 </script>
