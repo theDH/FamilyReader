@@ -84,7 +84,6 @@ export default {
       this.getListOfBooks()
     })
     EventBus.$on('rebootBookList', value => { if (value) { this.getListOfBooks() } })
-
   }
 }
 </script>

@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     addReadingActivity () {
-      EventBus.$emit("toggleAddReadingActivity", true)
+      EventBus.$emit('toggleAddReadingActivity', true)
     },
     getListOfActivities () {
       this.loading = true
@@ -74,9 +74,16 @@ export default {
   },
   created () {
     this.getListOfActivities()
+  },
+  mounted () {
+    EventBus.$on('familyPersonState', (fState, pState) => {
+      console.log('listener')
+      this.family = fState
+      this.personId = pState
+      this.getListOfActivities()
+    })
   }
 }
-
 </script>
 
 <style scoped>
