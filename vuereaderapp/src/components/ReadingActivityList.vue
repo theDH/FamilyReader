@@ -9,7 +9,7 @@
           Reading Activity Log
         </v-list-tile-title>
       </v-list-tile>
-    </v-list>    
+    </v-list>
   </v-toolbar>
   <v-divider></v-divider>
   <v-list>
@@ -28,16 +28,16 @@
 
 <script>
 import axios from 'axios'
-import EventBus from './EventBus'
+//  import EventBus from './EventBus'
 export default {
   data () {
     return {
       sessions: null,
       familyId: this.$session.get('familyId'),
-      family:this.$session.get('family')
+      family: this.$session.get('family')
     }
   },
-    methods: {
+  methods: {
     getListOfActivities () {
       this.loading = true
       this.sessions = null
@@ -60,8 +60,6 @@ export default {
     this.getListOfSessionsByPerson()
     this.getListOfSessionsByFamily()
   }
-
-
 }
 </script>
 
