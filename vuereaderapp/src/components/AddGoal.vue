@@ -46,7 +46,10 @@ export default {
           personId: this.personId
 
         }
-      }).then(response => { console.log(response) }).catch(e => console.log(e))
+      }).then(response => {
+        console.log(response)
+        EventBus.$emit('rebootGetGoals', true)
+      }).catch(e => console.log(e))
     },
     returnToHomepage () {
       EventBus.$emit('toggleAddGoal', false)
