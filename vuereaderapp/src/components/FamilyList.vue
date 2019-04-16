@@ -74,9 +74,9 @@ export default {
     },
     setPersonSession (member) {
       console.log('setpersonsession')
-      this.$session.set('personId', member.personId)
+      this.$session.set('personId', member.peopleId)
       this.$session.set('family', false)
-      EventBus.$emit('familyPersonState', false, member.personId)
+      EventBus.$emit('familyPersonState', false, member.peopleId)
       EventBus.$emit('navEvent', member.name)
       this.family = false
     },
