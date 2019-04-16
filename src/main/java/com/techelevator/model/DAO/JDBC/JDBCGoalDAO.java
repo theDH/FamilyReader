@@ -30,6 +30,8 @@ public class JDBCGoalDAO implements GoalDAO{
 		jdbcTemplate.update(sql, newGoal.getGoalId(), newGoal.getNameOfGoal(), newGoal.getStartDate(), 
 				newGoal.getNumberOfDays(), newGoal.getDescription(), newGoal.getMinutesToReachGoal(), 
 				newGoal.isComplete());
+		String sqlJoin = "INSERT INTO goal_people (goal_id, people_id) VALUES (?,?);";
+		jdbcTemplate.update(sqlJoin, newGoal.getGoalId(), personId);
 	}
 
 	@Override
