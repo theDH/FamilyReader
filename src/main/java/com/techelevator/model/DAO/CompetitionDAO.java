@@ -10,7 +10,7 @@ public interface CompetitionDAO {
 	
 	public void addPersonToCompetition(Competition newCompetition, long personId);
 	
-	public void createNewCompetition(String name, LocalDate start, LocalDate end, String description, int minutes, Long familyId);
+	public void createNewCompetition(Competition newComp);
 	
 	public List<Competition> getListOfFinishedCompetitions(LocalDate todayDate);
 	

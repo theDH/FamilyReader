@@ -32,9 +32,10 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	}
 
 	@Override
-	public void createNewCompetition(String name, LocalDate start, LocalDate end, String description, int minutes, Long familyId) {
-		String insertNewCompetition="INSERT INTO competition (name_of_competition, start_date, end_date, description, minutes_to_finish, family_id) VALUES (?,?,?,?,?,?)";
-		jdbcTemplate.update(insertNewCompetition, name, start, end, description, minutes, familyId);
+	public void createNewCompetition(Competition newComp) {
+		System.out.println(newComp.getNameOfCompetition() + " " + newComp.getStartDate() + " " + newComp.getEndDate() + " " + newComp.getMinutesToFinish() + " " + newComp.getFamilyId() + " " + newComp.getDescription());
+		String insertNewCompetition= "INSERT INTO competition (name_of_competition, start_date, end_date, description, minutes_to_finish, family_id) VALUES (?,?,?,?,?,?);";
+		jdbcTemplate.update(insertNewCompetition, newComp.getNameOfCompetition(), newComp.getStartDate(), newComp.getEndDate(), newComp.getDescription(), newComp.getMinutesToFinish(), newComp.getFamilyId());
 	}
 
 	@Override
@@ -53,11 +54,7 @@ public class JDBCCompetitionDAO implements CompetitionDAO{
 	public List<Competition> getListOfActiveCompetitionsByFamily(LocalDate todayDate, long familyId) {
 		List<Competition> activeCompetitions = new ArrayList<Competition>();
 		todayDate =  LocalDate.now();
-		String getSqlOfActiveCompetitions = "SELECT DISTINCT competition.* FROM competition JOIN competition_people ON competition.competition_id = competition_people.competition_id " +
-				"JOIN people ON people.people_id = competition_people.people_id " +
-				"JOIN family ON people.family_id = family.family_id " +
-				"WHERE family.family_id = ? " +
-				"AND competition.end_date > ?; ";
+		String getSqlOfActiveCompetitions = "SELECT DISTINCT competition.* FROM competition WHERE family_id = ? AND end_date > ?";
 		SqlRowSet results=jdbcTemplate.queryForRowSet(getSqlOfActiveCompetitions, familyId, todayDate);
 		while (results.next()) {
 			Competition competition = mapRowToCompetition(results);
