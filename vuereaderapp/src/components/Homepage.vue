@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-container fluid grid-list-md fill-height>
-      <v-layout row fil-height>
+      <v-container fluid grid-list-md>
+      <v-layout row wrap>
           <v-card>
             <v-card-text><family-list v-if="!showAddPerson"/></v-card-text>
             <v-card-text><add-person v-if="showAddPerson"/></v-card-text>
@@ -25,15 +25,6 @@
           </v-card>
       </v-layout>
       </v-container>
-      <!-- <v-navigation-drawer
-      :clipped="drawer.clipped"
-      :fixed="drawer.fixed"
-      :permanent="drawer.permanent"
-      :mini-variant="drawer.mini"
-      v-model="drawer.open"
-      app
-      > -->
-      <!-- </v-navigation-drawer> -->
     </v-app>
   </div>
 </template>
