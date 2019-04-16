@@ -59,10 +59,10 @@ public class JDBCBookDAO implements BookDAO {
 
 	@Override
 	public void addNewBook(Book newBook) {
-		String sql = "INSERT INTO book (book_id, title, author, isbn) " +
-				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		newBook.setBookId(getNextBookId());
-		jdbcTemplate.update(sql, newBook.getBookId(), newBook.getTitle(), newBook.getAuthor(), newBook.getIsbn());
+		String sql = "INSERT INTO book (title, author, isbn, image) " +
+				"VALUES (?, ?, ?, ?) RETURNING book_id";
+		SqlRowSet set = jdbcTemplate.queryForRowSet(sql, newBook.getTitle(), newBook.getAuthor(), newBook.getIsbn(), newBook.getImage());
+		set.next();
 	}
 	
 	
