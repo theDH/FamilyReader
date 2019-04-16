@@ -48,6 +48,7 @@ export default {
       const params = new URLSearchParams()
       params.append('familyId', this.familyId)
       return params
+  }
   },
   methods: {
     getListOfActivities () {
@@ -69,10 +70,10 @@ export default {
     }
   },
   created () {
-    this.getListOfActvities()
+    this.getListOfActivities()
   }
 }
-}
+
 </script>
 
 <style scoped>

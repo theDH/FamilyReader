@@ -216,7 +216,7 @@ public class RestApiController {
 	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/getfamilysession", method=RequestMethod.GET)
-	public List<Session> getListOfSessionsByFamily(@RequestParam long familyId) {
+	public List<Session> getListOfSessionsByFamily(@RequestBody long familyId) {
 		return sessionDAO.getListOfSessionsByFamily(familyId);
 	}
 }
