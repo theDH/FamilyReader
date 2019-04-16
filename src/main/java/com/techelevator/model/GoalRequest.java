@@ -2,23 +2,16 @@ package com.techelevator.model;
 
 import java.time.LocalDate;
 
-public class Goal {
+public class GoalRequest {
 	
 	private long goalId;
 	private String nameOfGoal;
-	private LocalDate startDate;
+	private String startDate;
 	private int numberOfDays;
 	private String description;
 	private int minutesToReachGoal;
-	private boolean isComplete = false;
+	private Long personId;
 	
-	
-	public boolean isComplete() {
-		return isComplete;
-	}
-	public void setComplete(boolean isComplete) {
-		this.isComplete = isComplete;
-	}
 	public long getGoalId() {
 		return goalId;
 	}
@@ -31,10 +24,10 @@ public class Goal {
 	public void setNameOfGoal(String nameOfGoal) {
 		this.nameOfGoal = nameOfGoal;
 	}
-	public LocalDate getStartDate() {
+	public String getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(LocalDate startDate) {
+	public void setStartDate(String startDate) {
 		this.startDate = startDate;
 	}
 	public int getNumberOfDays() {
@@ -54,6 +47,13 @@ public class Goal {
 	}
 	public void setMinutesToReachGoal(int minutesToReachGoal) {
 		this.minutesToReachGoal = minutesToReachGoal;
+	}
+
+	public Long getPersonId() {
+		return personId;
+	}
+	public void setPersonId(Long personId) {
+		this.personId = personId;
 	}
 	
 	
