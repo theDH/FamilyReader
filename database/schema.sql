@@ -51,6 +51,7 @@ CREATE TABLE people_book (
 	people_book_id SERIAL PRIMARY KEY,
 	book_id int NOT NULL,
 	people_id int NOT NULL,
+	inactive boolean,
 	
 	constraint fk_people_book_book_id foreign key (book_id) references book (book_id),
 	constraint fk_people_book_people_id foreign key (people_id) references people (people_id)
