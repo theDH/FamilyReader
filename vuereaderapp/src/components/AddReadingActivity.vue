@@ -1,6 +1,5 @@
  <template>
   <div class = "add-reading-activity">
-    <h1>Add Reading Activity</h1>
     <select v-model="book">
       <option value="" selected disabled>Which book did you read?</option>
       <option v-for="book in books" v-bind:key="book.id" v-bind:value="book">
@@ -137,7 +136,7 @@ export default {
         data: {
           minutesRead: this.minutes,
           dateOfReading: this.date,
-          typeOfReading: 'string',
+          typeOfReading: 'readaloudreader',
           isbn: this.book.isbn,
           personId: this.personId
         }

@@ -8,13 +8,13 @@ public class Session {
 	private LocalDate dateOfReading;
 	private int minutesRead;
 	private String typeOfReading;
-	private long people_book_id;
+	private long peopleBookId;
 	
-	public long getPeople_book_id() {
-		return people_book_id;
+	public long getPeopleBookId() {
+		return peopleBookId;
 	}
-	public void setPeople_book_id(long people_book_id) {
-		this.people_book_id = people_book_id;
+	public void setPeopleBookId(long peopleBookId) {
+		this.peopleBookId = peopleBookId;
 	}
 	public long getId() {
 		return id;

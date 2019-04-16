@@ -68,8 +68,7 @@ CREATE TABLE session (
 	minutes_read int NOT NULL,
 	type_of_reading int,
 	
-	constraint fk_session_people_book_id foreign key (people_book_id) references people_book (people_book_id),
-	constraint fk_session_reading_type_type_of_reading foreign key (type_of_reading) references reading_type (reading_type_id)
+	constraint fk_session_people_book_id foreign key (people_book_id) references people_book (people_book_id)
 );
 
 
@@ -140,8 +139,8 @@ INSERT INTO book (title, author, isbn, image) VALUES ('Firestarter', 'Stephen Ki
 INSERT INTO book (title, author, isbn, image) VALUES ('Christmas With Eve (It Happened One Night...)', 'Elda Minger', 0373257147, 'https://ia800303.us.archive.org/BookReader/BookReaderPreview.php?id=christmaswitheve00ming&itemPath=%2F3%2Fitems%2Fchristmaswitheve00ming&server=ia800303.us.archive.org&page=cover_w500_h500.jpg');
 INSERT INTO reading_type (reading_type) VALUES ('Read-Aloud (reader)');
 INSERT INTO reading_type (reading_type) VALUES ('Read-Aloud (listener)');
-INSERT INTO reading_type (reading_type) VALUES ('Listened_To)');
-INSERT INTO reading_type (reading_type) VALUES ('Read-To_Self)');
+INSERT INTO reading_type (reading_type) VALUES ('Listened_To');
+INSERT INTO reading_type (reading_type) VALUES ('Read-To_Self');
 INSERT INTO people_book (book_id, people_id) VALUES (1, 1);
 INSERT INTO people_book (book_id, people_id) VALUES (1, 2);
 INSERT INTO people_book (book_id, people_id) VALUES (2, 1);

@@ -1,16 +1,31 @@
 <template>
   <div class="competition-list">
-    <h1>List Of Active Competitions</h1>
-    <ul>
-      <li v-for="competition in competitions" v-bind:key="competition">
-        {{competition.name}}
-        {{competition.startDate}}
-        {{competition.endDate}}
-        {{competition.description}}
-        {{competition.minutesToFinish}}
-        </li>
-    </ul>
+    <v-card>
+      <v-navigation-drawer permanent>
+      <v-toolbar flat>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-title class="title">
+                 List of Active Competitions
+            </v-list-tile-title>
+          </v-list-tile>
+        </v-list>
+      </v-toolbar>
+    <v-divider></v-divider>
+      <v-list>
+      <v-list-tile v-for="competition in competitions" :key="competition.competitionId">
+        <v-list-tile-content>
+          <v-list-tile-title v-text="competition.nameOfCompetition"></v-list-tile-title>
+        </v-list-tile-content>
+        <br>
+        <v-list-tile-sub-content>
+          <v-list-tile-title v-text="competition.description"></v-list-tile-title>
+        </v-list-tile-sub-content>
+      </v-list-tile>
+      </v-list>
       <v-btn v-if='family' @click="addCompetition">Add Competition</v-btn>
+      </v-navigation-drawer>
+      </v-card>
   </div>
 </template>
 
@@ -23,7 +38,7 @@ export default {
       familyId: this.$session.get('familyId'),
       family: this.$session.get('family'),
       personId: this.$session.get('personId'),
-      competitions: []
+      competitions: null
     }
   },
   computed: {
@@ -69,11 +84,12 @@ export default {
       this.getGoals()
     })
     EventBus.$on('competitionAdded', value => { if (value) { this.getListOfCompetitions() } })
+    EventBus.$on('rebootCompetitionList', value => { if (value) { this.getListOfCompetitions() } })
   }
 }
 </script>
 
-<style>
+<style scoped>
   .competition-list {
         background: #fff;
         font-family: 'Roboto Condensed', sans-serif;

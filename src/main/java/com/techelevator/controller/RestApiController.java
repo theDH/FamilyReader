@@ -15,6 +15,7 @@ import com.fasterxml.jackson.core.sym.Name;
 import com.techelevator.model.Book;
 import com.techelevator.model.BookPerson;
 import com.techelevator.model.Competition;
+import com.techelevator.model.CompetitionRequest;
 import com.techelevator.model.Goal;
 import com.techelevator.model.Person;
 import com.techelevator.model.Session;
@@ -26,6 +27,7 @@ import com.techelevator.model.DAO.CompetitionDAO;
 import com.techelevator.model.DAO.FamilyDAO;
 import com.techelevator.model.DAO.GoalDAO;
 import com.techelevator.model.DAO.PersonDAO;
+import com.techelevator.model.DAO.SessionDAO;
 import com.techelevator.model.DAO.UserDAO;
 
 
@@ -38,15 +40,17 @@ public class RestApiController {
 	private PersonDAO personDAO;
 	private GoalDAO goalDAO;
 	private CompetitionDAO competitionDAO;
+	private SessionDAO sessionDAO;
 	
 	@Autowired
-	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO, CompetitionDAO competitionDAO) {
+	public RestApiController(UserDAO userDAO, FamilyDAO familyDAO, BookDAO bookDAO, PersonDAO personDAO, GoalDAO goalDAO, CompetitionDAO competitionDAO, SessionDAO sessionDAO) {
 		this.userDAO = userDAO;
 		this.familyDAO = familyDAO;
 		this.bookDAO = bookDAO;
 		this.personDAO = personDAO;
 		this.goalDAO = goalDAO;
 		this.competitionDAO = competitionDAO;
+		this.sessionDAO = sessionDAO;
 	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addperson", method=RequestMethod.POST)
@@ -72,12 +76,6 @@ public class RestApiController {
 		return familyId;
 	}
 	
-	@CrossOrigin(origins = "http://localhost:8081")
-	@RequestMapping(path="/addcompetition", method=RequestMethod.POST)
-	public void addNewCompetition(@RequestParam Competition competition) {
-		System.out.println("hello");
-		competitionDAO.createNewCompetition(competition.getNameOfCompetition(), competition.getStartDate(), competition.getEndDate(), competition.getDescription(), competition.getMinutesToFinish(), competition.getFamilyId());
-	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/booklist", method=RequestMethod.GET)
@@ -93,8 +91,8 @@ public class RestApiController {
 	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/bookdetail", method=RequestMethod.GET)
-	public Book getBookDetail(@RequestParam long familyId) {
-		return bookDAO.getBookDetail(familyId);
+	public Book getBookDetail(@RequestParam long bookId) {
+		return bookDAO.getBookDetail(bookId);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
@@ -163,7 +161,31 @@ public class RestApiController {
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addreadingactivity", method=RequestMethod.POST)
 	public void addReadingActivity(@RequestBody SessionRequest session) {
-		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId());
+		System.out.println(session.getMinutesRead() + " " + session.getIsbn() + " " + session.getPersonId() + " " + session.getDateOfReading());
+		LocalDate date = LocalDate.parse(session.getDateOfReading());
+		Session newSession = new Session();
+		newSession.setDateOfReading(date);
+		newSession.setMinutesRead(session.getMinutesRead());
+		long peopleBookId = bookDAO.getPeopleBookId(session.getPersonId(), session.getIsbn());
+		newSession.setPeopleBookId(peopleBookId);
+		newSession.setTypeOfReading(session.getTypeOfReading());
+		sessionDAO.addSession(newSession);
+		
+	}
+	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/addcompetition", method=RequestMethod.POST)
+	public void addNewCompetition(@RequestBody CompetitionRequest competition) {
+		System.out.println(competition.getNameOfCompetition() + " " + competition.getStartDate() + " " + competition.getEndDate() + " " + competition.getMinutesToFinish() + " " + competition.getFamilyId() + " " + competition.getDescription());
+		LocalDate startDate = LocalDate.parse(competition.getStartDate());
+		LocalDate endDate = LocalDate.parse(competition.getEndDate());
+		Competition newComp = new Competition();
+		newComp.setStartDate(startDate);
+		newComp.setEndDate(endDate);
+		newComp.setDescription(competition.getDescription());
+		newComp.setMinutesToFinish(competition.getMinutesToFinish());
+		newComp.setNameOfCompetition(competition.getNameOfCompetition());
+		newComp.setFamilyId(competition.getFamilyId());
+		competitionDAO.createNewCompetition(newComp);
 	}
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/deleteperson", method=RequestMethod.POST)

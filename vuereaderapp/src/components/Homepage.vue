@@ -68,7 +68,10 @@ export default {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
     EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
     EventBus.$on('toggleAddPerson', state => { this.showAddPerson = state })
-    EventBus.$on('toggleBookDetail', state => { this.showBookDetail = state })
+    EventBus.$on('showBookDetail', (state, book) => { this.showBookDetail = state })
+  },
+  created () {
+    EventBus.$emit('navEvent', 'Home')
   }
 }
 </script>
