@@ -6,7 +6,7 @@
       </v-toolbar>
       <v-toolbar flat color="#2c3e50"></v-toolbar>
       <h1>{{ navigation }}</h1>
-        <h2>Booknanza helps your children read good</h2>
+        <h2>Remember  <a target="_blank" href="https://www.bookitprogram.com/">Book-It</a>? This is like that but without Pizza Hut. </h2>
       <v-content>
         <router-view/>
         <reader-footer></reader-footer>
