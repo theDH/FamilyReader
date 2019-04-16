@@ -13,9 +13,9 @@
   </v-toolbar>
   <v-divider></v-divider>
   <v-list>
-    <v-list-tile v-for="session in sessions" :key="session.id">
+    <v-list-tile v-for="session in sessions" :key="session">
       <v-list-tile-content>
-        <v-list-tile-title v-text="session.id"></v-list-tile-title>
+        <v-list-tile-title v-text="session"></v-list-tile-title>
       </v-list-tile-content>
     </v-list-tile>
   </v-list>
@@ -65,6 +65,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
