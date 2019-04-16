@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
-import org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -24,9 +23,9 @@ public class JDBCBookDAO implements BookDAO {
 	
 	@Override
 	public void addBookToPerson(Book book, long personId) {
-		String sql = "INSERT INTO people_book (id, book_id, people_id) " +
-					"VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, getNextPeopleBookId(), book.getBookId(), personId);
+		String sql = "INSERT INTO people_book (book_id, people_id) " +
+					"VALUES (?, ?)";
+		jdbcTemplate.update(sql, book.getBookId(), personId);
 	}
 
 	@Override
@@ -59,10 +58,10 @@ public class JDBCBookDAO implements BookDAO {
 
 	@Override
 	public void addNewBook(Book newBook) {
-		String sql = "INSERT INTO book (book_id, title, author, isbn) " +
-				"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-		newBook.setBookId(getNextBookId());
-		jdbcTemplate.update(sql, newBook.getBookId(), newBook.getTitle(), newBook.getAuthor(), newBook.getIsbn());
+		String sql = "INSERT INTO book (title, author, isbn, image) " +
+				"VALUES (?, ?, ?, ?) RETURNING book_id";
+		SqlRowSet set = jdbcTemplate.queryForRowSet(sql, newBook.getTitle(), newBook.getAuthor(), newBook.getIsbn(), newBook.getImage());
+		set.next();
 	}
 	
 	
