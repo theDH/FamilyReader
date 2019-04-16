@@ -40,7 +40,7 @@ CREATE TABLE book (
 	book_id SERIAL PRIMARY KEY,
 	title varchar(255) NOT NULL,
 	author varchar(200) NOT NULL,
-	isbn int UNIQUE,
+	isbn bigint UNIQUE,
 	image varchar(600)
 	
 );
