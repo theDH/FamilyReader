@@ -2,28 +2,26 @@
   <div class="competition-list">
     <v-card>
       <v-navigation-drawer permanent>
-      <v-toolbar flat>
+        <v-toolbar flat>
+          <v-list>
+            <v-list-tile>
+              <v-list-tile-title class="title">
+                List of Active Competitions
+              </v-list-tile-title>
+            </v-list-tile>
+          </v-list>
+        </v-toolbar>
+      <v-divider></v-divider>
         <v-list>
-          <v-list-tile>
-            <v-list-tile-title class="title">
-                 List of Active Competitions
-            </v-list-tile-title>
+          <br>
+          <v-list-tile v-for="competition in competitions" :key="competition.competitionId">
+            <div>{{ competition.nameOfCompetition }}</div>
+            <div>{{ competition.description }}</div>
           </v-list-tile>
         </v-list>
-      </v-toolbar>
-    <v-divider></v-divider>
-      <v-list>
-        <br>
-      <v-list-tile v-for="competition in competitions" :key="competition.competitionId">
-          <div>{{ competition.nameOfCompetition }}</div>
-          <div>{{ competition.description }}</div>
-         
-      </v-list-tile>
-      </v-list>
-      
-      <v-btn v-if='family' @click="addCompetition">Add Competition</v-btn>
+        <v-btn v-if='family' @click="addCompetition">Add Competition</v-btn>
       </v-navigation-drawer>
-      </v-card>
+    </v-card>
   </div>
 </template>
 

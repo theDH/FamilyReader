@@ -9,7 +9,7 @@
           Reading Activity Log
         </v-list-tile-title>
       </v-list-tile>
-    </v-list>    
+    </v-list>
   </v-toolbar>
   <v-divider></v-divider>
   <v-list>
@@ -28,7 +28,7 @@
 
 <script>
 import axios from 'axios'
-import EventBus from './EventBus'
+//  import EventBus from './EventBus'
 export default {
   data () {
     return {
@@ -71,8 +71,7 @@ export default {
   created () {
     this.getListOfActvities()
   }
-
-  }
+}
 }
 </script>
 

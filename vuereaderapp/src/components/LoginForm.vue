@@ -50,7 +50,7 @@ export default {
       this.$router.push('/homepage')
     }
   },
-  created () {
+  mounted () {
     EventBus.$emit('navEvent', 'Log In')
   }
 }

@@ -1,14 +1,14 @@
 <template>
   <div id="app">
     <v-app>
-      <v-toolbar dense="true" class="cyan darken-2">
+      <v-toolbar dense class="cyan darken-2">
         <v-toolbar-title>Booknanza</v-toolbar-title>
       </v-toolbar>
       <v-toolbar flat color="#2c3e50"></v-toolbar>
       <h1>{{ navigation }}</h1>
       <v-content>
         <router-view/>
-        <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
+        <reader-footer></reader-footer>
       </v-content>
     </v-app>
   </div>
@@ -16,14 +16,21 @@
 
 <script>
 import EventBus from './components/EventBus'
+import ReaderFooter from './components/ReaderFooter'
 export default {
   data () {
     return {
-      navigation: 'Log In'
+      navigation: 'Log In',
+      quote: ''
     }
   },
   mounted () {
-    EventBus.$on('navEvent', value => { this.navigation = value })
+    EventBus.$on('navEvent', value => {
+      this.navigation = value
+    })
+  },
+  components: {
+    ReaderFooter
   }
 }
 </script>
