@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-container fluid grid-list-md fill-height>
-      <v-layout row fil-height>
+      <v-container fluid grid-list-md>
+      <v-layout row wrap>
           <v-card>
             <v-card-text><family-list v-if="!showAddPerson"/></v-card-text>
             <v-card-text><add-person v-if="showAddPerson"/></v-card-text>
@@ -19,17 +19,12 @@
             <v-card-text><competition-list v-if="!showAddCompetition" /></v-card-text>
             <v-card-text><add-competition v-if="showAddCompetition" /></v-card-text>
           </v-card>
+          <v-card>
+            <v-card-text><reading-activity-list v-if="!showAddReadingActivity" /></v-card-text>
+            <v-card-text><add-reading-activity v-if="showAddReadingActivity" /></v-card-text>
+          </v-card>
       </v-layout>
       </v-container>
-      <!-- <v-navigation-drawer
-      :clipped="drawer.clipped"
-      :fixed="drawer.fixed"
-      :permanent="drawer.permanent"
-      :mini-variant="drawer.mini"
-      v-model="drawer.open"
-      app
-      > -->
-      <!-- </v-navigation-drawer> -->
     </v-app>
   </div>
 </template>
@@ -44,6 +39,8 @@ import AddGoal from './AddGoal'
 import EventBus from './EventBus'
 import AddCompetition from './AddCompetition'
 import addPerson from './addPerson'
+import ReadingActivityList from './ReadingActivityList'
+import AddReadingActivity from './AddReadingActivity'
 export default {
   data () {
     return {
@@ -51,7 +48,8 @@ export default {
       showAddGoal: false,
       showAddCompetition: false,
       showAddPerson: false,
-      showBookDetail: false
+      showBookDetail: false,
+      showAddReadingActivity: false
     }
   },
   components: {
@@ -62,13 +60,16 @@ export default {
     AddGoal,
     AddCompetition,
     addPerson,
-    BookDetail
+    BookDetail,
+    AddReadingActivity,
+    ReadingActivityList
   },
   mounted () {
     EventBus.$on('toggleAddGoal', state => { this.showAddGoal = state })
     EventBus.$on('toggleAddCompetition', state => { this.showAddCompetition = state })
     EventBus.$on('toggleAddPerson', state => { this.showAddPerson = state })
     EventBus.$on('showBookDetail', (state, book) => { this.showBookDetail = state })
+    EventBus.$on('toggleAddReadingActivity', state => { this.showAddReadingActivity })
   },
   created () {
     EventBus.$emit('navEvent', 'Home')

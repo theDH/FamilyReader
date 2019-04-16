@@ -1,10 +1,10 @@
 <template>
   <div>
-    <input type=text v-model="nameOfGoal" placeholder="'Read 100 in a week'"/>
-    <input v-model="startDate" type="date"/>
-    <input v-model="numberOfDays" placeholder="'7'"/>
-    <input type=text v-model="description" placeholder="'Get a hug if you read 100 minutes in a week'"/>
-    <input type=number v-model="minutesToReachGoal" placeholder="'100'"/>
+    <input type="text" v-model="nameOfGoal" placeholder="'name of goal'"/>
+    <input v-model="startDate" type="date" placeholder="start date"/>
+    <input v-model="numberOfDays" type="number" placeholder="'length of goal'"/>
+    <input type="text" v-model="description" placeholder="'reward for reaching goal'"/>
+    <input type="number" v-model="minutesToReachGoal" placeholder="'100'"/>
     <button @click="validate">Add New Goal</button>
     <button @click="cancel">Cancel</button>
   </div>
@@ -21,7 +21,15 @@ export default {
       startDate: new Date().toISOString().substring(0, 10),
       numberOfDays: '',
       description: '',
-      minutesToReachGoal: ''
+      minutesToReachGoal: '',
+      personId: this.$session.get('personId')
+    }
+  },
+  computed: {
+    personParams () {
+      const params = new URLSearchParams()
+      params.append('personId', this.personId)
+      return params
     }
   },
   methods: {
@@ -34,9 +42,14 @@ export default {
           startDate: this.startDate,
           numberOfDays: this.numberOfDays,
           description: this.description,
-          minutesToReachGoal: this.minutesToReachGoal
+          minutesToReachGoal: this.minutesToReachGoal,
+          personId: this.personId
+
         }
-      }).then(response => { console.log(response) }).catch(e => console.log(e))
+      }).then(response => {
+        console.log(response)
+        EventBus.$emit('rebootGetGoals', true)
+      }).catch(e => console.log(e))
     },
     returnToHomepage () {
       EventBus.$emit('toggleAddGoal', false)

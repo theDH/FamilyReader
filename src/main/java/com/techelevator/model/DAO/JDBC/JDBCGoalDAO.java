@@ -22,7 +22,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	}
 
 	@Override
-	public void createNewGoal(Goal newGoal) {
+	public void createNewGoal(Goal newGoal, long personId) {
 		String sql = "INSERT INTO goal (goal_id, name_of_goal, start_date, number_of_days, " +
 				"description, minutes_to_reach_goal, is_complete) VALUES " +
 				"(?, ?, ?, ?, ?, ?, ?)";
@@ -30,6 +30,8 @@ public class JDBCGoalDAO implements GoalDAO{
 		jdbcTemplate.update(sql, newGoal.getGoalId(), newGoal.getNameOfGoal(), newGoal.getStartDate(), 
 				newGoal.getNumberOfDays(), newGoal.getDescription(), newGoal.getMinutesToReachGoal(), 
 				newGoal.isComplete());
+		String sqlJoin = "INSERT INTO goal_people (goal_id, people_id) VALUES (?,?);";
+		jdbcTemplate.update(sqlJoin, newGoal.getGoalId(), personId);
 	}
 
 	@Override
