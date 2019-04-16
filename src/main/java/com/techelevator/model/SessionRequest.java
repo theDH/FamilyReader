@@ -1,7 +1,5 @@
 package com.techelevator.model;
 
-import java.time.LocalDate;
-
 public class SessionRequest {
 
 	private String dateOfReading;
@@ -9,7 +7,14 @@ public class SessionRequest {
 	private String typeOfReading;
 	private long personId;
 	private long isbn;
+	private boolean finished;
 	
+	public boolean isFinished() {
+		return finished;
+	}
+	public void setFinished(boolean finished) {
+		this.finished = finished;
+	}
 	public long getPersonId() {
 		return personId;
 	}

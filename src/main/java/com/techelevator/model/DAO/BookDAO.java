@@ -19,4 +19,8 @@ public interface BookDAO {
 	public List<Book> getListOfBooksNotReading(long familyId, long personId);
 
 	long getPeopleBookId(long peopleId, long isbn);
+
+	long getBookIdByIsbn(long isbn);
+
+	void setBookInactive(long personId, long isbn);
 }
