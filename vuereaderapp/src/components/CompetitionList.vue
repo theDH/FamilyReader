@@ -2,8 +2,8 @@
   <div class="competition-list">
     <h1>List Of Active Competitions</h1>
     <ul>
-      <li v-for="competition in competitions" v-bind:key="competition">
-        {{competition.name}}
+      <li v-for="competition in competitions" v-bind:key="competition.competitionId">
+        {{competition.nameOfCompetition}}
         {{competition.startDate}}
         {{competition.endDate}}
         {{competition.description}}
@@ -23,7 +23,7 @@ export default {
       familyId: this.$session.get('familyId'),
       family: this.$session.get('family'),
       personId: this.$session.get('personId'),
-      competitions: []
+      competitions: null
     }
   },
   computed: {
@@ -74,7 +74,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .competition-list {
         background: #fff;
         font-family: 'Roboto Condensed', sans-serif;
