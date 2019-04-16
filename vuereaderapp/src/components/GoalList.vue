@@ -2,7 +2,7 @@
   <div class="goal-list">
     <v-card>
       <v-navigation-drawer permanent>
-       <v-toolbar flat>
+      <v-toolbar flat>
           <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
@@ -10,21 +10,16 @@
               </v-list-tile-title>
             </v-list-tile>
           </v-list>
-        </v-toolbar>
-    <v-divider></v-divider>
-      <v-list three-line>
-        <v-list-tile v-for="goal in goals" :key="goal.goalId">
-          <v-list-tile-content>
-            <v-list-tile-title v-text="goal.nameOfGoal"></v-list-tile-title>
-          </v-list-tile-content>
-          <v-divider></v-divider>
-          <v-list-tile-sub-content>
-             <v-list-tile-title v-text="goal.description"></v-list-tile-title>
-          </v-list-tile-sub-content>
-        </v-list-tile>
-      </v-list>
+      </v-toolbar>
+         <v-card-text v-for="goal in goals" :key="goal.goalId">
+           <v-card-text-title v-text="goal.nameOfGoal" class= "title font-weight-light"></v-card-text-title>
+           <v-card-text v-text="goal.description"></v-card-text>
+           <v-card-text-title>Minutes to Reach Goal:</v-card-text-title>
+           <v-card-text-condensed goal v-text="goal.minutesToReachGoal"></v-card-text-condensed>
+           <v-divider></v-divider>
+         </v-card-text>
       <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
-       </v-navigation-drawer>
+      </v-navigation-drawer>
     </v-card>
   </div>
 </template>
