@@ -14,16 +14,10 @@
     <v-divider></v-divider>
       <v-list three-line>
         <v-list-tile :key="book">
-          <v-list-tile-content>
-            <v-list-tile-title v-text="book.title"></v-list-tile-title>
-          </v-list-tile-content>
+          <v-img  :src=book.image></v-img>
+            <v-card-title>{{book.title}}</v-card-title>
           <v-list-tile-sub-content>
-             <v-list-tile-title v-text="book.author"></v-list-tile-title>
-          </v-list-tile-sub-content>
-          <v-list-tile-sub-content>
-
-             <v-list-tile-title v-text="book.isbn"></v-list-tile-title>
-
+             <v-list-tile-title>{{book.author}}</v-list-tile-title>
           </v-list-tile-sub-content>
         </v-list-tile>
       </v-list>

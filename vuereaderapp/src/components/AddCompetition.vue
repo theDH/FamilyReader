@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       nameOfCompetition: null,
-      startDate: null,
+      startDate: new Date().toISOString().substring(0, 10),
       endDate: null,
       description: '',
       minutesInCompetition: null,

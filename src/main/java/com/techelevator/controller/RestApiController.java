@@ -17,6 +17,7 @@ import com.techelevator.model.BookPerson;
 import com.techelevator.model.Competition;
 import com.techelevator.model.CompetitionRequest;
 import com.techelevator.model.Goal;
+import com.techelevator.model.GoalRequest;
 import com.techelevator.model.Person;
 import com.techelevator.model.Session;
 import com.techelevator.model.SessionRequest;
@@ -156,6 +157,21 @@ public class RestApiController {
 	@RequestMapping(path="/addpersonbook", method=RequestMethod.POST)
 	public void addBookToPerson(@RequestBody BookPerson bookPerson) {
 		bookDAO.addBookToPerson(bookPerson.getBook(), bookPerson.getPersonId());
+	}
+	
+	@CrossOrigin(origins= "http://localhost:8081")
+	@RequestMapping(path="/addgoal", method=RequestMethod.POST)
+	public void addGoal(@RequestBody GoalRequest goal) {
+		LocalDate startDate = LocalDate.parse(goal.getStartDate());
+		long personId = goal.getPersonId();
+		Goal newGoal = new Goal();
+		newGoal.setStartDate(startDate);
+		newGoal.setNameOfGoal(goal.getNameOfGoal());
+		newGoal.setDescription(goal.getDescription());
+		newGoal.setMinutesToReachGoal(goal.getMinutesToReachGoal());
+		newGoal.setNumberOfDays(goal.getNumberOfDays());
+		goalDAO.createNewGoal(newGoal, personId);
+	
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")

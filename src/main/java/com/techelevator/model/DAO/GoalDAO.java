@@ -6,7 +6,7 @@ import com.techelevator.model.Goal;
 
 public interface GoalDAO {
 	
-	public void createNewGoal(Goal newGoal);
+	public void createNewGoal(Goal newGoal, long personID);
 	
 	public void addGoalToPerson(Goal newGoal, long personID);
 	

@@ -22,7 +22,7 @@ public class JDBCGoalDAO implements GoalDAO{
 	}
 
 	@Override
-	public void createNewGoal(Goal newGoal) {
+	public void createNewGoal(Goal newGoal, long personId) {
 		String sql = "INSERT INTO goal (goal_id, name_of_goal, start_date, number_of_days, " +
 				"description, minutes_to_reach_goal, is_complete) VALUES " +
 				"(?, ?, ?, ?, ?, ?, ?)";
