@@ -53,7 +53,9 @@ public class JDBCSessionDAO implements SessionDAO {
 		List<Session> listOfSession = new ArrayList<>();
 
 		String sqlSearchGetListOfSessionByPerson = "Select * FROM session JOIN session ON session.people_book_id = people_book.people_book_id "
-				+ "JOIN people_book ON people_book.people_id = people.people_id WHERE people.people_id = ? LIMIT 10";
+				+ "JOIN people_book ON people_book.people_id = people.people_id "
+				+ "WHERE people.people_id = ? "
+				+ "ORDER BY date_of_reading DESC LIMIT 10; ";
 
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchGetListOfSessionByPerson, personId);
 		while (results.next()) {
@@ -69,9 +71,10 @@ public class JDBCSessionDAO implements SessionDAO {
 
 		List<Session> sessionListByFamily = new ArrayList<>();
 
-		String sqlSearchGetListByFamily = "Select * FROM session JOIN people_book ON people_book.people_book_id = session.people_book_id "
-				+ "JOIN people ON people.people_id = people_book.people_id JOIN family ON family.family_id = people.family_id "
-				+ "WHERE family_id = ? LIMIT 10";
+		String sqlSearchGetListByFamily = "Select * FROM session JOIN people_book ON people_book.people_book_id = session.people_book_id " 
+				+"JOIN people ON people.people_id = people_book.people_id JOIN family ON family.family_id = people.family_id " 
+				+"WHERE family.family_id = ? "
+				+"ORDER BY date_of_reading DESC LIMIT 10; ";
 
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchGetListByFamily, familyId);
 		while (results.next()) {

@@ -78,6 +78,7 @@ export default {
       this.$session.set('family', false)
       EventBus.$emit('familyPersonState', false, member.peopleId)
       EventBus.$emit('navEvent', member.name)
+      EventBus.$emit('rebootBookList', true)
       this.family = false
     },
     addPerson () {
