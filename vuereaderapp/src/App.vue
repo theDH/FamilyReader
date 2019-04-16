@@ -4,7 +4,7 @@
       <v-toolbar dense="true" class="cyan darken-2">
         <v-toolbar-title>Booknanza</v-toolbar-title>
       </v-toolbar>
-      <v-toolbar flat color="white"></v-toolbar>
+      <h1>{{ navigation }}</h1>
       <v-content>
         <router-view/>
         <footer>@BenDabSteveAlexandraSanthiyaCo.</footer>
@@ -33,5 +33,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+h1 {
+  background:#f2f2f2;
+  color:#4b86A6;
+  padding:10px;
+  font-size:24px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 </style>
