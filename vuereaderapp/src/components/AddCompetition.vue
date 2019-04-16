@@ -44,12 +44,8 @@ export default {
           minutesToFinish: this.minutesInCompetition,
           familyId: this.familyId
         }
-<<<<<<< HEAD
       }).then(response => {
         console.log(response)
-=======
-      }).then(response => { console.log(response)
->>>>>>> f56a784f4a6968087d6a82f8dd1f9df17ca13c49
         EventBus.$emit('rebootCompetitionList', true)
       }).catch(e => console.log(e))
     },
