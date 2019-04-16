@@ -6,6 +6,7 @@
       </v-toolbar>
       <v-toolbar flat color="#2c3e50"></v-toolbar>
       <h1>{{ navigation }}</h1>
+        <h2>Booknanza helps your children read good</h2>
       <v-content>
         <router-view/>
         <reader-footer></reader-footer>
