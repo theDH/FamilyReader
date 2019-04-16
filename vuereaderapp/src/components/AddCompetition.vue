@@ -24,7 +24,7 @@ export default {
       familyId: this.$session.get('familyId')
     }
   },
-  computed:{
+  computed: {
     familyParams () {
       const params = new URLSearchParams()
       params.append('familyId', this.familyId)
@@ -44,7 +44,10 @@ export default {
           minutesToFinish: this.minutesInCompetition,
           familyId: this.familyId
         }
-      })
+      }).then(response => {
+        console.log(response)
+        EventBus.$emit('rebootCompetitionList', true)
+      }).catch(e => console.log(e))
     },
     validate () {
       console.log('validate')
