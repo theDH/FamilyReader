@@ -19,7 +19,7 @@ import EventBus from './components/EventBus'
 export default {
   data () {
     return {
-      navigation: 'Log In'
+      navigation: ''
     }
   },
   mounted () {
