@@ -2,6 +2,7 @@ package com.techelevator.model.DAO;
 
 import java.util.List;
 
+import com.techelevator.model.Goal;
 import com.techelevator.model.Session;
 
 public interface SessionDAO {
@@ -12,6 +13,6 @@ public interface SessionDAO {
 	
 	public List<Session> getListOfSessionsByFamily(long familyId);
 	
-	public void addMinutesFromSessionToGoal(Session session);
+	public void addMinutesFromSessionToGoal(Session session, long goalId);
 
 }

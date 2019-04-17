@@ -86,6 +86,7 @@ export default {
           url: 'http://localhost:8080/capstone/goallist',
           params: this.personParams
         }).then(response => { this.goals = response.data })
+        this.setGoalIdSession()
       } else {
         axios({
           method: 'get',
@@ -93,6 +94,9 @@ export default {
           params: this.familyParams
         }).then(response => { this.goals = response.data })
       }
+    },
+    setGoalIdSession(goal) {
+      this.$session.set('goalId', goalId)
     },
     getGoalProgress (minutesRead, minutesToReachGoal) {
       let progress = (minutesRead / minutesToReachGoal) * 100

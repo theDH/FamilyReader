@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import com.techelevator.model.Goal;
 import com.techelevator.model.Session;
 import com.techelevator.model.DAO.SessionDAO;
 
@@ -16,9 +17,11 @@ import com.techelevator.model.DAO.SessionDAO;
 public class JDBCSessionDAO implements SessionDAO {
 
 	private JdbcTemplate jdbcTemplate;
+	private Goal goal;
 
 	public JDBCSessionDAO(DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
+		this.goal = new Goal();
 	}
 
 	@Override
@@ -110,10 +113,10 @@ public class JDBCSessionDAO implements SessionDAO {
 	}
 
 	@Override
-	public void addMinutesFromSessionToGoal(Session session) {
+	public void addMinutesFromSessionToGoal(Session session, long goalId) {
 		int minutes = session.getMinutesRead();
-		String sql = "UPDATE goal SET minutes_read = ?";
-		jdbcTemplate.update(sql, session.getMinutesRead());
+		String sql = "UPDATE goal SET minutes_read = ? WHERE goal_id = ?";
+		jdbcTemplate.update(sql, minutes, goalId);
 	}
 
 }

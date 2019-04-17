@@ -8,7 +8,14 @@ public class SessionRequest {
 	private long personId;
 	private long isbn;
 	private boolean finished;
+	private long goalId;
 	
+	public long getGoalId() {
+		return goalId;
+	}
+	public void setGoalId(long goalId) {
+		this.goalId = goalId;
+	}
 	public boolean isFinished() {
 		return finished;
 	}

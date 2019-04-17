@@ -168,7 +168,7 @@ public class RestApiController {
 		newGoal.setStartDate(startDate);
 		newGoal.setNameOfGoal(goal.getNameOfGoal());
 		newGoal.setDescription(goal.getDescription());
-		newGoal.setMinutesToReachGoal(goal.getMinutesToReachGoal());
+		newGoal.setMinutesToReachGoal(goal.getMinutesToReachGoal()); 
 		newGoal.setNumberOfDays(goal.getNumberOfDays());
 		goalDAO.createNewGoal(newGoal, personId);
 	
@@ -186,7 +186,7 @@ public class RestApiController {
 		newSession.setPeopleBookId(peopleBookId);
 		newSession.setTypeOfReading(session.getTypeOfReading());
 		sessionDAO.addSession(newSession);
-		sessionDAO.addMinutesFromSessionToGoal(newSession);
+		sessionDAO.addMinutesFromSessionToGoal(newSession, session.getGoalId());
 		if (session.isFinished()) {
 			bookDAO.setBookInactive(session.getPersonId(), session.getIsbn());
 		}

@@ -57,7 +57,8 @@ export default {
       minutes: null,
       type: null,
       date: '',
-      finished: false
+      finished: false,
+      goalId: this.$session.get('goalId')
     }
   },
   computed: {
@@ -96,6 +97,21 @@ export default {
         url: 'http://localhost:8080/capstone/getbooksnotreading',
         params: this.familyParams
       }).then(response => { this.otherBooks = response.data })
+    },
+       getGoals () {
+      if (!this.family) {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/goallist',
+          params: this.personParams
+        }).then(response => { this.goals = response.data })
+      } else {
+        axios({
+          method: 'get',
+          url: 'http://localhost:8080/capstone/goallistbyfamily',
+          params: this.familyParams
+        }).then(response => { this.goals = response.data })
+      }
     },
     searchForNewBooks () {
       axios({
@@ -147,7 +163,8 @@ export default {
           typeOfReading: 'Read-To_Self',
           isbn: this.book.isbn,
           personId: this.personId,
-          finished: this.finished
+          finished: this.finished,
+          goalId: this.goalId
         }
       })
     },
@@ -179,6 +196,7 @@ export default {
   },
   created () {
     this.getBooks()
+    this.getGoals
   },
   components: {
     PrimaryButton
