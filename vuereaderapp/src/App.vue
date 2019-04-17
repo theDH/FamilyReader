@@ -3,10 +3,10 @@
     <v-app>
       <div id="top">
         <v-card
+        title="Happy"
         overlay
         img-src="./components/FamilyPicture.jpg"
         text-variant="white"
-        title="Booknanza"
         >
           <v-card-text>
             Remember  <a target="_blank" href="https://www.bookitprogram.com/">Book-It</a>? This is like that but without Pizza Hut.

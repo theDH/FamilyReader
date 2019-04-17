@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-container fluid grid-list-md>
+      <v-container fluid grid-list-sm >
       <v-card-group deck>
       <v-layout row wrap>
           <v-card>
