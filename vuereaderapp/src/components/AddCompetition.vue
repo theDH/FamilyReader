@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model="nameOfCompetition" placeholder="Name your competition"/>
+    <md-input type="text" v-model="nameOfCompetition" placeholder="Name your competition"/>
     <input v-model="startDate" type="date" placeholder="start date"/>
     <input v-model="endDate" type="date" placeholder="end date"/>
     <input type="text" v-model="description" placeholder="describe your competition"/>
@@ -69,5 +69,7 @@ export default {
 </script>
 
 <style>
-
+input {
+font-weight: bolder;
+}
 </style>
