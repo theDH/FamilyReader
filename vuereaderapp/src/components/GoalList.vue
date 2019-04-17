@@ -21,6 +21,7 @@
                 <v-layout justify-center>
                   <v-card-text-title class= "font-weight-light" justify-start> Days remaining to reach goal: </v-card-text-title>
                   <v-card-text-text v-text="getDaysRemaining(goal.startDate, goal.numberOfDays)" class= "font-weight-light"></v-card-text-text>
+                  <div>
                   <v-progress-circular
                     :rotate="360"
                     :size="100"
@@ -29,6 +30,7 @@
                     color="teal"
                   >
                   </v-progress-circular>
+                  </div>
                 </v-layout>
               <v-divider></v-divider>
           </v-card-text>
