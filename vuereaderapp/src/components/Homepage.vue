@@ -2,6 +2,7 @@
   <div id="app">
     <v-app id="inspire">
       <v-container fluid grid-list-md>
+      <v-card-group deck>
       <v-layout row wrap>
           <v-card>
             <v-card-text><family-list v-if="!showAddPerson"/></v-card-text>
@@ -24,6 +25,7 @@
             <v-card-text><add-reading-activity v-if="showAddReadingActivity" /></v-card-text>
           </v-card>
       </v-layout>
+      </v-card-group>
       </v-container>
     </v-app>
   </div>
