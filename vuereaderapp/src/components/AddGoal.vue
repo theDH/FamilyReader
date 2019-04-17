@@ -22,7 +22,8 @@ export default {
       numberOfDays: '',
       description: '',
       minutesToReachGoal: '',
-      personId: this.$session.get('personId')
+      personId: this.$session.get('personId'),
+      minutesRead: this.$session.get('minutesRead')
     }
   },
   computed: {
@@ -43,8 +44,8 @@ export default {
           numberOfDays: this.numberOfDays,
           description: this.description,
           minutesToReachGoal: this.minutesToReachGoal,
-          personId: this.personId
-
+          personId: this.personId,
+          minutesRead: this.minutesRead
         }
       }).then(response => {
         console.log(response)
