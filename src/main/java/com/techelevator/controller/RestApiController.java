@@ -192,6 +192,7 @@ public class RestApiController {
 		}
 	}
 	
+	
 	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/addcompetition", method=RequestMethod.POST)
 	public void addNewCompetition(@RequestBody CompetitionRequest competition) {
