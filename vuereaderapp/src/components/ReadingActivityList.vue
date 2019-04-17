@@ -14,9 +14,7 @@
   <v-divider></v-divider>
   <v-list>
     <v-list-tile v-for="session in sessions" :key="session.sessionId">
-      <v-list-tile-content>
-        <v-list-tile-title v-text="session.typeOfReading"></v-list-tile-title>
-      </v-list-tile-content>
+            <div>Minutes Read: {{ session.minutesRead }}</div>
     </v-list-tile>
   </v-list>
   <br>
