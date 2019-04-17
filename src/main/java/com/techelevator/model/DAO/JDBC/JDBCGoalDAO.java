@@ -107,6 +107,7 @@ public class JDBCGoalDAO implements GoalDAO{
 		goal.setNumberOfDays(results.getInt("number_of_days"));
 		goal.setDescription(results.getString("description"));
 		goal.setMinutesToReachGoal(results.getInt("minutes_to_reach_goal"));
+		goal.setMinutesRead(results.getInt("minutes_read"));
 		goal.setComplete(results.getBoolean("is_complete"));
 		return goal;
 	}

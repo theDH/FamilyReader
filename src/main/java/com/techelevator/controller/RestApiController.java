@@ -168,7 +168,7 @@ public class RestApiController {
 		newGoal.setStartDate(startDate);
 		newGoal.setNameOfGoal(goal.getNameOfGoal());
 		newGoal.setDescription(goal.getDescription());
-		newGoal.setMinutesToReachGoal(goal.getMinutesToReachGoal());
+		newGoal.setMinutesToReachGoal(goal.getMinutesToReachGoal()); 
 		newGoal.setNumberOfDays(goal.getNumberOfDays());
 		goalDAO.createNewGoal(newGoal, personId);
 	
