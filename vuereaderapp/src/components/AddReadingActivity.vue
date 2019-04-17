@@ -34,6 +34,7 @@
     <br>
     <checkbox v-model="finished"></checkbox>
     <button @click="postActivity">Submit</button>
+    <button @click="cancel">Cancel</button>
   </div>
 </template>
 
@@ -170,6 +171,9 @@ export default {
       this.books.push(b)
       this.book = b
       this.bookIsNew = true
+    },
+    cancel () {
+      EventBus.$emit('toggleAddReadingActivity', false)
     }
   },
   created () {
