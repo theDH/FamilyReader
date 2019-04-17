@@ -21,6 +21,14 @@
                 <v-layout justify-center>
                   <v-card-text-title class= "font-weight-light" justify-start> Days remaining to reach goal: </v-card-text-title>
                   <v-card-text-text v-text="getDaysRemaining(goal.startDate, goal.numberOfDays)" class= "font-weight-light"></v-card-text-text>
+                  <v-progress-circular
+                    :rotate="360"
+                    :size="100"
+                    :width="15"
+                    :value="getGoalProgress(goal.minutesRead, goal.minutesToReachGoal)"
+                    color="teal"
+                  >
+                  </v-progress-circular>
                 </v-layout>
               <v-divider></v-divider>
           </v-card-text>
@@ -83,6 +91,10 @@ export default {
           params: this.familyParams
         }).then(response => { this.goals = response.data })
       }
+    },
+    getGoalProgress (minutesRead, minutesToReachGoal) {
+      let progress = (goal.minutesRead/goal.minutesToReachGoal) * 100
+      return progress
     }
   },
   created () {
