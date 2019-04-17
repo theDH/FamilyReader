@@ -35,7 +35,6 @@
               <v-divider></v-divider>
           </v-card-text>
          </v-container>
-      
       </v-navigation-drawer>
     </v-card>
   </div>

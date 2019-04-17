@@ -1,5 +1,4 @@
  <template>
-
   <div>
     <!-- <v-app id="inspire"> -->
     <v-card>
@@ -25,19 +24,14 @@
           <v-list-tile v-for="member in members" :key="member" @click="setPersonSession(member)">
             <v-list-tile-content>
              <v-list-tile-title>{{ member.name }}</v-list-tile-title>
-             
            </v-list-tile-content>
-           
           </v-list-tile>
                   <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
-
         </v-list>
-        
       </v-navigation-drawer>
     <!-- </v-app> -->
     </v-card>
   </div>
-
 </template>
 
 <script>
