@@ -186,7 +186,6 @@ public class RestApiController {
 		newSession.setPeopleBookId(peopleBookId);
 		newSession.setTypeOfReading(session.getTypeOfReading());
 		sessionDAO.addSession(newSession);
-		sessionDAO.addMinutesFromSessionToGoal(newSession, session.getGoalId());
 		if (session.isFinished()) {
 			bookDAO.setBookInactive(session.getPersonId(), session.getIsbn());
 		}

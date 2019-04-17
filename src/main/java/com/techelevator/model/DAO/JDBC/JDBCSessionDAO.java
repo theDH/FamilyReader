@@ -112,11 +112,6 @@ public class JDBCSessionDAO implements SessionDAO {
 		return theSession;
 	}
 
-	@Override
-	public void addMinutesFromSessionToGoal(Session session, long goalId) {
-		int minutes = session.getMinutesRead();
-		String sql = "UPDATE goal SET minutes_read = minutes_read + ? WHERE goal_id = ?";
-		jdbcTemplate.update(sql, minutes, goalId);
-	}
+
 
 }
