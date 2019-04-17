@@ -98,7 +98,7 @@ export default {
         params: this.familyParams
       }).then(response => { this.otherBooks = response.data })
     },
-       getGoals () {
+    getGoals () {
       if (!this.family) {
         axios({
           method: 'get',
@@ -196,7 +196,7 @@ export default {
   },
   created () {
     this.getBooks()
-    this.getGoals
+    this.getGoals()
   },
   components: {
     PrimaryButton

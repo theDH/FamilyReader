@@ -1,33 +1,25 @@
 <template>
   <div id="app">
+    <div class="md-layout md-gutter">
     <v-app id="inspire">
       <v-container fluid grid-list-sm >
       <v-card-group deck>
       <v-layout row wrap>
-          <v-card>
-            <v-card-text><family-list v-if="!showAddPerson"/></v-card-text>
-            <v-card-text><add-person v-if="showAddPerson"/></v-card-text>
-          </v-card>
-            <v-card>
-              <v-card-text><book-list v-if="!showBookDetail"/></v-card-text>
-              <v-card-text><book-detail v-if="showBookDetail"/></v-card-text>
-            </v-card>
-          <v-card>
-            <v-card-text><goal-list v-if="!showAddGoal" /></v-card-text>
-            <v-card-text><add-goal v-if="showAddGoal" /></v-card-text>
-          </v-card>
-          <v-card>
-            <v-card-text><competition-list v-if="!showAddCompetition" /></v-card-text>
-            <v-card-text><add-competition v-if="showAddCompetition" /></v-card-text>
-          </v-card>
-          <v-card>
-            <v-card-text><reading-activity-list v-if="!showAddReadingActivity" /></v-card-text>
-            <v-card-text><add-reading-activity v-if="showAddReadingActivity" /></v-card-text>
-          </v-card>
+        <family-list v-if="!showAddPerson"/>
+        <add-person v-if="showAddPerson"/>
+        <book-list v-if="!showBookDetail"/>
+        <book-detail v-if="showBookDetail"/>
+        <goal-list v-if="!showAddGoal" />
+        <add-goal v-if="showAddGoal" />
+        <competition-list v-if="!showAddCompetition" />
+        <add-competition v-if="showAddCompetition" />
+        <reading-activity-list v-if="!showAddReadingActivity" />
+        <add-reading-activity v-if="showAddReadingActivity" />
       </v-layout>
       </v-card-group>
       </v-container>
     </v-app>
+    </div>
   </div>
 </template>
 
