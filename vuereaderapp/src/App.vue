@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <v-app>
+      <img src="">
       <v-toolbar dense class="cyan darken-2">
         <v-toolbar-title>Booknanza</v-toolbar-title>
       </v-toolbar>
@@ -40,6 +41,10 @@ export default {
 </script>
 
 <style>
+img {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
