@@ -93,7 +93,7 @@ export default {
       }
     },
     getGoalProgress (minutesRead, minutesToReachGoal) {
-      let progress = (goal.minutesRead/goal.minutesToReachGoal) * 100
+      let progress = (minutesRead / minutesToReachGoal) * 100
       return progress
     }
   },
