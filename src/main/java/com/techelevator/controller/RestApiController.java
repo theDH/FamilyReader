@@ -136,6 +136,12 @@ public class RestApiController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:8081")
+	@RequestMapping(path="/goallistprogress", method=RequestMethod.GET)
+	public int getTotalMinutesReadByPersonAndGoal(@RequestParam long personId, @RequestParam long goalId) {
+		return goalDAO.getTotalMinutesReadByPersonAndGoal(personId, goalId);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:8081")
 	@RequestMapping(path="/goallistbyfamily", method=RequestMethod.GET)
 	public List<Goal> getFamilyGoalList(@RequestParam long familyId) {
 		return goalDAO.getListOfGoalsByFamily(familyId);

@@ -21,4 +21,6 @@ public interface GoalDAO {
 	public List<Goal> getListOfGoalsByFamily(long familyId);
 	
 	public Goal getGoalDetail(long goalId);
+	
+	public int getTotalMinutesReadByPersonAndGoal (long peopleId, long goalId);
 }

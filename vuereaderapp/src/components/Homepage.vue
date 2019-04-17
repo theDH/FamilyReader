@@ -5,16 +5,16 @@
       <v-container fluid grid-list-sm >
       <v-card-group deck>
       <v-layout row wrap>
-        <family-list v-if="!showAddPerson"/>
-        <add-person v-if="showAddPerson"/>
-        <book-list v-if="!showBookDetail"/>
-        <book-detail v-if="showBookDetail"/>
-        <goal-list v-if="!showAddGoal" />
-        <add-goal v-if="showAddGoal" />
-        <competition-list v-if="!showAddCompetition" />
-        <add-competition v-if="showAddCompetition" />
-        <reading-activity-list v-if="!showAddReadingActivity" />
-        <add-reading-activity v-if="showAddReadingActivity" />
+        <family-list class="m" v-if="!showAddPerson"/>
+        <add-person class="m" v-if="showAddPerson"/>
+        <book-list class="m" v-if="!showBookDetail"/>
+        <book-detail class="m" v-if="showBookDetail"/>
+        <goal-list class="m" v-if="!showAddGoal" />
+        <add-goal class="m" v-if="showAddGoal" />
+        <competition-list class="m" v-if="!showAddCompetition" />
+        <add-competition class="m" v-if="showAddCompetition" />
+        <reading-activity-list class="m" v-if="!showAddReadingActivity" />
+        <add-reading-activity class="m" v-if="showAddReadingActivity" />
       </v-layout>
       </v-card-group>
       </v-container>
@@ -70,5 +70,7 @@ export default {
 </script>
 
 <style>
-
+.m{
+  margin: 10px;
+}
 </style>

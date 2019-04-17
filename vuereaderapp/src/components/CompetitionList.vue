@@ -87,7 +87,6 @@ export default {
 
 <style scoped>
   .competition-list {
-        background: #fff;
         font-family: 'Roboto Condensed', sans-serif;
     }
     h1 {
