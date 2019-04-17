@@ -1,0 +1,9 @@
+ <v-progress-circular
+    :rotate="360"
+    :size="100"
+    :width="15"
+    :value="50"
+    color="teal"
+    >
+    {{person.}}
+</v-progress-circular>
