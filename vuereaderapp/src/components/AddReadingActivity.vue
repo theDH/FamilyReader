@@ -58,7 +58,7 @@ export default {
       type: null,
       date: '',
       finished: false,
-      goalId: ''
+      goalId: this.$session.get('goalId')
     }
   },
   computed: {
@@ -163,7 +163,8 @@ export default {
           typeOfReading: 'Read-To_Self',
           isbn: this.book.isbn,
           personId: this.personId,
-          finished: this.finished
+          finished: this.finished,
+          goalId: this.goalId
         }
       })
     },
