@@ -10,6 +10,8 @@
               <v-list-tile-title class="title">
                 Family Members
               </v-list-tile-title>
+              <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
+        <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
             </v-list-tile>
           </v-list>
         </v-toolbar>
@@ -26,8 +28,7 @@
            </v-list-tile-content>
           </v-list-tile>
         </v-list>
-        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
-        <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
+        
       </v-navigation-drawer>
     <!-- </v-app> -->
     </v-card>
