@@ -8,8 +8,15 @@ public class Goal {
 	private String nameOfGoal;
 	private LocalDate startDate;
 	private int numberOfDays;
+	public int getMinutesRead() {
+		return minutesRead;
+	}
+	public void setMinutesRead(int minutesRead) {
+		this.minutesRead = minutesRead;
+	}
 	private String description;
 	private int minutesToReachGoal;
+	private int minutesRead;
 	private boolean isComplete = false;
 	
 	

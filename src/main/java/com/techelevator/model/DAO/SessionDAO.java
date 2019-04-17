@@ -11,5 +11,7 @@ public interface SessionDAO {
 	public List<Session> getListOfSessionsByPerson(long personId);
 	
 	public List<Session> getListOfSessionsByFamily(long familyId);
+	
+	public void addMinutesFromSessionToGoal(Session session);
 
 }

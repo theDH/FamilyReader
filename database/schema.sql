@@ -81,6 +81,7 @@ CREATE TABLE goal (
 	number_of_days int NOT NULL,
 	description varchar(500),
 	minutes_to_reach_goal int NOT NULL,
+	minutes_read int,
 	is_complete boolean
 );
 
@@ -121,10 +122,10 @@ INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Pepper', t
 INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Oregano', true, false);
 INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Salt', false, false);
 INSERT INTO people (family_id, name, is_parent, inactive) VALUES (1, 'Cumin', false, false);
-INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Pepper', '04/12/2019', 7, 'Read 100 minutes per week', 100, false);
-INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Oregano', '04/12/2019', 7, 'Read 100 minutes per week', 100, false);
-INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Salt', '04/12/2019', 30, 'Read 1000 minutes per month', 1000, false);
-INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, is_complete) VALUES ('Weekly Goal for Cumin', '04/12/2019', 14, 'Read 500 minutes per two week', 500, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, minutes_read, is_complete) VALUES ('Weekly Goal for Pepper', '04/12/2019', 7, 'Read 100 minutes per week', 100, 0, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, minutes_read, is_complete) VALUES ('Weekly Goal for Oregano', '04/12/2019', 7, 'Read 100 minutes per week', 100, 0, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, minutes_read, is_complete) VALUES ('Weekly Goal for Salt', '04/12/2019', 30, 'Read 1000 minutes per month', 1000, 0, false);
+INSERT INTO goal (name_of_goal, start_date, number_of_days, description, minutes_to_reach_goal, minutes_read, is_complete) VALUES ('Weekly Goal for Cumin', '04/12/2019', 14, 'Read 500 minutes per two week', 500, 0, false);
 INSERT INTO competition (name_of_competition, start_date, end_date, description, minutes_to_finish, family_id) VALUES ('Family month competition', '03/01/2019', '05/30/2019', 'First two people to read 1000 minutes', 1000, 1);
 INSERT INTO goal_people (goal_id, people_id) VALUES (1, 1);
 INSERT INTO goal_people (goal_id, people_id) VALUES (2, 2);
