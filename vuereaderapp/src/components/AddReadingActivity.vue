@@ -41,6 +41,7 @@
 <script>
 import axios from 'axios'
 import PrimaryButton from './PrimaryButton'
+import EventBus from './EventBus'
 export default {
   name: 'AddReadingActivity',
   data () {

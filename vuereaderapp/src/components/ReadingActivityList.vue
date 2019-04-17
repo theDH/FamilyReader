@@ -82,6 +82,7 @@ export default {
       this.personId = pState
       this.getListOfActivities()
     })
+    EventBus.$on()
   }
 }
 </script>

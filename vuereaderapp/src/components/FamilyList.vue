@@ -15,6 +15,8 @@
         </v-toolbar>
         <v-divider></v-divider>
         <v-list dense class="pt-0">
+                        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
+
           <v-list-tile @click="setFamilySession">
             <v-list-tile-content>
               <v-list-tile-title>All Family Members</v-list-tile-title>
@@ -23,11 +25,14 @@
           <v-list-tile v-for="member in members" :key="member" @click="setPersonSession(member)">
             <v-list-tile-content>
              <v-list-tile-title>{{ member.name }}</v-list-tile-title>
+             
            </v-list-tile-content>
+           
           </v-list-tile>
+                  <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
+
         </v-list>
-        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
-        <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
+        
       </v-navigation-drawer>
     <!-- </v-app> -->
     </v-card>
