@@ -35,7 +35,6 @@
               <v-divider></v-divider>
           </v-card-text>
          </v-container>
-      
       </v-navigation-drawer>
     </v-card>
   </div>
@@ -95,7 +94,7 @@ export default {
         }).then(response => { this.goals = response.data })
       }
     },
-    setGoalIdSession(goal) {
+    setGoalIdSession (goalId) {
       this.$session.set('goalId', goalId)
     },
     getGoalProgress (minutesRead, minutesToReachGoal) {
