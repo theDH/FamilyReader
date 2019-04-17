@@ -9,8 +9,9 @@
         text-variant="white"
         >
           <v-card-text>
-            Remember<a target="_blank" href="https://www.bookitprogram.com/">Book-It</a>? This is like that but without Pizza Hut.
-            <br>This application creates fun ways to manage and encourage reading within the family.Using Booknanza, parents are able to track both their own reading progress and that of their child.Books can be added by searching for the title, author or ISBN. Prizes can be set by the parents that can be accessed by the children upon completing a reading goal. In addition to individual reading activities, parents can set up family competitions to encourage group progress. Booknanza allows parents to track the activity of each child, add/delete goals and competitions, and create unique prizes.
+            Remember  <a target="_blank" href="https://www.bookitprogram.com/">Book-It</a>? This is like that but without Pizza Hut.
+            <br>
+            This application creates fun ways to manage and encourage reading within the family.  Using Booknanza, parents are able to track both their own reading progress and that of their child. Books can be added by searching for the title, author or ISBN. Prizes can be set by the parents that can be accessed by the children upon completing a reading goal. In addition to individual reading activities, parents can set up family competitions to encourage group progress. Booknanza allows parents to track the activity of each child, add/delete goals and competitions, and create unique prizes.
           </v-card-text>
         </v-card>
       </div>

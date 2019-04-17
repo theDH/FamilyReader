@@ -94,7 +94,7 @@ export default {
         }).then(response => { this.goals = response.data })
       }
     },
-    setGoalIdSession(goal) {
+    setGoalIdSession (goalId) {
       this.$session.set('goalId', goalId)
     },
     getGoalProgress (minutesRead, minutesToReachGoal) {

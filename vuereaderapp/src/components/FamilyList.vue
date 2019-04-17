@@ -26,7 +26,7 @@
              <v-list-tile-title>{{ member.name }}</v-list-tile-title>
            </v-list-tile-content>
           </v-list-tile>
-                  <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
+          <v-btn v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
         </v-list>
       </v-navigation-drawer>
     <!-- </v-app> -->
