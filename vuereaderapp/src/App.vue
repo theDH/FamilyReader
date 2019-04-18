@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <!-- <div id="app"> -->
+    <div>
     <v-app>
       <div id="top">
         <v-card

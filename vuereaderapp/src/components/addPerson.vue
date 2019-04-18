@@ -7,7 +7,7 @@
       <option value=false>Child</option>
     </select><br>
     <v-btn color="primary" dark @click="validate">Add New Person</v-btn>
-    <v-btn color="secondary" light  @click="cancel">Cancel</v-btn>
+    <v-btn color="primary" dark  @click="cancel">Cancel</v-btn>
   </div>
 </template>
 
