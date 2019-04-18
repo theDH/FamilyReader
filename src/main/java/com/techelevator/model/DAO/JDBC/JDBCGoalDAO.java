@@ -44,11 +44,14 @@ public class JDBCGoalDAO implements GoalDAO{
 	@Override
 	public List<Goal> getListOfAllGoals(long personId) {
 		ArrayList<Goal> goals = new ArrayList<Goal>();
-		String sql = "SELECT * FROM goal JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE is_complete = false " +
-					"AND goal_people.people_id = ?";
+		String sql = "SELECT * FROM goal JOIN goal_people ON goal.goal_id = goal_people.goal_id WHERE " + 
+				"goal_people.people_id = ? and goal.is_complete = false";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, personId);
 		while(results.next()) {
 			Goal goal = mapRowToGoal(results);
+			int sumMinutes = getTotalMinutesReadByPersonAndGoal(goal.getGoalId(), personId);
+			System.out.println(sumMinutes);
+			goal.setMinutesRead(sumMinutes);
 			goals.add(goal);
 		}
 		return goals;
@@ -109,6 +112,7 @@ public class JDBCGoalDAO implements GoalDAO{
 		goal.setMinutesToReachGoal(results.getInt("minutes_to_reach_goal"));
 		goal.setMinutesRead(results.getInt("minutes_read"));
 		goal.setComplete(results.getBoolean("is_complete"));
+		goal.setPersonId(results.getLong("people_id"));
 		return goal;
 	}
 
@@ -121,6 +125,8 @@ public class JDBCGoalDAO implements GoalDAO{
 		SqlRowSet result = jdbcTemplate.queryForRowSet(sql, familyId);
 		while(result.next()) {
 			Goal goal = mapRowToGoal(result);
+			int sumMinutes = getTotalMinutesReadByPersonAndGoal(goal.getGoalId(), goal.getPersonId());
+			goal.setMinutesRead(sumMinutes);
 			goals.add(goal);
 		}
 		return goals;
