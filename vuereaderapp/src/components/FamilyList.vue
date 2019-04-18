@@ -67,7 +67,7 @@ export default {
       this.$session.set('family', true)
       this.family = true
       EventBus.$emit('familyPersonState', true, null)
-      EventBus.$emit('navEvent', 'Home')
+      EventBus.$emit('navEvent', 'Family Page')
     },
     setPersonSession (member) {
       console.log('setpersonsession')

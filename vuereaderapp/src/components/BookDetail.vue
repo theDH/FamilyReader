@@ -1,7 +1,6 @@
 <template>
   <div class="book-detail">
     <v-card>
-      <v-navigation-drawer permanent>
        <v-toolbar flat>
           <v-list>
             <v-list-tile>
@@ -14,7 +13,9 @@
     <v-divider></v-divider>
       <v-list three-line>
         <v-list-tile :key="book">
-          <v-img  :src=book.image></v-img>
+          <div>
+          <v-img style="height: auto; max-width: 100%; width: auto; max-height: 100%;" :src=book.image></v-img>
+          </div>
             <v-card-title>{{book.title}}</v-card-title>
           <v-list-tile-sub-content>
              <v-list-tile-title>{{book.author}}</v-list-tile-title>
@@ -24,7 +25,6 @@
     <v-btn color="primary" dark  @click="back">
        Back
       </v-btn>
-      </v-navigation-drawer>
     </v-card>
   </div>
 </template>
