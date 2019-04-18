@@ -12,7 +12,14 @@ public class Goal {
 	private int minutesToReachGoal;
 	private int minutesRead;
 	private boolean isComplete = false;
+	private long personId;
 	
+	public long getPersonId() {
+		return personId;
+	}
+	public void setPersonId(long personId) {
+		this.personId = personId;
+	}
 	public int getMinutesRead() {
 		return minutesRead;
 	}
