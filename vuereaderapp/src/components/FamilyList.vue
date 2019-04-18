@@ -15,7 +15,7 @@
         </v-toolbar>
         <v-divider></v-divider>
         <v-list dense class="pt-0">
-                        <v-btn v-if="family" @click="addPerson">Add Person</v-btn>
+                        <v-btn color="primary" dark v-if="family" @click="addPerson">Add Person</v-btn>
 
           <v-list-tile @click="setFamilySession">
             <v-list-tile-content>

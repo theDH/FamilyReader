@@ -117,7 +117,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
   .goal-list {
         background: #fff;
         font-family: 'Roboto Condensed', sans-serif;

@@ -70,6 +70,9 @@ export default {
 </script>
 
 <style>
+#inspire{
+background-color:paleturquoise;
+}
 .m{
   margin: 10px;
   flex: auto;
