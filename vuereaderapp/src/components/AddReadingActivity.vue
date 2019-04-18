@@ -32,6 +32,11 @@
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
     <input v-model="date" type="date"/><br>
     <br>
+    <select v-model="readingType">
+      <option value="" selected disabled>What type of reading was done?</option>
+      <option v-for="type in readingTypes" v-bind:key="type.id" v-bind:value="type">{{type}}</option>
+    </select>
+    <br>
     <checkbox v-model="finished"></checkbox>
     <v-btn color="primary" dark  @click="postActivity">Submit</v-btn>
     <v-btn color="secondary" light  @click="cancel">Cancel</v-btn>
@@ -46,6 +51,10 @@ export default {
   name: 'AddReadingActivity',
   data () {
     return {
+      readingTypes: [
+        "Read-Aloud (reader)", "Read-Aloud (listener)", "Listened_To", "Read-To_Self"
+      ],
+      readingType: '',
       bookIsNew: false,
       newBookQuery: '',
       newBookResults: null,
@@ -164,7 +173,7 @@ export default {
           isbn: this.book.isbn,
           personId: this.personId,
           finished: this.finished,
-          goalId: this.goalId
+          typeOfReading: this.readingType
         }
       })
     },
