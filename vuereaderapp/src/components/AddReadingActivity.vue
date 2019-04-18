@@ -29,7 +29,9 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
+  
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
+    <br>
     <input v-model="date" type="date"/><br>
     <br>
     <checkbox v-model="finished"></checkbox>
