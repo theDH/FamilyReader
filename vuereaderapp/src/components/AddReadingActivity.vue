@@ -160,7 +160,10 @@ export default {
           book: this.book,
           personId: this.personId
         }
-      }).then(response => { this.addActivity() })
+      }).then(response => { 
+        this.addActivity() 
+        EventBus.$emit('rebootBookList', true)
+        })
     },
     addActivity () {
       axios({
@@ -175,7 +178,7 @@ export default {
           finished: this.finished,
           typeOfReading: this.readingType
         }
-      })
+      }).then(reponse => { EventBus.$emit('toggleAddReadingActivity', false)})
     },
     addFamilyBookToList (a) {
       if (this.books == null) {
