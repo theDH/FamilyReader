@@ -57,7 +57,6 @@ export default {
     },
     getListOfBooks () {
       this.loading = true
-      this.books = null
       if (!this.family) {
         axios({
           method: 'get',
@@ -69,7 +68,9 @@ export default {
           method: 'get',
           url: 'http://localhost:8080/capstone/booklistbyfamily',
           params: this.familyParams
-        }).then(response => { this.books = response.data })
+        }).then(response => {
+          this.books = response.data
+        })
       }
     }
   },

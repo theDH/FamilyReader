@@ -31,7 +31,7 @@
     </v-list>
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
     <input v-model="date" type="date"/><br>
-    <select v-model="readingType">
+    <select id="select-book" v-model="readingType">
       <option value="" selected disabled>What type of reading was done? &#9660;</option>
       <option v-for="type in readingTypes" v-bind:key="type.id" v-bind:value="type">{{type}}</option>
     </select>
