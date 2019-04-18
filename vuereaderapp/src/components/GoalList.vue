@@ -9,7 +9,7 @@
                 List of Active Goals
               </v-list-tile-title>
             </v-list-tile>
-            <v-btn v-if='!family' @click="addGoal">Add Goals</v-btn>
+            <v-btn color="primary" dark  v-if='!family' @click="addGoal">Add Goals</v-btn>
           </v-list>
       </v-toolbar>
          <v-container>

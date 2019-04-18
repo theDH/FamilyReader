@@ -137,4 +137,18 @@ public class JDBCGoalDAO implements GoalDAO{
 		return goal;
 	}
 
+	@Override
+	public int getTotalMinutesReadByPersonAndGoal(long peopleId, long goalId) {
+		int sum = 0;
+		String str = "SELECT SUM(session.minutes_read), people.people_id FROM session JOIN people_book ON people_book.people_book_id = session.people_book_id " + 
+				"JOIN people ON people.people_id = people_book.people_id JOIN goal_people ON goal_people.people_id = goal_people.people_id " + 
+				"JOIN goal on goal.goal_id = goal_people.goal_id WHERE session.date_of_reading >= goal.start_date AND session.date_of_reading <= " + 
+				"goal.start_date + goal.number_of_days AND people.people_id = ? AND goal.goal_id = ? GROUP BY people.people_id;";
+		SqlRowSet result = jdbcTemplate.queryForRowSet(str, peopleId, goalId);
+		while(result.next()) {
+			sum = result.getInt("sum");
+		}
+		return sum;
+	}
+
 }

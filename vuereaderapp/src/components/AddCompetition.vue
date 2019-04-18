@@ -5,8 +5,8 @@
     <input v-model="endDate" type="date" placeholder="end date"/>
     <input type="text" v-model="description" placeholder="describe your competition"/>
     <input type="number" v-model="minutesInCompetition" placeholder="enter minutes in competition"/>
-    <button @click="validate">Add New competition</button>
-    <button @click="cancel">Cancel</button>
+    <v-btn color="primary" dark @click="validate">Add New competition</v-btn>
+    <v-btn color="secondary" light @click="cancel">Cancel</v-btn>
   </div>
 </template>
 

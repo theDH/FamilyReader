@@ -33,8 +33,8 @@
     <input v-model="date" type="date"/><br>
     <br>
     <checkbox v-model="finished"></checkbox>
-    <button @click="postActivity">Submit</button>
-    <button @click="cancel">Cancel</button>
+    <v-btn color="primary" dark  @click="postActivity">Submit</v-btn>
+    <v-btn color="secondary" light  @click="cancel">Cancel</v-btn>
   </div>
 </template>
 
