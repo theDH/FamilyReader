@@ -29,7 +29,6 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
-
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
     <br>
     <input v-model="date" type="date"/><br>
@@ -43,7 +42,6 @@
     <v-btn color="secondary" light  @click="cancel">Cancel</v-btn>
   </div>
 </template>
-
 <script>
 import axios from 'axios'
 import PrimaryButton from './PrimaryButton'
@@ -178,7 +176,10 @@ export default {
           finished: this.finished,
           typeOfReading: this.readingType
         }
-      }).then(reponse => { EventBus.$emit('toggleAddReadingActivity', false) })
+      }).then(reponse => {
+        EventBus.$emit('toggleAddReadingActivity', false)
+        EventBus.$emit('rebootGetGoals', true)
+      })
     },
     addFamilyBookToList (a) {
       if (this.books == null) {
