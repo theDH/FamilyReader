@@ -1,7 +1,7 @@
  <template>
   <div  class = "add-reading-activity">
     <select id="select-book" v-model="book">
-      <option value="" selected disabled>Which book did you read?</option>
+      <option value="" selected disabled>Which book did you read? &#9660;</option>
       <option v-for="book in books" v-bind:key="book.id" v-bind:value="book" >
         {{book.title}}
       </option>
@@ -31,9 +31,8 @@
     </v-list>
     <input v-model="minutes" type="number" placeholder="minutes e.g. 30"/>
     <input v-model="date" type="date"/><br>
-    <br>
     <select v-model="readingType">
-      <option value="" selected disabled>What type of reading was done?</option>
+      <option value="" selected disabled>What type of reading was done? &#9660;</option>
       <option v-for="type in readingTypes" v-bind:key="type.id" v-bind:value="type">{{type}}</option>
     </select>
     <br>
@@ -52,7 +51,7 @@ export default {
   data () {
     return {
       readingTypes: [
-        "Read-Aloud (reader)", "Read-Aloud (listener)", "Listened_To", "Read-To_Self"
+        'Read-Aloud (reader)', 'Read-Aloud (listener)', 'Listened_To', 'Read-To_Self'
       ],
       readingType: '',
       bookIsNew: false,
@@ -160,10 +159,10 @@ export default {
           book: this.book,
           personId: this.personId
         }
-      }).then(response => { 
-        this.addActivity() 
+      }).then(response => {
+        this.addActivity()
         EventBus.$emit('rebootBookList', true)
-        })
+      })
     },
     addActivity () {
       axios({
@@ -172,13 +171,12 @@ export default {
         data: {
           minutesRead: this.minutes,
           dateOfReading: this.date,
-          typeOfReading: 'Read-To_Self',
           isbn: this.book.isbn,
           personId: this.personId,
           finished: this.finished,
           typeOfReading: this.readingType
         }
-      }).then(reponse => { EventBus.$emit('toggleAddReadingActivity', false)})
+      }).then(reponse => { EventBus.$emit('toggleAddReadingActivity', false) })
     },
     addFamilyBookToList (a) {
       if (this.books == null) {
