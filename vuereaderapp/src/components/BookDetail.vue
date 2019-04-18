@@ -21,7 +21,7 @@
           </v-list-tile-sub-content>
         </v-list-tile>
       </v-list>
-    <v-btn @click="back">
+    <v-btn color="primary" dark  @click="back">
        Back
       </v-btn>
       </v-navigation-drawer>

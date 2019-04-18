@@ -6,8 +6,8 @@
       <option value=true>Parent</option>
       <option value=false>Child</option>
     </select><br>
-    <button @click="validate">Add New Person</button>
-    <button @click="cancel">Cancel</button>
+    <v-btn color="primary" dark @click="validate">Add New Person</v-btn>
+    <v-btn color="secondary" light  @click="cancel">Cancel</v-btn>
   </div>
 </template>
 

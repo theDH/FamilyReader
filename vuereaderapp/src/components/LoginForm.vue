@@ -3,8 +3,8 @@
     <input v-model="userName" placeholder="email"/>
     <input v-model="password" type="password" placeholder="password"/>
     <div v-if="this.error">Your email and/or password was invalid. Please try again.</div>
-    <button @click="authorizeLogin">Log In</button>
-    <button @click="launchSignup">Sign Up</button>
+    <v-btn color="primary" dark  @click="authorizeLogin">Log In</v-btn>
+    <v-btn color="secondary" dark  @click="launchSignup">Sign Up</v-btn>
   </div>
 </template>
 
