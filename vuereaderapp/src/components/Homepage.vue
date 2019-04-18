@@ -26,7 +26,6 @@
     </v-app>
     </div>
 </template>
-
 <script>
 import BookDetail from './BookDetail'
 import FamilyList from './FamilyList'
@@ -86,9 +85,4 @@ input {
   border: 2px solid rgb(53, 82, 160);
   border-radius: 4px;
 }
-#select-book {
-  border: 2px solid rgb(53, 82, 160);
-  border-radius: 4px;
-}
-
 </style>

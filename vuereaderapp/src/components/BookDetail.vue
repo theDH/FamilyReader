@@ -13,9 +13,13 @@
     <v-divider></v-divider>
       <v-list three-line>
         <v-list-tile :key="book">
+<<<<<<< HEAD
           <div>
           <v-img style="height: auto; max-width: 100%; width: auto; max-height: 100%;" :src=book.image></v-img>
           </div>
+=======
+          <img  id="thumbnail" :src=book.image />
+>>>>>>> d226d9f73fef92519333fc97147106189f45a96a
             <v-card-title>{{book.title}}</v-card-title>
           <v-list-tile-sub-content>
              <v-list-tile-title>{{book.author}}</v-list-tile-title>
@@ -102,4 +106,13 @@ export default {
       li:last-child{
           border:0px;
       }
+      #thumbnail {
+        position: relative;
+        float: left;
+        width:  100px;
+        height: 150px;
+        background-position: 50% 50%;
+        background-repeat:   no-repeat;
+        background-size:     cover;
+}
 </style>
