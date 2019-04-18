@@ -1,8 +1,7 @@
 <template>
   <div class="book-list">
     <v-card>
-      <v-navigation-drawer permanent>
-        <v-toolbar flat>
+        <v-toolbar>
           <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
@@ -20,8 +19,6 @@
           </v-list-tile-content>
         </v-list-tile>
         <br>
-        <!-- <v-btn id = "add-button" @click="addActivity">Add New Reading Activity</v-btn> -->
-       </v-navigation-drawer>
     </v-card>
   </div>
 </template>
@@ -87,9 +84,12 @@ export default {
   }
 }
 </script>
-<style scoped>
+<style>
 add-btn{
   color:cadetblue;
+}
+#title {
+background-color:paleturquoise;
 }
 
 </style>

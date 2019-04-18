@@ -1,8 +1,7 @@
 <template>
   <div class="competition-list">
     <v-card>
-      <v-navigation-drawer permanent>
-        <v-toolbar flat>
+        <v-toolbar>
           <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
@@ -20,7 +19,6 @@
           </v-list-tile>
         </v-list>
         <v-btn color="primary" dark  v-if='family' @click="addCompetition">Add Competition</v-btn>
-      </v-navigation-drawer>
     </v-card>
   </div>
 </template>

@@ -1,7 +1,6 @@
 <template>
-<v-div>
+<div class="reading-activity-list">
 <v-card>
-  <v-navigation-drawer permanent>
   <v-toolbar>
     <v-list>
       <v-list-tile>
@@ -19,9 +18,8 @@
   </v-list>
   <br>
   <v-btn color="primary" dark  v-if='!family' @click="addReadingActivity">Add New Reading Activity</v-btn>
-  </v-navigation-drawer>
 </v-card>
-</v-div>
+</div>
 </template>
 
 <script>
