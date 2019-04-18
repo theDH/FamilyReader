@@ -1,15 +1,28 @@
 <template>
 <v-app>
   <div>
+          <div>
     <input type="text" v-model="nameOfGoal" placeholder="'name of goal'"/>
-    
+    </div>
+          <div>
     <input v-model="startDate" type="date" placeholder="start date"/>
+    </div>
+          <div>
     <input v-model="numberOfDays" type="number" placeholder="'length of goal'"/>
+    </div>
+          <div>
     <input type="text" v-model="description" placeholder="'reward for reaching goal'"/>
+    </div>
+          <div>
     <input type="number" v-model="minutesToReachGoal" placeholder="'100'"/>
-
+</div>
+          <div>
     <v-btn color="primary" dark @click="validate">Add New Goal</v-btn>
+    </div>
+          <div>
     <v-btn color="secondary" light @click="cancel">Cancel</v-btn>
+    </div>
+          
   </div>
 </v-app>
 </template>
