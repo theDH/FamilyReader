@@ -176,8 +176,10 @@ export default {
           finished: this.finished,
           typeOfReading: this.readingType
         }
-      }).then(reponse => { EventBus.$emit('toggleAddReadingActivity', false) })
+      }).then(reponse => {
+        EventBus.$emit('toggleAddReadingActivity', false)
         EventBus.$emit('rebootGetGoals', true)
+      })
     },
     addFamilyBookToList (a) {
       if (this.books == null) {
