@@ -1,6 +1,6 @@
 <template>
   <main>
-    <div>@BenDabSteveAlexandraSanthiyaCo.</div>
+    <div>@BDASSCo.</div>
     <div>{{ quote }} -- Kanye West</div>
   </main>
 </template>
@@ -29,5 +29,7 @@ export default {
 </script>
 
 <style>
-
+main{
+background-color:paleturquoise;
+}
 </style>
