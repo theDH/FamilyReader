@@ -1,8 +1,7 @@
 <template>
   <div class="goal-list">
     <v-card>
-      <v-navigation-drawer permanent>
-      <v-toolbar flat>
+      <v-toolbar>
           <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
@@ -35,7 +34,6 @@
               <v-divider></v-divider>
           </v-card-text>
          </v-container>
-      </v-navigation-drawer>
     </v-card>
   </div>
 </template>

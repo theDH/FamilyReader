@@ -2,8 +2,7 @@
   <div>
     <!-- <v-app id="inspire"> -->
     <v-card>
-      <v-navigation-drawer permanent>
-        <v-toolbar flat>
+        <v-toolbar>
           <v-list>
             <v-list-tile>
               <v-list-tile-title class="title">
@@ -28,7 +27,6 @@
           </v-list-tile>
           <v-btn color="primary" dark  v-if="!family" @click="deleteFamilyMember">Delete Person</v-btn>
         </v-list>
-      </v-navigation-drawer>
     <!-- </v-app> -->
     </v-card>
   </div>

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <div class="md-layout md-gutter">
     <v-app id="inspire">
-      <v-container fluid grid-list-sm >
-      <v-card-group deck>
+      <v-container >
+      <!-- <v-card-group deck> -->
       <v-layout row wrap>
+        <v-flex>
         <family-list class="m" v-if="!showAddPerson"/>
         <add-person class="m" v-if="showAddPerson"/>
         <book-list class="m" v-if="!showBookDetail"/>
@@ -15,12 +15,12 @@
         <add-competition class="m" v-if="showAddCompetition" />
         <reading-activity-list class="m" v-if="!showAddReadingActivity" />
         <add-reading-activity class="m" v-if="showAddReadingActivity" />
+        </v-flex>
       </v-layout>
-      </v-card-group>
+      <!-- </v-card-group> -->
       </v-container>
     </v-app>
     </div>
-  </div>
 </template>
 
 <script>
@@ -70,6 +70,10 @@ export default {
 </script>
 
 <style>
+#inspire {
+background-color:paleturquoise;
+}
+
 .m{
   margin: 10px;
 }
