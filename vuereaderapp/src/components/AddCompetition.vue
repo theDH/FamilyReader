@@ -1,13 +1,37 @@
 <template>
-  <div>
-    <md-input type="text" v-model="nameOfCompetition" placeholder="Name your competition"/>
+   <v-form v-model="valid">
+      <v-container>
+        <v-layout>
+          <v-flex
+            xs12
+            md4
+          >
+          <div>
+    <input type="text" v-model="nameOfCompetition" placeholder="Name your competition"/>
+          </div>
+          <div>
     <input v-model="startDate" type="date" placeholder="start date"/>
+    </div>
+          <div>
     <input v-model="endDate" type="date" placeholder="end date"/>
+    </div>
+          <div>
     <input type="text" v-model="description" placeholder="describe your competition"/>
+    </div>
+          <div>
     <input type="number" v-model="minutesInCompetition" placeholder="enter minutes in competition"/>
-    <button @click="validate">Add New competition</button>
-    <button @click="cancel">Cancel</button>
-  </div>
+    </div>
+          <div>
+    <v-btn color="primary" dark @click="validate">Add New competition</v-btn>
+    </div>
+          <div>
+    <v-btn color="secondary" light @click="cancel">Cancel</v-btn>
+    </div>
+          
+   </v-flex>
+        </v-layout>
+      </v-container>
+    </v-form>
 </template>
 
 <script>

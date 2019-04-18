@@ -18,7 +18,7 @@
     </v-list-tile>
   </v-list>
   <br>
-  <v-btn v-if='!family' @click="addReadingActivity">Add New Reading Activity</v-btn>
+  <v-btn color="primary" dark  v-if='!family' @click="addReadingActivity">Add New Reading Activity</v-btn>
   </v-navigation-drawer>
 </v-card>
 </v-div>

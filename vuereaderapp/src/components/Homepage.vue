@@ -73,4 +73,9 @@ export default {
 .m{
   margin: 10px;
 }
+input {
+  border: 2px solid rgb(53, 82, 160);
+  border-radius: 4px;
+}
+
 </style>

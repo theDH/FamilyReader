@@ -9,8 +9,8 @@
         {{error}}
       </div>
     </div>
-    <button @click="validate">Sign Up</button>
-    <button @click="launchLogin">Back to Login</button>
+    <v-btn color="primary" dark  @click="validate">Sign Up</v-btn>
+    <v-btn color="secondary" light  @click="launchLogin">Back to Login</v-btn>
   </div>
 </template>
 
