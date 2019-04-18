@@ -22,7 +22,6 @@
           <div>
     <v-btn color="secondary" light @click="cancel">Cancel</v-btn>
     </div>
-          
   </div>
 </v-app>
 </template>
