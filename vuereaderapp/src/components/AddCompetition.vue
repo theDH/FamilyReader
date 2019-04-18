@@ -27,7 +27,6 @@
           <div>
     <v-btn color="secondary" light @click="cancel">Cancel</v-btn>
     </div>
-          
    </v-flex>
         </v-layout>
       </v-container>

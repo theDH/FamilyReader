@@ -1,14 +1,14 @@
  <template>
-  <div class = "add-reading-activity">
-    <select v-model="book">
+  <div  class = "add-reading-activity">
+    <select id="select-book" v-model="book">
       <option value="" selected disabled>Which book did you read?</option>
-      <option v-for="book in books" v-bind:key="book.id" v-bind:value="book">
+      <option v-for="book in books" v-bind:key="book.id" v-bind:value="book" >
         {{book.title}}
       </option>
       <option value="findNewBook">Find a new book</option>
     </select>
     <br><input v-if="book === 'findNewBook'" v-model="newBookQuery" type="text" placeholder="search isbn, title, author"/>
-    <button v-if="book === 'findNewBook'" @click="searchForNewBooks">Search</button>
+    <v-btn color="primary" dark v-if="book === 'findNewBook'" @click="searchForNewBooks">Search</v-btn>
     <v-list style="max-height: 200px" class="scroll-y" v-if="book === 'findNewBook'">
       <v-list-tile v-for="book in otherBooks" :key="book.title" @click="addFamilyBookToList(book)">
         <v-list-tile-avatar>
@@ -217,4 +217,8 @@ export default {
 .p {
 padding: 10px;
 }
+#select-book {
+  border-style: double
+}
+
 </style>
