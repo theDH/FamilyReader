@@ -1,5 +1,4 @@
  <template>
-
   <div>
     <!-- <v-app id="inspire"> -->
     <v-card>
@@ -31,7 +30,6 @@
     <!-- </v-app> -->
     </v-card>
   </div>
-
 </template>
 
 <script>
