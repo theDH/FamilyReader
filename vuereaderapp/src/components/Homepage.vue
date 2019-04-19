@@ -1,20 +1,24 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <v-container >
+      <v-container grid-list-xl fluid>
       <!-- <v-card-group deck> -->
-      <v-layout row wrap>
-        <v-flex>
-        <family-list class="m" v-if="!showAddPerson"/>
-        <add-person class="m" v-if="showAddPerson"/>
-        <book-list class="m" v-if="!showBookDetail"/>
-        <book-detail class="m" v-if="showBookDetail"/>
-        <goal-list class="m" v-if="!showAddGoal" />
-        <add-goal class="m" v-if="showAddGoal" />
-        <competition-list class="m" v-if="!showAddCompetition" />
+      <v-layout>
+        <v-flex s4 >
+          <family-list style="padding-bottom: 50px;" class="m" v-if="!showAddPerson"/>
+          <add-person class="m" v-if="showAddPerson"/>
+          <book-list class="m" v-if="!showBookDetail"/>
+          <book-detail class="m" v-if="showBookDetail"/>
+        </v-flex>
+        <v-flex s4>
+        <competition-list style="padding-bottom: 50px;" class="m" v-if="!showAddCompetition" />
         <add-competition class="m" v-if="showAddCompetition" />
         <reading-activity-list class="m" v-if="!showAddReadingActivity" />
         <add-reading-activity class="m" v-if="showAddReadingActivity" />
+        </v-flex>
+        <v-flex s4>
+          <goal-list class="m" v-if="!showAddGoal" />
+          <add-goal class="m" v-if="showAddGoal" />
         </v-flex>
       </v-layout>
       <!-- </v-card-group> -->
@@ -63,7 +67,7 @@ export default {
     EventBus.$on('toggleAddPerson', state => { this.showAddPerson = state })
     EventBus.$on('showBookDetail', (state, book) => { this.showBookDetail = state })
     EventBus.$on('toggleAddReadingActivity', state => { this.showAddReadingActivity = state })
-    EventBus.$emit('navEvent', 'Home')
+    EventBus.$emit('navEvent', 'Family Page')
   }
 }
 </script>
@@ -71,6 +75,7 @@ export default {
 <style>
 #inspire {
 background-color:paleturquoise;
+text-align: center;
 }
 
 .m{

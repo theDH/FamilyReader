@@ -13,24 +13,24 @@
       </v-toolbar>
          <v-container>
           <v-card-text v-for="goal in goals" :key="goal.goalId">
-                <v-card-text v-text="goal.nameOfGoal" class= "title font-weight-medium"></v-card-text>
-                <v-card-text v-text="goal.description" class= "font-weight-light"></v-card-text>
-                <v-card-text-title class= "font-weight-light" justify-start> Minutes to reach goal: </v-card-text-title>
-                <v-card-text-text goal v-text="goal.minutesToReachGoal" class= "font-weight-light"></v-card-text-text>
-                <v-layout justify-center>
-                  <v-card-text-title class= "font-weight-light" justify-start> Days remaining to reach goal: </v-card-text-title>
-                  <v-card-text-text v-text="getDaysRemaining(goal.startDate, goal.numberOfDays)" class= "font-weight-light"></v-card-text-text>
-                  <div>
+              <v-card-text v-text="goal.nameOfGoal" class= "title font-weight-bold"></v-card-text>
+              <v-card-text>
+                <v-card-text-content v-text="goal.description" class= "font-weight-medium" justify-center></v-card-text-content>
+              </v-card-text>
+              <v-card-text class= "font-weight-medium" justify-start> Minutes to reach goal: </v-card-text>
+                <v-card-text-content goal v-text="goal.minutesToReachGoal" class= "font-weight-medium"></v-card-text-content>
+              <v-card-text class= "font-weight-medium" justify-start> Days remaining to reach goal: </v-card-text>
+                <v-card-text v-text="getDaysRemaining(goal.startDate, goal.numberOfDays)" class= "font-weight-medium"></v-card-text>
+                <v-card-text-text>
                   <v-progress-circular
                     :rotate="360"
                     :size="100"
                     :width="15"
                     :value="getGoalProgress(goal.minutesRead, goal.minutesToReachGoal)"
                     color="teal"
-                  >
-                  </v-progress-circular>
-                  </div>
-                </v-layout>
+                  ></v-progress-circular>
+                </v-card-text-text>
+                    </v-layout>
               <v-divider></v-divider>
           </v-card-text>
          </v-container>
@@ -120,6 +120,9 @@ export default {
         background: #fff;
         font-family: 'Roboto Condensed', sans-serif;
     }
+  .v-card-text {
+        font-size: 48px;
+  }
     h1 {
         background:#f2f2f2;
         color:#4b86A6;
